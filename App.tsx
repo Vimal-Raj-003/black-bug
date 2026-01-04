@@ -13,6 +13,7 @@ import Costing from './pages/Costing';
 import OtherOfferings from './pages/OtherOfferings';
 import CaseStudies from './pages/CaseStudies';
 import AiLab from './pages/AiLab';
+import SupplierQuality from './pages/SupplierQuality';
 import { ScrollToTop } from './components/Shared';
 import ChatBot from './components/ChatBot';
 
@@ -42,6 +43,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/sourcing" element={<Sourcing />} />
             <Route path="/engineering" element={<Engineering />} />
+            <Route path="/supplier-quality" element={<SupplierQuality />} />
             <Route path="/vave" element={<Vave />} />
             <Route path="/about" element={<About />} />
             <Route path="/costing" element={<Costing />} />
