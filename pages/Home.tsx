@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -324,31 +323,100 @@ const Home: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400">End-to-end capabilities tailored to optimize your manufacturing and supply chain processes.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: 'Engineering', icon: 'fa-cogs', path: '/engineering', items: ['3D & 2D Modeling', '3D Scanning & RE', 'DFM Analysis', 'Jig/Fixture Design'] },
-              { title: 'Costing', icon: 'fa-calculator', path: '/costing', items: ['Overhead Calculation', 'Custom Cost Models', 'Should Cost vs Current', 'Efficiency Analysis'] },
-              { title: 'Supplier Quality', icon: 'fa-certificate', path: '/engineering', items: ['NPD Support', 'In-house QA', 'Internal & Lead Audits', 'Compliance Verification'] },
-              { title: 'Sourcing', icon: 'fa-globe', path: '/sourcing', items: ['Global Supplier ID', 'Selection & Validation', 'Strategic Negotiation', 'Prototyping Procurement'] },
-              { title: 'VAVE', icon: 'fa-chart-line', path: '/vave', items: ['Benchmarking', 'Teardown Analysis', 'VA & VE', 'Deep Cost Insights'] },
-              { title: 'Specialized Offerings', icon: 'fa-plus', path: '/other', items: ['Sustainability Consulting', 'Automation Workflows', 'Gen AI Implementation', 'Data Analysis'] }
-            ].map((service, idx) => (
-              <div key={idx} onClick={() => navigate(service.path)} className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg transition-all duration-300 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-300"></div>
-                <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 group-hover:bg-white rounded-xl flex items-center justify-center text-primary transition-colors duration-300 mb-6 transform group-hover:scale-110">
-                  <i className={`fas ${service.icon} text-2xl`}></i>
-                </div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-4 transition-colors duration-300">{service.title}</h4>
-                <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-300">
-                  {service.items.map((item, i) => (
-                    <li key={i} className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors"></i> {item}</li>
-                  ))}
-                </ul>
+            {/* Engineering */}
+            <div onClick={() => navigate('/engineering')} className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg dark:shadow-none hover:shadow-glow relative overflow-hidden transition-all duration-300">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-300"></div>
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 group-hover:bg-white rounded-xl flex items-center justify-center text-primary transition-colors duration-300 mb-6 group-hover:scale-110 transform">
+                <i className="fas fa-cogs text-2xl"></i>
               </div>
-            ))}
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-4 transition-colors duration-300">Engineering</h4>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-300">
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> 3D & 2D Modeling</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> 3D Scanning & RE</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> DFM & Tolerance Analysis</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Jig/Fixture Design</li>
+              </ul>
+            </div>
+
+            {/* Costing */}
+            <div onClick={() => navigate('/costing')} className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg dark:shadow-none hover:shadow-glow relative overflow-hidden transition-all duration-300">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-300"></div>
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 group-hover:bg-white rounded-xl flex items-center justify-center text-primary transition-colors duration-300 mb-6 group-hover:scale-110 transform">
+                <i className="fas fa-calculator text-2xl"></i>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-4 transition-colors duration-300">Costing</h4>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-300">
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Overhead Calculation</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Custom Cost Models</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Should Cost vs Current</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Efficiency Analysis</li>
+              </ul>
+            </div>
+
+            {/* Supplier Quality */}
+            <div onClick={() => navigate('/supplier-quality')} className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg dark:shadow-none hover:shadow-glow relative overflow-hidden transition-all duration-300">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-300"></div>
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 group-hover:bg-white rounded-xl flex items-center justify-center text-primary transition-colors duration-300 mb-6 group-hover:scale-110 transform">
+                <i className="fas fa-certificate text-2xl"></i>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-4 transition-colors duration-300">Supplier Quality</h4>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-300">
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> NPD Support</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> In-house QA</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Internal & Lead Audits</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Compliance Verification</li>
+              </ul>
+            </div>
+
+            {/* Sourcing */}
+            <div onClick={() => navigate('/sourcing')} className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg dark:shadow-none hover:shadow-glow relative overflow-hidden transition-all duration-300">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-300"></div>
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 group-hover:bg-white rounded-xl flex items-center justify-center text-primary transition-colors duration-300 mb-6 group-hover:scale-110 transform">
+                <i className="fas fa-globe text-2xl"></i>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-4 transition-colors duration-300">Sourcing</h4>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-300">
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Global Supplier ID</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Selection & Validation</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Strategic Negotiation</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Prototyping Procurement</li>
+              </ul>
+            </div>
+
+            {/* VAVE */}
+            <div onClick={() => navigate('/vave')} className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg dark:shadow-none hover:shadow-glow relative overflow-hidden transition-all duration-300">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-300"></div>
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 group-hover:bg-white rounded-xl flex items-center justify-center text-primary transition-colors duration-300 mb-6 group-hover:scale-110 transform">
+                <i className="fas fa-chart-line text-2xl"></i>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-4 transition-colors duration-300">VAVE</h4>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-300">
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Benchmarking</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Teardown Analysis</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> VA & VE</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Deep Cost Insights</li>
+              </ul>
+            </div>
+
+            {/* Specialized Offerings */}
+            <div onClick={() => navigate('/other')} className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg dark:shadow-none hover:shadow-glow relative overflow-hidden transition-all duration-300">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-300"></div>
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 group-hover:bg-white rounded-xl flex items-center justify-center text-primary transition-colors duration-300 mb-6 group-hover:scale-110 transform">
+                <i className="fas fa-plus text-2xl"></i>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-4 transition-colors duration-300">Specialized Offerings</h4>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-300">
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Sustainability Consulting</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Automation Workflows</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Gen AI Implementation</li>
+                <li className="flex items-start"><i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-300"></i> Data Analysis & Web Dev</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Expertise Section */}
       <section className="py-24 relative overflow-hidden bg-background-light dark:bg-background-dark" id="expertise">
         <div className="absolute inset-0 z-0 opacity-40 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#94a3b8 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }}></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

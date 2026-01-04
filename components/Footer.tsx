@@ -28,7 +28,7 @@ const Footer: React.FC = () => (
           <h4 className="text-white font-bold text-lg mb-6">Services</h4>
           <ul className="space-y-4 text-gray-400">
             <li><Link to="/engineering" className="hover:text-primary transition-colors">Engineering</Link></li>
-            <li><Link to="/engineering" className="hover:text-primary transition-colors">Quality Assurance</Link></li>
+            <li><Link to="/supplier-quality" className="hover:text-primary transition-colors">Quality Assurance</Link></li>
             <li><Link to="/costing" className="hover:text-primary transition-colors">Costing Services</Link></li>
             <li><Link to="/sourcing" className="hover:text-primary transition-colors">Global Sourcing</Link></li>
             <li><Link to="/vave" className="hover:text-primary transition-colors">VAVE</Link></li>

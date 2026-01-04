@@ -32,6 +32,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme }) => {
               </button>
               <div className="absolute top-full left-0 w-56 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 overflow-hidden">
                 <Link to="/engineering" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Engineering</Link>
+                <Link to="/supplier-quality" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Supplier Quality</Link>
                 <Link to="/sourcing" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Sourcing</Link>
                 <Link to="/costing" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Costing</Link>
                 <Link to="/vave" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">VAVE</Link>
@@ -86,6 +87,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme }) => {
           
           <div className="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Services</div>
           <Link to="/engineering" className="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 ml-2" onClick={() => setMobileMenuOpen(false)}>Engineering</Link>
+          <Link to="/supplier-quality" className="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 ml-2" onClick={() => setMobileMenuOpen(false)}>Supplier Quality</Link>
           <Link to="/sourcing" className="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 ml-2" onClick={() => setMobileMenuOpen(false)}>Sourcing</Link>
           <Link to="/costing" className="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 ml-2" onClick={() => setMobileMenuOpen(false)}>Costing</Link>
           <Link to="/vave" className="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 ml-2" onClick={() => setMobileMenuOpen(false)}>VAVE</Link>
