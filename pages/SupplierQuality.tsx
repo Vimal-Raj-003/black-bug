@@ -93,7 +93,7 @@ const SupplierQuality: React.FC = () => {
             <h2 className="text-primary font-bold tracking-wider uppercase text-sm">Facing a Supplier Quality Challenge?</h2>
             <h3 className="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold leading-tight">Identify Your Pain Point, Find Your Solution</h3>
             <p className="text-[#617589] dark:text-gray-300 text-lg">
-              BlackBuck Technologies offers targeted expertise to address your most critical supplier quality issues, from design to delivery.
+              Hexuno Technologies offers targeted expertise to address your most critical supplier quality issues, from design to delivery.
             </p>
           </div>
 

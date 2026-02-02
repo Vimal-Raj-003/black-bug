@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Contact: React.FC = () => {
@@ -130,7 +131,7 @@ const Contact: React.FC = () => {
                                 <div>
                                     <h3 className="text-slate-900 dark:text-white font-bold text-lg font-display mb-1">Email Us</h3>
                                     <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">For general inquiries:</p>
-                                    <a className="text-primary hover:underline font-medium" href="mailto:info@blackbucktech.com">info@blackbucktech.com</a>
+                                    <a className="text-primary hover:underline font-medium" href="mailto:info@hexuno.com">info@hexuno.com</a>
                                 </div>
                             </div>
                             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
@@ -182,7 +183,7 @@ const Contact: React.FC = () => {
                             <span className="material-symbols-outlined text-3xl">public</span>
                         </div>
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white font-display">Do you work internationally?</h3>
-                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Yes, BlackBuck Technologies supports global sourcing and engineering projects across North America, Europe, and Asia.</p>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Yes, Hexuno Technologies supports global sourcing and engineering projects across North America, Europe, and Asia.</p>
                     </div>
                     <div className="flex flex-col gap-3 p-6 rounded-xl bg-background-light dark:bg-slate-800/50">
                         <div className="text-primary mb-2">

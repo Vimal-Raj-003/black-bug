@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -205,7 +206,7 @@ const Sourcing: React.FC = () => {
           <div className="max-w-[960px] w-full flex flex-col gap-10">
             <div className="flex flex-col gap-4 text-center items-center">
               <h2 className="text-[#111418] dark:text-white text-3xl font-bold leading-tight md:text-4xl max-w-[720px]">
-                Why Choose BlackBuck Sourcing?
+                Why Choose Hexuno Sourcing?
               </h2>
               <p className="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal max-w-[720px]">
                 We deliver end-to-end value by optimizing every step of the procurement process, backed by engineering expertise.

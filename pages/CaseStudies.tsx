@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ const CaseStudies: React.FC = () => {
                 Real Results for Manufacturing<br />Leaders
               </h1>
               <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-300 drop-shadow-md">
-                Explore how BlackBuck helps innovative companies streamline sourcing and accelerate production with data-backed case studies.
+                Explore how Hexuno helps innovative companies streamline sourcing and accelerate production with data-backed case studies.
               </p>
               <div className="mt-12 flex flex-wrap justify-center gap-2">
                 <button className="bg-primary text-white px-6 py-2 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20">All Industries</button>
@@ -50,7 +51,7 @@ const CaseStudies: React.FC = () => {
                 </div>
                 <h2 className="text-3xl font-bold mt-4 text-gray-900 dark:text-white font-display">Titan Aerospace Cuts Lead Time by 40%</h2>
                 <p className="mt-4 text-gray-600 dark:text-gray-400">
-                  Learn how a leading aerospace manufacturer leveraged BlackBuck's network to source precision-machined turbine components in record time, bypassing traditional supply chain bottlenecks.
+                  Learn how a leading aerospace manufacturer leveraged Hexuno's network to source precision-machined turbine components in record time, bypassing traditional supply chain bottlenecks.
                 </p>
                 <div className="flex items-center space-x-12 mt-8">
                   <div className="flex items-start space-x-2">
@@ -155,7 +156,7 @@ const CaseStudies: React.FC = () => {
             <path d="M96 224C84.72 224 75.54 228.1 68.61 235.1C61.68 242.1 57.53 251.3 57.53 262.5C57.53 285.1 66.23 305.1 83.64 323.8C101.1 342.5 121.1 351.1 143.6 351.1C164.8 351.1 183.3 342.4 199.2 324.9C215.1 307.4 223.1 287.5 223.1 265C223.1 254.1 219.7 244.6 212.8 236.6C205.9 228.6 197.3 224.6 187.2 224.6H175.1C165.5 224.6 157.3 228.2 150.5 235.4C143.7 242.6 139.7 251.2 139.7 261.3C139.7 278.4 146.1 292.5 158.9 303.8C147.2 312.4 133.4 317 117.3 317C107.5 317 99.41 313.9 92.93 307.8C86.46 301.7 83.22 293.7 83.22 283.8C83.22 273.1 86.84 264.4 94.07 257.6C101.3 250.8 109.9 247.4 119.8 247.4H129.2V224.5C129.2 224.2 129.2 224 129.2 224H96zM320 224C308.7 224 299.5 228.1 292.6 235.1C285.7 242.1 281.5 251.3 281.5 262.5C281.5 285.1 290.2 305.1 307.6 323.8C325.1 342.5 345.1 351.1 367.6 351.1C388.8 351.1 407.3 342.4 423.2 324.9C439.1 307.4 447.1 287.5 447.1 265C447.1 254.1 443.7 244.6 436.8 236.6C429.9 228.6 421.3 224.6 411.2 224.6H399.1C389.5 224.6 381.3 228.2 374.5 235.4C367.7 242.6 363.7 251.2 363.7 261.3C363.7 278.4 370.1 292.5 382.9 303.8C371.2 312.4 357.4 317 341.3 317C331.5 317 323.4 313.9 316.9 307.8C310.5 301.7 307.2 293.7 307.2 283.8C307.2 273.1 310.8 264.4 318.1 257.6C325.3 250.8 333.9 247.4 343.8 247.4H353.2V224.5C353.2 224.2 353.2 224 353.2 224H320z"></path>
           </svg>
           <blockquote className="mt-8 text-3xl font-bold text-white font-display">
-            "BlackBuck didn't just manufacture our parts; they re-engineered our entire procurement process. We're now moving faster than we ever thought possible."
+            "Hexuno didn't just manufacture our parts; they re-engineered our entire procurement process. We're now moving faster than we ever thought possible."
           </blockquote>
           <div className="mt-8 flex items-center justify-center space-x-4">
             <img alt="Headshot of David Chen" className="h-14 w-14 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN9GAeNY1zLXiSSKDaR4I_LhdL4uBWUg9tl-cynQLNQpArnQ7IbyzEH4gQXNGqVb7GoZypoIhUGNWaToYM0YJO_tdwbI-TjLscDW8vxjbqdNe7o2vIIZ7tkbDbun9mlJBPr6EdiMhhm7YDL0nn0eDqUSkk-lpMDjdqSXTc_VzGXrwXLt3Pq2J_ADzcpUJwD_dkocZY_pvPkYbQu1U2rksA1t9dP1eAjy1-j40Cxd7xfp67vaCu4Le2jMEiO1GDC2q3EXrplrmCu8"/>
@@ -172,7 +173,7 @@ const CaseStudies: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-background-light dark:bg-gray-800/50 p-12 rounded-2xl text-center border border-gray-200 dark:border-gray-700/50">
             <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white font-display">Ready to Write Your Success Story?</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-400">Join hundreds of manufacturing leaders who trust BlackBuck to deliver quality parts on time.</p>
+            <p className="mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-400">Join hundreds of manufacturing leaders who trust Hexuno to deliver quality parts on time.</p>
             <div className="mt-8 flex justify-center items-center space-x-4">
               <button onClick={() => navigate('/contact')} className="bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-secondary transition-all shadow-lg shadow-primary/20">Start Your Project</button>
               <button onClick={() => navigate('/contact')} className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-8 py-3 rounded-lg font-bold border border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Contact Sales</button>

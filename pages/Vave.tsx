@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -245,7 +246,7 @@ const Vave: React.FC = () => {
             <div className="flex flex-col gap-2 max-w-2xl">
               <h2 className="text-white text-3xl font-bold tracking-tight">Ready to optimize your product costs?</h2>
               <p className="text-blue-100 text-lg">
-                Partner with BlackBuck Technologies to uncover hidden value in your supply chain.
+                Partner with Hexuno Technologies to uncover hidden value in your supply chain.
               </p>
             </div>
             <div className="flex gap-4">

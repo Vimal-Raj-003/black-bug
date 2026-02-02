@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,7 +29,7 @@ const About: React.FC = () => {
             Building the Future of Sourcing.
             </h1>
             <h2 className="text-slate-100 text-lg md:text-xl font-normal max-w-2xl leading-relaxed drop-shadow-md">
-            BlackBuck Technologies combines engineering precision with global sourcing expertise to deliver unparalleled value across the supply chain.
+            Hexuno Technologies combines engineering precision with global sourcing expertise to deliver unparalleled value across the supply chain.
             </h2>
             <div className="flex gap-4 mt-4">
                 <button onClick={scrollToTeam} className="flex h-12 px-6 items-center justify-center rounded-lg bg-white text-primary text-base font-bold shadow-lg hover:bg-gray-100 transition-colors">
@@ -46,7 +47,7 @@ const About: React.FC = () => {
                 More than just a sourcing partner. We are your engineering arm.
             </h3>
             <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-                Founded on the principles of innovation and integrity, BlackBuck Technologies has grown from a small consultancy to a global leader in Value Analysis and Value Engineering (VAVE). We don't just find parts; we optimize designs, streamline costs, and ensure quality from the drawing board to the delivery dock.
+                Founded on the principles of innovation and integrity, Hexuno Technologies has grown from a small consultancy to a global leader in Value Analysis and Value Engineering (VAVE). We don't just find parts; we optimize designs, streamline costs, and ensure quality from the drawing board to the delivery dock.
             </p>
         </div>
       </section>
@@ -118,7 +119,7 @@ const About: React.FC = () => {
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 dark:text-white">Rajesh Kumar</h3>
                     <span className="text-primary font-medium text-sm mb-2">Chief Executive Officer</span>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3">With over 20 years in automotive engineering, Rajesh leads the strategic vision of BlackBuck.</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3">With over 20 years in automotive engineering, Rajesh leads the strategic vision of Hexuno.</p>
                 </div>
                 {/* Sarah */}
                 <div className="flex flex-col items-center text-center group">
@@ -172,7 +173,7 @@ const About: React.FC = () => {
                         <div className="h-px bg-slate-200 dark:bg-slate-700 flex-grow"></div>
                     </div>
                     <h3 className="text-slate-900 dark:text-white text-lg font-bold leading-normal">Founded</h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm font-normal leading-relaxed mt-1">BlackBuck Technologies was established with a small team of 5 engineers focused on local sourcing optimization.</p>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm font-normal leading-relaxed mt-1">Hexuno Technologies was established with a small team of 5 engineers focused on local sourcing optimization.</p>
                 </div>
                 
                 {/* 2017 */}
@@ -232,7 +233,7 @@ const About: React.FC = () => {
       <section className="py-20 bg-background-light dark:bg-[#0f172a] border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary font-bold tracking-widest uppercase text-sm">The BlackBuck Advantage</span>
+            <span className="text-primary font-bold tracking-widest uppercase text-sm">The Hexuno Advantage</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mt-2 mb-4">Why Global Enterprises Choose Us</h2>
             <p className="text-slate-600 dark:text-slate-400 text-lg">We deliver more than just parts. We deliver a competitive advantage through a unique combination of speed, quality, and engineering intelligence.</p>
           </div>
@@ -379,7 +380,7 @@ const About: React.FC = () => {
         <div className="max-w-[1080px] mx-auto text-center flex flex-col items-center gap-6">
             <h2 className="text-3xl md:text-4xl font-bold">Ready to Optimize Your Supply Chain?</h2>
             <p className="text-blue-100 max-w-2xl text-lg">
-                Join the hundreds of companies that have streamlined their sourcing and engineering with BlackBuck Technologies.
+                Join the hundreds of companies that have streamlined their sourcing and engineering with Hexuno Technologies.
             </p>
             <div className="flex gap-4 mt-4">
                 <button onClick={() => navigate('/contact')} className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-colors">
