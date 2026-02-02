@@ -5,7 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{role: 'user' | 'model', text: string}[]>([
-    { role: 'model', text: 'Hello! I am the Hexuno AI assistant. How can I help you with your engineering or sourcing needs today?' }
+    { role: 'model', text: 'Hello! I am the Hexuno Technologies AI assistant. How can I help you with your engineering or sourcing needs today?' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,7 @@ const ChatBot: React.FC = () => {
           <div className="bg-primary p-4 text-white flex justify-between items-center shrink-0">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined">smart_toy</span>
-              <span className="font-bold font-display">Hexuno AI</span>
+              <span className="font-bold font-display">Hexuno Technologies AI</span>
             </div>
             <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1 rounded-full transition-colors">
               <span className="material-symbols-outlined">close</span>
