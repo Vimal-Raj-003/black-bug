@@ -1,13 +1,14 @@
+
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Logo: React.FC = () => (
   <div className="flex items-center gap-2">
     <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-700 rounded-lg flex items-center justify-center text-white font-display font-bold text-xl">
-      B
+      H
     </div>
     <span className="font-display font-bold text-2xl text-gray-900 dark:text-white tracking-wide hidden sm:block">
-      BlackBuck
+      Hexuno
     </span>
   </div>
 );

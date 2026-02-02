@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ const Footer: React.FC = () => (
                   <path d="M2 12L12 16L22 12" stroke="currentColor" strokeWidth="0" fill="currentColor" opacity="0.2"/>
                </svg>
             </div>
-            <span className="text-2xl font-bold font-display tracking-tight text-white">BlackBuck</span>
+            <span className="text-2xl font-bold font-display tracking-tight text-white">Hexuno</span>
           </div>
           <p className="text-gray-400 text-base leading-relaxed">
             Empowering manufacturing enterprises with precision data, engineering excellence, and strategic sourcing intelligence.
@@ -58,7 +59,7 @@ const Footer: React.FC = () => (
       </div>
 
       <div className="border-t border-gray-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm text-gray-500">© 2024 BlackBuck Technologies. All rights reserved.</p>
+        <p className="text-sm text-gray-500">© 2024 Hexuno Technologies. All rights reserved.</p>
         <div className="flex gap-8 text-sm text-gray-500">
           <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>

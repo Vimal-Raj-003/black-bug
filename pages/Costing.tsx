@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -345,7 +346,7 @@ const Costing: React.FC = () => {
               </div>
               <div className="w-full lg:w-1/2 flex flex-col gap-8">
                 <div>
-                  <span className="text-primary font-bold tracking-wider text-xs uppercase mb-2 block">Why Choose BlackBuck</span>
+                  <span className="text-primary font-bold tracking-wider text-xs uppercase mb-2 block">Why Choose Hexuno</span>
                   <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em] font-display">
                     Analytical Expertise Meets Manufacturing Reality
                   </h2>

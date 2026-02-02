@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -276,12 +277,12 @@ const Home: React.FC = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tight leading-[1.1] mb-8">
-            Innovate with <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]">Intelligent Precision</span>
+            Innovative <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]">Engineering Intelligence</span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed font-light max-w-2xl mx-auto border-t border-white/10 pt-8">
-            BlackBuck Technologies provides high-end automotive engineering solutions, from cost modeling to advanced VAVE analysis and generative AI manufacturing implementation.
+            Hexuno Technologies provides high-end automotive engineering solutions, from cost modeling to advanced VAVE analysis and generative AI manufacturing implementation.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center w-full">
