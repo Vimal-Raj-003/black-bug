@@ -51,9 +51,21 @@ const Footer: React.FC = () => (
         <div>
           <h4 className="text-white font-bold text-lg mb-6">Connect</h4>
           <ul className="space-y-4 text-gray-400">
-            <li><a href="#" className="hover:text-primary transition-colors">LinkedIn</a></li>
-            <li><a href="#" className="hover:text-primary transition-colors">Twitter</a></li>
-            <li><Link to="/contact" className="hover:text-primary transition-colors">Contact Sales</Link></li>
+            <li>
+              <a href="https://www.linkedin.com/company/hexuno-technologies/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                <i className="fab fa-linkedin text-lg"></i> LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="mailto:sales@hexunotech.com" className="hover:text-primary transition-colors flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg">mail</span> sales@hexunotech.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+917200090243" className="hover:text-primary transition-colors flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg">call</span> +91 72000 90243
+              </a>
+            </li>
           </ul>
         </div>
       </div>

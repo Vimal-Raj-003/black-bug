@@ -68,7 +68,7 @@ const Contact: React.FC = () => {
                                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                                             <span className="material-symbols-outlined text-[20px]">phone</span>
                                         </div>
-                                        <input className="form-input w-full rounded-lg border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:border-primary focus:ring-primary h-12 pl-10 pr-4 placeholder:text-slate-400 transition-colors" placeholder="+1 (555) 000-0000" type="tel" />
+                                        <input className="form-input w-full rounded-lg border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:border-primary focus:ring-primary h-12 pl-10 pr-4 placeholder:text-slate-400 transition-colors" placeholder="+91 72000 90243" type="tel" />
                                     </div>
                                 </label>
                                 <label className="flex flex-col flex-1">
@@ -130,8 +130,8 @@ const Contact: React.FC = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-slate-900 dark:text-white font-bold text-lg font-display mb-1">Email Us</h3>
-                                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">For general inquiries:</p>
-                                    <a className="text-primary hover:underline font-medium" href="mailto:info@hexuno.com">info@hexuno.com</a>
+                                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">For sales & inquiries:</p>
+                                    <a className="text-primary hover:underline font-medium" href="mailto:sales@hexunotech.com">sales@hexunotech.com</a>
                                 </div>
                             </div>
                             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
@@ -140,8 +140,18 @@ const Contact: React.FC = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-slate-900 dark:text-white font-bold text-lg font-display mb-1">Call Us</h3>
-                                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">Mon-Fri from 9am to 6pm PST.</p>
-                                    <a className="text-primary hover:underline font-medium text-lg" href="tel:+15551234567">+1 (555) 123-4567</a>
+                                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">Available during business hours.</p>
+                                    <a className="text-primary hover:underline font-medium text-lg" href="tel:+917200090243">+91 72000 90243</a>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                                <div className="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
+                                    <i className="fab fa-linkedin text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 className="text-slate-900 dark:text-white font-bold text-lg font-display mb-1">Follow Us</h3>
+                                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">Connect on LinkedIn:</p>
+                                    <a className="text-primary hover:underline font-medium" href="https://www.linkedin.com/company/hexuno-technologies/" target="_blank" rel="noopener noreferrer">Hexuno Technologies</a>
                                 </div>
                             </div>
                         </div>
