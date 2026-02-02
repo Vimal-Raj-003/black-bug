@@ -17,7 +17,7 @@ const Footer: React.FC = () => (
                   <path d="M2 12L12 16L22 12" stroke="currentColor" strokeWidth="0" fill="currentColor" opacity="0.2"/>
                </svg>
             </div>
-            <span className="text-2xl font-bold font-display tracking-tight text-white">Hexuno</span>
+            <span className="text-2xl font-bold font-display tracking-tight text-white">Hexuno Technologies</span>
           </div>
           <p className="text-gray-400 text-base leading-relaxed">
             Empowering manufacturing enterprises with precision data, engineering excellence, and strategic sourcing intelligence.

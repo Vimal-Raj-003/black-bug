@@ -8,7 +8,7 @@ export const Logo: React.FC = () => (
       H
     </div>
     <span className="font-display font-bold text-2xl text-gray-900 dark:text-white tracking-wide hidden sm:block">
-      Hexuno
+      Hexuno Technologies
     </span>
   </div>
 );
