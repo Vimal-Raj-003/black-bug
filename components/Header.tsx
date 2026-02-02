@@ -41,7 +41,6 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme }) => {
             </div>
 
             <NavLink to="/case-studies">Case Studies</NavLink>
-            <NavLink to="/ai-lab">AI Lab</NavLink>
 
             <div className="flex items-center gap-4 ml-4">
                 <PrimaryButton onClick={() => navigate('/contact')}>Contact Us</PrimaryButton>
@@ -83,7 +82,6 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme }) => {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-2 shadow-lg max-h-[calc(100vh-80px)] overflow-y-auto">
           <Link to="/" className="block px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link to="/ai-lab" className="block px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium" onClick={() => setMobileMenuOpen(false)}>AI Lab</Link>
           
           <div className="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Services</div>
           <Link to="/engineering" className="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 ml-2" onClick={() => setMobileMenuOpen(false)}>Engineering</Link>
