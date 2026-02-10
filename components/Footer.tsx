@@ -9,16 +9,16 @@ const Footer: React.FC = () => (
         
         {/* Column 1: Brand */}
         <div className="flex flex-col gap-6 pr-4">
-          <div className="flex items-center gap-3">
-            <div className="text-primary">
-               {/* Custom Logo Icon matching the style */}
-               <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 12C2 12 5 20 12 20C19 20 22 12 22 12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  <path d="M2 12L12 16L22 12" stroke="currentColor" strokeWidth="0" fill="currentColor" opacity="0.2"/>
-               </svg>
-            </div>
-            <span className="text-2xl font-bold font-display tracking-tight text-white">Hexuno Technologies</span>
-          </div>
+          <Link to="/" className="inline-flex items-center gap-3 group">
+             <img 
+                src="https://res.cloudinary.com/dfeway2lo/image/upload/v1770751802/Hex-logo_rdiodp.gif" 
+                alt="Hexuno Technologies" 
+                className="h-12 w-auto object-contain bg-white p-1 rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-blue-500/20" 
+              />
+             <span className="font-display text-xl text-white tracking-tight transition-colors duration-300">
+               <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">Hexuno</span> Technologies
+             </span>
+          </Link>
           <p className="text-gray-400 text-base leading-relaxed">
             Empowering manufacturing enterprises with precision data, engineering excellence, and strategic sourcing intelligence.
           </p>

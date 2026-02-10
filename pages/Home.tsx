@@ -235,9 +235,23 @@ const CommodityVisualization: React.FC = () => {
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState(false);
+  const parallaxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setLoaded(true);
+
+    const handleScroll = () => {
+      if (parallaxRef.current) {
+        const scrolled = window.scrollY;
+        // Optimization: only update transform if within a reasonable range (1.5x viewport height)
+        if (scrolled < window.innerHeight * 1.5) {
+            parallaxRef.current.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleScrollToSection = (id: string) => {
@@ -249,16 +263,25 @@ const Home: React.FC = () => {
     <div className="font-body transition-colors duration-300">
       {/* Hero Section with Cinematic Automotive Manufacturing Video */}
       <div className="relative min-h-[95vh] flex flex-col justify-center overflow-hidden bg-[#020617]">
-        <div className="absolute inset-0 z-0">
+        <div ref={parallaxRef} className="absolute inset-0 z-0 will-change-transform">
           <video 
             autoPlay 
             muted 
             loop 
-            playsInline 
+            playsInline
+            preload="auto"
+            poster="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070" 
             className="w-full h-full object-cover opacity-20 grayscale brightness-75 mix-blend-screen"
           >
             {/* Automotive manufacturing specifically showing parts and robotics */}
             <source src="https://cdn.pixabay.com/video/2019/04/23/23011-332308696_large.mp4" type="video/mp4" />
+            
+            {/* Fallback for unsupported browsers */}
+            <img 
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070" 
+              alt="Automotive Manufacturing Background" 
+              className="w-full h-full object-cover opacity-40" 
+            />
           </video>
           {/* Multi-layered cinematic overlays for transparency effect */}
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950 pointer-events-none"></div>
