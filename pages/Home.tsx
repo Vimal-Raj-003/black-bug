@@ -290,22 +290,15 @@ const Home: React.FC = () => {
         </div>
         
         <div className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center transition-all duration-1000 ease-out transform ${loaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-cyan-500/20 bg-cyan-950/30 backdrop-blur-md mb-8 shadow-[0_0_25px_rgba(6,182,212,0.2)] group hover:border-cyan-500/40 transition-all duration-500 cursor-default">
-            <div className="flex gap-1">
-                <span className="w-1.5 h-3.5 bg-cyan-400 rounded-full animate-[pulse_1.5s_ease-in-out_infinite]"></span>
-                <span className="w-1.5 h-3.5 bg-cyan-400 rounded-full animate-[pulse_1.5s_ease-in-out_infinite_200ms]"></span>
-                <span className="w-1.5 h-3.5 bg-cyan-400 rounded-full animate-[pulse_1.5s_ease-in-out_infinite_400ms]"></span>
-            </div>
-            <span className="text-cyan-400 text-xs font-bold uppercase tracking-[0.2em] font-display">Engineering DNA</span>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tight leading-[1.1] mb-8">
-            Innovative <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]">Engineering Intelligence</span>
+         
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1] mb-8">
+            Hexuno - Engineering meets Innovation <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]"> Sustainable Solutions</span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed font-light max-w-2xl mx-auto border-t border-white/10 pt-8">
-            Hexuno Technologies provides high-end automotive engineering solutions, from cost modeling to advanced VAVE analysis and generative AI manufacturing implementation.
+           
+
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center w-full">
@@ -317,12 +310,7 @@ const Home: React.FC = () => {
               <span className="relative">Explore Offerings</span>
               <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </button>
-            <button 
-              onClick={() => navigate('/case-studies')}
-              className="inline-flex justify-center items-center px-8 py-4 border border-slate-700 hover:border-cyan-500/50 text-base font-bold rounded-full text-slate-300 bg-slate-900/40 hover:bg-slate-800/60 backdrop-blur-sm transition-all hover:text-white"
-            >
-              View Case Studies
-            </button>
+            
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020617] to-transparent pointer-events-none"></div>
