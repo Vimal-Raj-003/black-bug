@@ -15,28 +15,28 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme }) => {
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-surface-light/90 dark:bg-surface-dark/90 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-24 items-center">
           <Link to="/" className="flex-shrink-0 flex items-center gap-2 hover:opacity-90 transition-opacity">
             <Logo />
           </Link>
           
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Who we are</NavLink>
             
             {/* Services Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors py-2 focus:outline-none">
-                Services
+              <button className="flex items-center gap-1 text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors py-2 focus:outline-none">
+                Our Solutions
                 <span className="material-symbols-outlined text-sm">expand_more</span>
               </button>
               <div className="absolute top-full left-0 w-56 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 overflow-hidden">
-                <Link to="/engineering" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Engineering</Link>
-                <Link to="/supplier-quality" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Supplier Quality</Link>
-                <Link to="/sourcing" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Sourcing</Link>
-                <Link to="/costing" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Costing</Link>
-                <Link to="/vave" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">VAVE</Link>
-                <Link to="/other" className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Specialized Offerings</Link>
+                <Link to="/engineering" className="block px-4 py-3 text-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Engineering</Link>
+                <Link to="/supplier-quality" className="block px-4 py-3 text-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Supplier Quality</Link>
+                <Link to="/sourcing" className="block px-4 py-3 text-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Sourcing</Link>
+                <Link to="/costing" className="block px-4 py-3 text-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Costing</Link>
+                <Link to="/vave" className="block px-4 py-3 text-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">VAVE</Link>
+                <Link to="/other" className="block px-4 py-3 text-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:text-primary dark:hover:text-primary transition-colors">Specialized Offerings</Link>
               </div>
             </div>
 

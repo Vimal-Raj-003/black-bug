@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../images/logo/logo.png';
 
 export const Logo: React.FC = () => (
   <div className="flex items-center gap-3 group select-none py-1">
@@ -25,13 +26,14 @@ export const Logo: React.FC = () => (
     <div className="relative">
         <div className="absolute inset-0 bg-blue-400/30 dark:bg-blue-400/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
         <img 
-        src="https://res.cloudinary.com/dfeway2lo/image/upload/v1770751802/Hex-logo_rdiodp.gif" 
+        src={logo}
         alt="Hexuno Technologies" 
-        className="animate-logo-pop h-10 md:h-12 w-auto object-contain mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 dark:rounded-lg relative z-10" 
+        className="h-12 md:h-24 w-auto object-contain mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 dark:rounded-lg relative z-10" 
         />
     </div>
     <span className="animate-text-slide font-display text-xl md:text-2xl text-slate-900 dark:text-white tracking-tight">
-      <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#0284C7] dark:from-[#38BDF8] dark:to-[#0EA5E9]">Hexuno</span> Technologies
+      {/* <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#0284C7] dark:from-[#38BDF8] dark:to-[#0EA5E9]">Hexuno</span> Technologies
+    */}
     </span>
   </div>
 );
@@ -65,7 +67,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ to, children }) => {
   return (
     <Link
       to={to}
-      className={`text-sm font-medium transition-colors hover:text-primary ${isActive ? 'text-primary font-bold' : 'text-gray-600 dark:text-gray-300'}`}
+      className={`text-lg font-medium transition-colors hover:text-primary ${isActive ? 'text-primary font-bold' : 'text-gray-600 dark:text-gray-300'}`}
     >
       {children}
     </Link>
