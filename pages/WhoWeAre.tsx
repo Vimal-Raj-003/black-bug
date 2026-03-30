@@ -22,9 +22,9 @@ const WhoWeAre: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-24">
+    <div className="">
     {/* Hero Section */}
-    <section className="relative h-[80vh] flex items-center overflow-hidden bg-brand-blue text-white">
+    <section className="relative h-[75vh] flex items-center overflow-hidden bg-brand-blue text-white">
       <div className="absolute">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-blue to-transparent z-10" />
         <img 
@@ -62,7 +62,7 @@ const WhoWeAre: React.FC = () => {
     </section>
 
     {/* Intro Section */}
-    <section className="py-12 bg-white">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
