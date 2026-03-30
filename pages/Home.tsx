@@ -71,7 +71,7 @@ const ToolsSection: React.FC = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  
+
   const autoCycleTimer = useRef<ReturnType<typeof setInterval> | null>(null);
   const pauseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -104,12 +104,12 @@ const ToolsSection: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="py-24 bg-[#020617] relative overflow-hidden" id="tools">
-      <div 
-        className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none" 
-        style={{ 
-          backgroundImage: 'linear-gradient(rgba(14, 165, 233, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(14, 165, 233, 0.4) 1px, transparent 1px)', 
-          backgroundSize: '60px 60px' 
-        }} 
+      <div
+        className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(14, 165, 233, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(14, 165, 233, 0.4) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}
       />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="scan-line absolute inset-x-0 h-1 bg-primary/20 blur-md pointer-events-none z-10" />
@@ -134,7 +134,7 @@ const ToolsSection: React.FC = () => {
             <h2 className="text-primary font-bold tracking-[0.2em] uppercase text-xs">Our Technological Edge</h2>
             <h3 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight">Tools We Master</h3>
           </div>
-          
+
           <div className="flex flex-wrap gap-2 bg-white/5 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md">
             {CATEGORIES.map(cat => (
               <button
@@ -153,9 +153,9 @@ const ToolsSection: React.FC = () => {
           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
 
           <div className="overflow-hidden py-4">
-            <div 
+            <div
               className="flex marquee-track"
-              style={{ 
+              style={{
                 animation: isVisible ? `marqueeL 40s linear infinite` : 'none',
                 width: 'max-content'
               }}
@@ -195,7 +195,7 @@ const CommodityVisualization: React.FC = () => {
   const active = COMMODITIES[activeIdx];
 
   return (
-    <div 
+    <div
       className="relative w-full flex flex-col items-end"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -210,10 +210,9 @@ const CommodityVisualization: React.FC = () => {
       `}</style>
 
       <div className="w-full h-28 bg-[#0ea5e9] rounded-l-full rounded-r-none relative z-40 flex items-center pl-12 shadow-xl shadow-blue-500/20 transform hover:-translate-x-2 transition-transform duration-300 active-pill-pulse overflow-hidden">
-        <div 
-          className={`flex items-center gap-4 label-transition ${
-            fade ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-          }`}
+        <div
+          className={`flex items-center gap-4 label-transition ${fade ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+            }`}
         >
           <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-inner">
             <span className="material-symbols-outlined text-2xl">{active.icon}</span>
@@ -224,7 +223,7 @@ const CommodityVisualization: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_3s_infinite] pointer-events-none"></div>
       </div>
-      
+
       <div className="w-[92%] h-28 bg-[#3b82f6] rounded-l-full rounded-r-none -mt-14 relative z-30 opacity-90 shadow-lg transform hover:-translate-x-2 transition-transform duration-300 delay-75"></div>
       <div className="w-[84%] h-28 bg-[#60a5fa] rounded-l-full rounded-r-none -mt-14 relative z-20 opacity-80 shadow-md transform hover:-translate-x-2 transition-transform duration-300 delay-100"></div>
       <div className="w-[76%] h-28 bg-[#93c5fd] rounded-l-full rounded-r-none -mt-14 relative z-10 opacity-70 shadow-sm transform hover:-translate-x-2 transition-transform duration-300 delay-150"></div>
@@ -245,7 +244,7 @@ const Home: React.FC = () => {
         const scrolled = window.scrollY;
         // Optimization: only update transform if within a reasonable range (1.5x viewport height)
         if (scrolled < window.innerHeight * 1.5) {
-            parallaxRef.current.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
+          parallaxRef.current.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
         }
       }
     };
@@ -264,23 +263,23 @@ const Home: React.FC = () => {
       {/* Hero Section with Cinematic Automotive Manufacturing Video */}
       <div className="relative min-h-[95vh] flex flex-col justify-center overflow-hidden bg-[#020617]">
         <div ref={parallaxRef} className="absolute inset-0 z-0 will-change-transform">
-          <video 
-            autoPlay 
-            muted 
-            loop 
+          <video
+            autoPlay
+            muted
+            loop
             playsInline
             preload="auto"
-            poster="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070" 
+            poster="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070"
             className="w-full h-full object-cover opacity-20 grayscale brightness-75 mix-blend-screen"
           >
             {/* Automotive manufacturing specifically showing parts and robotics */}
             <source src="https://cdn.pixabay.com/video/2019/04/23/23011-332308696_large.mp4" type="video/mp4" />
-            
+
             {/* Fallback for unsupported browsers */}
-            <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070" 
-              alt="Automotive Manufacturing Background" 
-              className="w-full h-full object-cover opacity-40" 
+            <img
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070"
+              alt="Automotive Manufacturing Background"
+              className="w-full h-full object-cover opacity-40"
             />
           </video>
           {/* Multi-layered cinematic overlays for transparency effect */}
@@ -288,21 +287,21 @@ const Home: React.FC = () => {
           {/* Subtle tech grid pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:50px_50px] opacity-[0.1] pointer-events-none"></div>
         </div>
-        
+
         <div className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center transition-all duration-1000 ease-out transform ${loaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-         
+
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1] mb-8">
-            Hexuno - Engineering meets Innovation <br/>
+            Hexuno - Engineering meets Innovation <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]"> Sustainable Solutions</span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed font-light max-w-2xl mx-auto border-t border-white/10 pt-8">
-           
+
 
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center w-full">
-            <button 
+            <button
               onClick={() => handleScrollToSection('services')}
               className="group relative inline-flex justify-center items-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_0_25px_rgba(37,99,235,0.4)]"
             >
@@ -310,14 +309,14 @@ const Home: React.FC = () => {
               <span className="relative">Explore Offerings</span>
               <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </button>
-            
+
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020617] to-transparent pointer-events-none"></div>
       </div>
 
-      <section className="bg-primary py-12 md:py-16 relative z-20 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-primary py-12 md:py-16 relative z-20 shadow-2xl" style={{ display: "none" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-0">
             <StatCounter target={30} suffix="k+" label="Components Costed" />
             <StatCounter target={10} suffix="k+" label="Items Analyzed" />
@@ -337,15 +336,92 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: 'Engineering', icon: 'fa-cogs', path: '/engineering', items: ['3D & 2D Modeling', '3D Scanning & RE', 'DFM Analysis', 'Jig/Fixture Design'] },
-              { title: 'Costing', icon: 'fa-calculator', path: '/costing', items: ['Overhead Calculation', 'Custom Cost Models', 'Should Cost vs Current', 'Efficiency Analysis'] },
-              { title: 'Supplier Quality', icon: 'fa-certificate', path: '/supplier-quality', items: ['NPD Support', 'In-house QA', 'Internal & Lead Audits', 'Compliance Verification'] },
-              { title: 'Sourcing', icon: 'fa-globe', path: '/sourcing', items: ['Global Supplier ID', 'Selection & Validation', 'Strategic Negotiation', 'Prototyping Procurement'] },
-              { title: 'VAVE', icon: 'fa-chart-line', path: '/vave', items: ['Benchmarking', 'Teardown Analysis', 'VA & VE', 'Deep Cost Insights'] },
-              { title: 'Specialized Offerings', icon: 'fa-plus', path: '/other', items: ['Sustainability Consulting', 'Automation Workflows', 'Gen AI Implementation', 'Data Analysis & Web Dev'] }
+              { title: 'Cost Modeling & Estimation', icon: 'fa-calculator', path: '/costing', items: ['Should-Costing', 'Clean-Sheet Costing', 'Parametric Cost Modeling', 'Zero-Based Costing (ZBC)', 'Target Costing', 'Assembly & System-Level Costing'] },
+              {
+                title: 'Supplier Quality',
+                icon: 'fa-certificate',
+                path: '/supplier-quality',
+                items: [
+                  'Supplier Capability Assessment',
+                  'Quality System Evaluation',
+                  'New Supplier Qualification',
+                  'Process Readiness Assessment',
+                  'PPAP / APQP Support',
+                  'Supplier Audit (On-site / Remote)'
+                ]
+              },
+              {
+                title: 'Sourcing',
+                icon: 'fa-globe',
+                path: '/sourcing',
+                items: [
+                  'Spend Analysis & Opportunity Assessment',
+                  'Supply Market Research & Strategy Development',
+                  'RFx Development & Supplier Engagement',
+                  'Bid Evaluation & Supplier Selection',
+                  'Negotiation & Contracting',
+                  'Implementation & Transition',
+                  'Performance Management & Continuous Improvement'
+                ]
+              },
+              {
+                title: 'Cost Optimization & Value Engineering',
+                icon: 'fa-chart-line',
+                path: '/cost-optimization',
+                items: [
+                  'Design-to-Cost (DTC)',
+                  'Value Engineering / VAVE',
+                  'Process & Manufacturing Cost Optimization',
+                  'Cost Reduction Programs',
+                  'Tooling & Capital Cost Optimization',
+                  'Digital Cost Models & Dashboards'
+                ]
+              },
+              {
+                title: 'Cost Analysis & Benchmarking',
+                icon: 'fa-magnifying-glass-chart',
+                path: '/cost-analysis',
+                items: [
+                  'Cost Breakdown Analysis (CBA)',
+                  'Teardown & Competitive Benchmarking',
+                  'Supplier Cost Structure Analysis',
+                  'Regional & Global Cost Benchmarking',
+                  'Cost Risk & Sensitivity Analysis',
+                  'Make vs Buy Analysis'
+                ]
+              },
+              {
+                title: 'Digital, Data & AI Solutions',
+                icon: 'fa-network-wired',
+                path: '/other',
+                items: [
+                  'AI / ML Based Should Costing',
+                  'AI Based Sourcing',
+                  'Digital Costing Tools & Dashboards',
+                  'AI / GenAI-Based Cost Intelligence',
+                  'Data Analytics & Decision Automation',
+                  'Knowledge Management Systems',
+                  'Digital Workflow Enablement'
+                ]
+              },
+              { title: 'Specialized Offerings', icon: 'fa-plus', path: '/other', items: ['Sustainability Consulting', 'Automation Workflows', 'Gen AI Implementation', 'Data Analysis & Web Dev'] },
+              {
+                title: 'Prototyping Development',
+                icon: 'fa-cubes',
+                path: '/prototyping-development',
+                items: [
+                  'Rapid Prototyping (3D Printing – Plastic & Metal)',
+                  'Sheet Metal Prototypes',
+                  'Machined Prototypes (CNC / Turn-Mill)',
+                  'Cast & Molded Prototypes',
+                  'Low-Volume & Pilot Builds',
+                  'Tooling & Fixture Prototypes'
+                ]
+              }
             ].map((service, idx) => (
-              <div 
-                key={idx} 
-                onClick={() => navigate(service.path)} 
+              <div
+                key={idx}
+                onClick={() => navigate(service.path)}
                 className="service-card group cursor-pointer bg-white dark:bg-surface-dark hover:bg-primary p-8 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-primary shadow-lg dark:shadow-none hover:shadow-glow relative overflow-hidden transition-all duration-500 ease-in-out"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-white/10 transition-colors duration-500"></div>
@@ -358,7 +434,7 @@ const Home: React.FC = () => {
                 <ul className="space-y-3 text-gray-600 dark:text-gray-400 group-hover:text-blue-50 text-sm transition-colors duration-500">
                   {service.items.map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-500"></i> 
+                      <i className="fas fa-check text-primary group-hover:text-white mt-1 mr-2 text-xs transition-colors duration-500"></i>
                       {item}
                     </li>
                   ))}
@@ -369,7 +445,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden bg-background-light dark:bg-background-dark" id="expertise">
+      <section className="py-24 relative overflow-hidden bg-background-light dark:bg-background-dark" id="expertise" style={{ display: "none" }} >
         <div className="absolute inset-0 z-0 opacity-40 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#94a3b8 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }}></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-16">
@@ -393,7 +469,7 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="md:w-1/2 w-full flex flex-col items-end justify-center py-10">
-                <CommodityVisualization />
+              <CommodityVisualization />
             </div>
           </div>
         </div>
@@ -408,23 +484,35 @@ const Home: React.FC = () => {
             <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { t: 'Automotive', i: 'fa-car', c: 'red', d: 'Helping OEMs optimize assembly lines and cycle times.' },
-              { t: 'Aerospace', i: 'fa-plane', c: 'blue', d: 'Supporting high-compliance precision machining.' },
-              { t: 'Medical Devices', i: 'fa-heartbeat', c: 'purple', d: 'Ensuring regulatory-compliant precision manufacturing.' },
-              { t: 'Industrial Equipment', i: 'fa-cogs', c: 'orange', d: 'Enhancing productivity for heavy machinery manufacturers.' },
-              { t: 'Consumer Goods', i: 'fa-box-open', c: 'yellow', d: 'Streamlining high-volume production for market speed.' }
-            ].map((ind, idx) => (
-              <div key={idx} className={`bg-white dark:bg-surface-dark p-8 rounded-2xl shadow-sm border-t-4 border-${ind.c}-500`}>
-                <div className="flex items-center mb-4">
-                  <div className={`w-12 h-12 bg-${ind.c}-100 dark:bg-${ind.c}-900/30 rounded-full flex items-center justify-center text-${ind.c}-500 mr-4`}>
-                    <i className={`fas ${ind.i} text-xl`}></i>
+            {
+              [
+                { t: 'Automotive', i: 'fa-car', c: 'blue' },
+
+                { t: 'Aerospace & Defense', i: 'fa-plane', c: 'indigo' },
+
+                { t: 'Technology', i: 'fa-microchip', c: 'purple' },
+
+                { t: 'Industrial Manufacturing', i: 'fa-industry', c: 'orange' },
+
+                { t: 'Consumer Goods', i: 'fa-box-open', c: 'yellow' },
+
+                { t: 'Telecommunications', i: 'fa-tower-broadcast', c: 'cyan' },
+
+                { t: 'Energy & Utilities', i: 'fa-bolt', c: 'green' },
+
+                { t: 'Healthcare & Life Sciences', i: 'fa-heart-pulse', c: 'red' },
+                { t: 'Engineering Software & AI Systems', i: 'fa-code', c: 'blue' }
+              ].map((ind, idx) => (
+                <div key={idx} className={`bg-white dark:bg-surface-dark p-8 rounded-2xl shadow-sm border-t-4 border-${ind.c}-500`}>
+                  <div className="flex items-center mb-4">
+                    <div className={`w-12 h-12 bg-${ind.c}-100 dark:bg-${ind.c}-900/30 rounded-full flex items-center justify-center text-${ind.c}-500 mr-4`}>
+                      <i className={`fas ${ind.i} text-xl`}></i>
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white">{ind.t}</h4>
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">{ind.t}</h4>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">{ind.d}</p>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{ind.d}</p>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
@@ -433,7 +521,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-4">Ready to Optimize Your Engineering?</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">Leverage our expertise in cost modeling, supplier quality, and advanced manufacturing.</p>
-          <button 
+          <button
             onClick={() => navigate('/contact')}
             className="inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-primary hover:bg-secondary transition-all shadow-lg shadow-primary/40"
           >

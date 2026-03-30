@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme }) => {
           
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <NavLink to="/">Who we are</NavLink>
+            <NavLink to="/who-we-are">Who we are</NavLink>
             
             {/* Services Dropdown */}
             <div className="relative group">

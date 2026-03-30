@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../images/logo/logo.png';
 
 const Footer: React.FC = () => (
   <footer className="bg-[#0f141a] text-white pt-20 pb-10 border-t border-gray-800 font-sans">
@@ -11,13 +12,11 @@ const Footer: React.FC = () => (
         <div className="flex flex-col gap-6 pr-4">
           <Link to="/" className="inline-flex items-center gap-3 group">
              <img 
-                src="https://res.cloudinary.com/dfeway2lo/image/upload/v1770751802/Hex-logo_rdiodp.gif" 
+                src={logo}
                 alt="Hexuno Technologies" 
-                className="h-12 w-auto object-contain bg-white p-1 rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-blue-500/20" 
+                className="h-20 w-auto object-contain bg-white p-1 rounded-lg transition-transform duration-300  shadow-lg shadow-blue-500/20" 
               />
-             <span className="font-display text-xl text-white tracking-tight transition-colors duration-300">
-               <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">Hexuno</span> Technologies
-             </span>
+             
           </Link>
           <p className="text-gray-400 text-base leading-relaxed">
             Empowering manufacturing enterprises with precision data, engineering excellence, and strategic sourcing intelligence.
@@ -71,7 +70,7 @@ const Footer: React.FC = () => (
       </div>
 
       <div className="border-t border-gray-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm text-gray-500">© 2024 Hexuno Technologies. All rights reserved.</p>
+        <p className="text-sm text-gray-500">© 2026 Hexuno Technologies. All rights reserved.</p>
         <div className="flex gap-8 text-sm text-gray-500">
           <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>

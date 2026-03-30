@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.has-white-color {
+  text-shadow: 0px 4px 27.4px rgba(0, 0, 0, 0.65);
+}

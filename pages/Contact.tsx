@@ -118,9 +118,9 @@ const Contact: React.FC = () => {
                                 <div>
                                     <h3 className="text-slate-900 dark:text-white font-bold text-lg font-display mb-1">Our Headquarters</h3>
                                     <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-                                        123 Tech Park, Engineering Blvd<br />
-                                        Suite 400, Innovation District<br />
-                                        San Francisco, CA 94107
+                                        LB-293 , Ganapathy Maanagar<br />
+                                        Coimbatore<br />
+                                        Tamilnadu, India 641006
                                     </p>
                                 </div>
                             </div>

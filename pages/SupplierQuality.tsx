@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import SupplierQualityCarousel from "./SupplierQualityCarousel";
 
 const SupplierQuality: React.FC = () => {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ const SupplierQuality: React.FC = () => {
       </div>
 
       {/* Stats Bar */}
-      <div className="border-b border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-surface-dark">
+      <div className="border-b border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-surface-dark" style={{display:"none"}}>
         <div className="max-w-7xl mx-auto px-4 md:px-10 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="flex flex-col gap-1">
@@ -182,7 +183,7 @@ const SupplierQuality: React.FC = () => {
       </div>
 
       {/* Global Standards Section */}
-      <div className="w-full bg-surface-light dark:bg-surface-dark py-12 border-t border-[#f0f2f4] dark:border-gray-800">
+      <div className="w-full bg-surface-light dark:bg-surface-dark py-12 border-t border-[#f0f2f4] dark:border-gray-800" style={{display:"none"}}>
         <div className="max-w-7xl mx-auto px-4 md:px-10">
           <h3 className="text-center text-[#111418] dark:text-white text-xl font-bold mb-10">Adhering to Global Quality Standards</h3>
           <div className="flex flex-wrap justify-center gap-6 md:gap-12 opacity-80">
@@ -206,24 +207,15 @@ const SupplierQuality: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="w-full bg-primary py-20 relative overflow-hidden">
+      <div className="w-full py-5 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-white text-3xl md:text-5xl font-bold mb-6">Elevate your supplier performance today</h2>
-          <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
-            Don't let quality issues disrupt your supply chain. Our experts are ready to audit, assess, and improve your supplier network.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => navigate('/contact')} className="bg-white text-primary hover:bg-gray-100 font-bold text-lg px-8 py-3 rounded-lg shadow-lg transition-colors">
-              Get Quality Assessment
-            </button>
-            <button onClick={() => navigate('/contact')} className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold text-lg px-8 py-3 rounded-lg transition-colors">
-              Contact Quality Team
-            </button>
-          </div>
+        <div className="max-w-9xl mx-auto px-4 text-center relative z-10">
+          <SupplierQualityCarousel />
         </div>
       </div>
     </div>
+
+    
   );
 };
 

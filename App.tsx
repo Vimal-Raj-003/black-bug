@@ -12,6 +12,7 @@ import About from './pages/About';
 import Costing from './pages/Costing';
 import OtherOfferings from './pages/OtherOfferings';
 import CaseStudies from './pages/CaseStudies';
+import WhoWeAre  from './pages/WhoWeAre';
 import AiLab from './pages/AiLab';
 import SupplierQuality from './pages/SupplierQuality';
 import { ScrollToTop } from './components/Shared';
@@ -49,6 +50,7 @@ const App: React.FC = () => {
             <Route path="/costing" element={<Costing />} />
             <Route path="/other" element={<OtherOfferings />} />
             <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/who-we-are" element={<WhoWeAre />} />
             <Route path="/ai-lab" element={<AiLab />} />
           </Routes>
         </main>
