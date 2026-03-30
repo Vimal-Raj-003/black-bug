@@ -261,7 +261,7 @@ const Home: React.FC = () => {
   return (
     <div className="font-body transition-colors duration-300">
       {/* Hero Section with Cinematic Automotive Manufacturing Video */}
-      <div className="relative min-h-[95vh] flex flex-col justify-center overflow-hidden bg-[#020617]">
+      <div className="relative min-h-[75vh] flex flex-col justify-center overflow-hidden bg-[#020617]">
         <div ref={parallaxRef} className="absolute inset-0 z-0 will-change-transform">
           <video
             autoPlay
