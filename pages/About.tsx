@@ -115,38 +115,38 @@ const About: React.FC = () => {
                 {/* Rajesh */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="w-full aspect-square mb-4 overflow-hidden rounded-xl bg-gray-200">
-                        <img alt="Rajesh Kumar" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOR1aWag7Flid2TetbhYkQ5EXdz9Qnc2WwLU2SqO2G6e2KrQAa0uuR6XgREXAhImmh8VovmAx58rAFKJwEGcsYjSdmFfDjVg7wLDyGTsq9cbGLZeTJL1w6xw4XipmBJX5sv3i-gtYj9DYWTruBM05n4TUiWNIU-POjzQYCpi0IwOkyXLo-jQcJZ8tG6xiN6uoxIiosPBpJZGgs2DxLmCGH1rRuOmL52EoLZiYc69K2DtLrswuTNb9zPJ842KhSXqiSMaPNaVeD2tw"/>
+                        <img alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src=""/>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">Rajesh Kumar</h3>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white"></h3>
                     <span className="text-primary font-medium text-sm mb-2">Chief Executive Officer</span>
                     <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3">With over 20 years in automotive engineering, Rajesh leads the strategic vision of Hexuno.</p>
                 </div>
                 {/* Sarah */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="w-full aspect-square mb-4 overflow-hidden rounded-xl bg-gray-200">
-                        <img alt="Sarah Jenkins" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG0awdVoq_s8y87txx2o8Aw9ptwGnEqoMlVH3cbyUNWOQbzx01NCRsdSFTVhxnDwjQrPH7ouf4mNECbGoyn-EPMddjgGgUdKcGib7QTeboijClqDu02mm1bQbC0XxO18z2cr0tUG7kbK9NBjsujaMGvnD9KKseVU2b8ZENUOLfaxUB12vFMKexnH5WE22OLZtI2qzfZQisb3cwdenTIwsvLAY_vdyXytap7t2HIDnMsQ7lCYtLKMIXdBKEhxkqfHMW3YfbeCgz84g"/>
+                        <img alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src=""/>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">Sarah Jenkins</h3>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white"></h3>
                     <span className="text-primary font-medium text-sm mb-2">VP of Global Sourcing</span>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3">Sarah oversees our international supplier network, ensuring quality standards are met globally.</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3"> oversees our international supplier network, ensuring quality standards are met globally.</p>
                 </div>
                 {/* David */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="w-full aspect-square mb-4 overflow-hidden rounded-xl bg-gray-200">
-                        <img alt="David Chen" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWoKqQfO_QeRCT-RxGuANlk2GNkPc_uqBeLUFNgycmFEafDyHY7xZa-I7BnTB8EbO8Stp4Xv-jH0dCLvp90EL7eyDO9sLgLpoT3cMXX1WfoHhvC7ehhoRhxzUKGT__XlctxHrjEMT2BuQxFOshbefPYLmzIgpL92EswemLabo2LieXkftbcpTch6ALN2N1aM-NcovPYg-0NQzQcTJRom8H8X8wLAF13doFD-j2oWb_AUGg3lErAPNEOsJ8c-8v5VL5-8Uk3wE1bFE"/>
+                        <img alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src=""/>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">David Chen</h3>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white"></h3>
                     <span className="text-primary font-medium text-sm mb-2">Head of Engineering</span>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3">David brings deep expertise in VAVE and CAD optimization to drive product improvements.</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3">brings deep expertise in VAVE and CAD optimization to drive product improvements.</p>
                 </div>
                 {/* Anita */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="w-full aspect-square mb-4 overflow-hidden rounded-xl bg-gray-200">
-                        <img alt="Anita Roy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAhiIou7y_WZu_VXYv_Sbi7AQwuRWvAOuRWmNyOdh3jGaEt34Jt8t1yPqNsQuVyD7aOYFoP1Y5CMQ4lwfy9Azxq1yOcV2m7EhEgrLWR_caSDbmKoBmgPXMcX4pjooIgNsW9mVs0hgnLIlXIcpK9o9PnBqkH1cgH9sJlQ54gecIwApJzZKnkcCTBs5U22M9b2HnUlrl_53vBhKNSMKYDst65udPaGvOfwhKZhGjje3RU9x-7CvsOnlodxruxYQyyx5kBl6rg70BEzk"/>
+                        <img alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src=""/>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">Anita Roy</h3>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white"></h3>
                     <span className="text-primary font-medium text-sm mb-2">Director of Quality</span>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3">Anita ensures that every component sourced meets rigorous ISO and industry standards.</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3"> ensures that every component sourced meets rigorous ISO and industry standards.</p>
                 </div>
             </div>
         </div>

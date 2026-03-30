@@ -159,10 +159,10 @@ const CaseStudies: React.FC = () => {
             "Hexuno Technologies didn't just manufacture our parts; they re-engineered our entire procurement process. We're now moving faster than we ever thought possible."
           </blockquote>
           <div className="mt-8 flex items-center justify-center space-x-4">
-            <img alt="Headshot of David Chen" className="h-14 w-14 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN9GAeNY1zLXiSSKDaR4I_LhdL4uBWUg9tl-cynQLNQpArnQ7IbyzEH4gQXNGqVb7GoZypoIhUGNWaToYM0YJO_tdwbI-TjLscDW8vxjbqdNe7o2vIIZ7tkbDbun9mlJBPr6EdiMhhm7YDL0nn0eDqUSkk-lpMDjdqSXTc_VzGXrwXLt3Pq2J_ADzcpUJwD_dkocZY_pvPkYbQu1U2rksA1t9dP1eAjy1-j40Cxd7xfp67vaCu4Le2jMEiO1GDC2q3EXrplrmCu8"/>
+            <img alt="Headshot of David Chen" className="h-14 w-14 rounded-full" src=""/>
             <div className="text-left">
-              <p className="font-bold text-white">David Chen</p>
-              <p className="text-gray-400">VP of Operations, Kinetic Motors</p>
+              <p className="font-bold text-white"></p>
+              <p className="text-gray-400"></p>
             </div>
           </div>
         </div>
