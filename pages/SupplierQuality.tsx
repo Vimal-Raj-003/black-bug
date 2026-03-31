@@ -2,6 +2,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import SupplierQualityCarousel from "./SupplierQualityCarousel";
+import "./css/supplierquality.css";
+import BannerCarousel from "./BannerCarousel"
 
 const SupplierQuality: React.FC = () => {
   const navigate = useNavigate();
@@ -13,24 +15,20 @@ const SupplierQuality: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-10 py-12 md:py-20">
           <div className="flex flex-col md:flex-row gap-10 items-center">
             <div className="flex-1 flex flex-col gap-6 z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 w-fit">
-                <span className="w-2 h-2 rounded-full bg-primary"></span>
-                <span className="text-xs font-bold text-primary dark:text-blue-300 uppercase tracking-wide">Proactive Quality Management</span>
-              </div>
+              
               <h1 className="text-[#111418] dark:text-white text-4xl md:text-6xl font-black leading-[1.1] tracking-tight">
-                Your <span className="text-primary">Supplier Quality</span> Diagnostic Hub
+                Supplier Quality
               </h1>
               <p className="text-[#617589] dark:text-gray-300 text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
-                Are you facing supply chain disruptions, product defects, or compliance challenges? Identify your pain points and discover tailored solutions to elevate your supplier performance.
-              </p>
-              <div className="flex flex-wrap gap-4 pt-4">
-                <button 
+              Supplier Quality is our commitment to ensure every supplier delivers consistent quality, reliable performance, and zero disruption to your production.              </p>
+              <div className=" flow-dot flex flex-wrap gap-4 pt-4">
+                <button
                   onClick={() => navigate('/contact')}
                   className="flex items-center justify-center rounded-lg h-12 px-8 bg-primary hover:bg-blue-700 text-white text-base font-bold transition-all shadow-lg shadow-blue-500/20"
                 >
                   Start a Diagnostic
                 </button>
-                <button 
+                <button
                   onClick={() => {
                     const el = document.getElementById('solutions');
                     el?.scrollIntoView({ behavior: 'smooth' });
@@ -41,30 +39,14 @@ const SupplierQuality: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="flex-1 w-full relative">
-              <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gray-100 dark:bg-gray-800 group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 mix-blend-multiply"></div>
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                  style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBujNWflp7yY7tii8_cp_F_0t-pzaO6HJsB6vJsYDKaSMKck1A2cDFLutcSDoLzTz8fAPJjhyAycD-qWO5qhjIRDodZg-keoYLpYBxTOx7QDdI82qMKzf0PecTNTGrdGK_c0uPn-UlX1XnMzG5UF5tV9oDomL8aRX_DsBdmYTZ1OSz64Vw_8hxh3gnVlkrX0Qms01WXbnG2sFzdpbiv5lOQbpK1akea0BgeaEsxCJOu4tQm_zhLopedgaqOQc-9ahbPNDvQFwgOxpU")' }}
-                ></div>
-                <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/95 dark:bg-surface-dark/95 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg z-20 flex gap-4 items-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary">
-                    <span className="material-symbols-outlined">gpp_good</span>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-primary uppercase">Certified Excellence</p>
-                    <p className="text-sm font-medium text-[#111418] dark:text-white">ISO 9001 & IATF 16949 Compliant</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            <BannerCarousel />
           </div>
         </div>
       </div>
 
       {/* Stats Bar */}
-      <div className="border-b border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-surface-dark" style={{display:"none"}}>
+      <div className="border-b border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-surface-dark" style={{ display: "none" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-10 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="flex flex-col gap-1">
@@ -90,100 +72,209 @@ const SupplierQuality: React.FC = () => {
       {/* Main Content Section */}
       <div id="solutions" className="w-full py-16 md:py-24 bg-background-light dark:bg-background-dark">
         <div className="max-w-7xl mx-auto px-4 md:px-10 flex flex-col gap-16">
-          <div className="flex flex-col gap-4 max-w-3xl text-center mx-auto">
-            <h2 className="text-primary font-bold tracking-wider uppercase text-sm">Facing a Supplier Quality Challenge?</h2>
-            <h3 className="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold leading-tight">Identify Your Pain Point, Find Your Solution</h3>
-            <p className="text-[#617589] dark:text-gray-300 text-lg">
-              Hexuno Technologies offers targeted expertise to address your most critical supplier quality issues, from design to delivery.
-            </p>
-          </div>
+          <div className="max-w-7xl mx-auto flex flex-col gap-10">
+  
+  {/* Header */}
+  <div className="text-center max-w-3xl mx-auto">
+    <h2 className="text-primary font-bold tracking-wider uppercase text-sm">
+      Our Methodology
+    </h2>
+    <h3 className="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold mt-2">
+      Product Development & Supplier Quality Process
+    </h3>
+    <p className="text-[#617589] dark:text-gray-300 mt-4">
+      We follow a structured supplier quality methodology to ensure consistent quality, reduced defects, and stable supplier performance from onboarding to mass production.
+    </p>
+  </div>
+
+  {/* FLOW */}
+  <div className="relative flex flex-col md:flex-row items-center justify-between gap-10">
+
+    {/* Dotted Line */}
+<div className="hidden md:block absolute left-0 w-full border-t-2 border-dotted border-gray-400 z-0"
+     style={{ top: "24px" }}>
+
+  <div className="flow-dot absolute left-0 top-0 w-3 h-3 bg-blue-500 rounded-full animate-flow-step z-10 -translate-y-1/2"></div>
+
+</div>
+    {/* Step 1 */}
+    <div id="step1" className="flex flex-col items-center text-center relative z-10">
+      <div className="w-12 h-12 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">1</div>
+      <p className="mt-3 font-semibold text-purple-600">Understand Requirements</p>
+    </div>
+
+    {/* Step 2 */}
+    <div id="step2" className="flex flex-col items-center text-center relative z-10 md:mt-10">
+      <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">2</div>
+      <p className="mt-3 font-semibold text-blue-600">Supplier Evaluation</p>
+    </div>
+
+    {/* Step 3 */}
+    <div id="step3" className="flex flex-col items-center text-center relative z-10">
+      <div className="w-12 h-12 rounded-full bg-cyan-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">3</div>
+      <p className="mt-3 font-semibold text-cyan-600">Process Validation</p>
+    </div>
+
+    {/* Step 4 */}
+    <div id="step4" className="flex flex-col items-center text-center relative z-10 md:mt-10">
+      <div className="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">4</div>
+      <p className="mt-3 font-semibold text-green-600">APQP / PPAP & Launch Readiness</p>
+    </div>
+
+    {/* Step 5 */}
+    <div id="step5" className="flex flex-col items-center text-center relative z-10">
+      <div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">5</div>
+      <p className="mt-3 font-semibold text-orange-600">Issue Control & Corrective Actions</p>
+    </div>
+
+    {/* Step 6 */}
+    <div id="step6" className="flex flex-col items-center text-center relative z-10 md:mt-10">
+      <div className="w-12 h-12 rounded-full bg-yellow-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">6</div>
+      <p className="mt-3 font-semibold text-yellow-500">Performance Monitoring & Improvement</p>
+    </div>
+
+  </div>
+
+  {/* Bottom Text */}
+  <p className="text-center text-[#617589] dark:text-gray-400 max-w-3xl mx-auto">
+    We work through a simple flow: understand requirements, evaluate suppliers, validate processes, support launch readiness, resolve quality issues, and continuously improve supplier performance.
+  </p>
+
+</div>
+
+
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* NPD Support Card */}
-            <div className="group flex flex-col bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-              <div className="mb-4 text-primary text-xl font-bold">"Are product launches consistently delayed by quality issues?"</div>
-              <div className="mb-6 w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
-                <span className="material-symbols-outlined text-[32px]">design_services</span>
-              </div>
-              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">New Product Development (NPD) Support</h4>
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Supplier Qualification & Approval</h4>
               <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
-                **Solution:** Ensure robust quality planning from day one. We bridge the gap between engineering and manufacturing to launch products right the first time, preventing costly rework and delays.
+                We evaluate suppliers before onboarding to ensure they can meet your quality, process, and compliance requirements. This includes capability review, quality system readiness, and risk evaluation.
               </p>
-              <div className="mt-auto">
+              <div className="">
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">APQP</span>
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">PPAP</span>
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">FMEA</span>
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3  transition-colors">Value we deliver :</h2>
+
                 </div>
                 <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Process capability validation</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Control plan development</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Design feasibility review</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Right supplier selection</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Reduced onboarding risk</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Fewer future quality failures</li>
                 </ul>
-                <button onClick={() => navigate('/contact')} className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-blue-700 text-white text-sm font-bold w-full mt-4">
-                  Optimize Your NPD
-                </button>
               </div>
             </div>
 
             {/* Quality Assurance Card */}
-            <div className="group flex flex-col bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-              <div className="mb-4 text-primary text-xl font-bold">"Are non-conforming parts reaching your assembly line?"</div>
-              <div className="mb-6 w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
-                <span className="material-symbols-outlined text-[32px]">rule</span>
-              </div>
-              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">In-house Quality Assurance</h4>
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Supplier Audits & Gap Closure</h4>
               <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
-                **Solution:** Act as your quality firewall. Our dedicated teams perform rigorous inspections to stop non-conforming parts before they reach your assembly line, saving you from costly recalls and customer dissatisfaction.
+                We conduct structured supplier audits to identify gaps in process control, quality systems, and compliance. We also track closure actions to ensure improvements are implemented on time.
               </p>
-              <div className="mt-auto">
+              <div className="">
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">Incoming Inspection</span>
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">Final QA</span>
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
                 </div>
                 <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Lot acceptance sampling</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Non-conformance management</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Visual & dimensional checks</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Stronger supplier systems</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Improved compliance</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Reduced repeat issues</li>
                 </ul>
-                <button onClick={() => navigate('/contact')} className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-blue-700 text-white text-sm font-bold w-full mt-4">
-                  Strengthen QA
-                </button>
               </div>
             </div>
 
             {/* Audits Card */}
-            <div className="group flex flex-col bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-              <div className="mb-4 text-primary text-xl font-bold">"Is your supplier network truly compliant and reliable?"</div>
-              <div className="mb-6 w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
-                <span className="material-symbols-outlined text-[32px]">fact_check</span>
-              </div>
-              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Audits & Assessment (Internal & Lead)</h4>
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">APQP / PPAP Support</h4>
               <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
-                **Solution:** We validate supplier capability and compliance through systematic auditing. Whether for new supplier selection or routine surveillance, our certified auditors ensure your supply chain meets international standards and mitigate risks.
+                We support suppliers in preparing and validating APQP/PPAP requirements for smooth production launch. This ensures all documents and validations are aligned with customer expectations.
               </p>
-              <div className="mt-auto">
+              <div className="">
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">VDA 6.3</span>
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">ISO 9001</span>
-                  <span className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-bold text-[#111418] dark:text-gray-200">IATF 16949</span>
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
                 </div>
                 <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Process and System Audits</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Supplier Risk Assessment</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Corrective Action Verification</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Faster approvals</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Smooth ramp-up</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Reduced launch delays and rejections</li>
                 </ul>
-                <button onClick={() => navigate('/contact')} className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-blue-700 text-white text-sm font-bold w-full mt-4">
-                  Schedule an Audit
-                </button>
               </div>
             </div>
+
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Control Plan & Inspection Strategy</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                We define CTQs, inspection checkpoints, sampling plans, and acceptance criteria based on risk and criticality. This helps prevent defects from reaching your production line.
+              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
+                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Better defect control</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Improved incoming quality</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Reduced production disruptions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Supplier Issue Management (RCA / 8D)</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                We manage supplier quality issues using structured root cause analysis and 8D methodology. We ensure corrective and preventive actions are implemented and verified for effectiveness.
+              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
+                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Faster issue closure</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Reduced repeat defects</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Improved supplier accountability</li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Supplier Performance Monitoring</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                We track supplier performance using scorecards for quality, delivery, responsiveness, and improvement actions. This helps maintain consistent performance and clear supplier accountability.
+              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
+                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Predictable supplier performance</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Improved reliability</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Stronger supplier governance</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Supplier Development & Continuous Improvement</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                We work with suppliers to improve process stability, yield, and quality maturity through continuous improvement initiatives. This ensures long-term improvements instead of temporary fixes.
+              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
+                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Sustained quality improvement</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Long-term cost savings</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Stronger supplier partnerships</li>
+                </ul>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
       {/* Global Standards Section */}
-      <div className="w-full bg-surface-light dark:bg-surface-dark py-12 border-t border-[#f0f2f4] dark:border-gray-800" style={{display:"none"}}>
+      <div className="w-full bg-surface-light dark:bg-surface-dark py-12 border-t border-[#f0f2f4] dark:border-gray-800" style={{ display: "none" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-10">
           <h3 className="text-center text-[#111418] dark:text-white text-xl font-bold mb-10">Adhering to Global Quality Standards</h3>
           <div className="flex flex-wrap justify-center gap-6 md:gap-12 opacity-80">
@@ -215,7 +306,7 @@ const SupplierQuality: React.FC = () => {
       </div>
     </div>
 
-    
+
   );
 };
 
