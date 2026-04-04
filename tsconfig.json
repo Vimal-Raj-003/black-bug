@@ -28,5 +28,6 @@
     "jsxImportSource": "react",
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "include": ["."]
 }
