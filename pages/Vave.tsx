@@ -194,7 +194,7 @@ const Vave: React.FC = () => {
               <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-md z-10 text-xs font-bold uppercase tracking-wider text-[#111418] dark:text-white flex items-center gap-1 shadow-sm">
                 <span className="material-symbols-outlined text-sm">manage_search</span> Analysis
               </div>
-              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url("./images/benchmarking&teardown.png")' }}>
+              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url("./images/benchmarking_teardown.png")' }}>
               </div>
             </div>
             <div className="flex flex-1 flex-col justify-center gap-6">
