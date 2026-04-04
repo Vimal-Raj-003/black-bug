@@ -1,13 +1,167 @@
 
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import StepFlowChart from "./StepFlowChart"
+import { useState, useEffect } from "react";
+
+const BannerCarousel: React.FC = () => {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+  const [transitionClass, setTransitionClass] = useState('opacity-100');
+  const navigate = useNavigate();
+
+  const [current, setCurrent] = useState(0);
+
+  const slides = [
+    {
+      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789",
+      title: "Engineering Value Beyond Cost Reduction"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581091215367-59ab6b1f3c9c",
+      title: "Where Function, Cost, and Performance Align"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
+      title: "Optimizing Value Without Compromising Performance"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581091215367-59ab6b1f3c9c",
+      title: "Smarter Designs. Transparent Costs. Real Value"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
+      title: "Because Cost Reduction Should Never Reduce Value"
+    }
+  ];
+
+  const goToSlide = (index: number) => {
+    setTransitionClass('opacity-0');
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setTransitionClass('opacity-100');
+    }, 300);
+  };
+
+  const nextSlide = () => {
+    goToSlide((currentSlide + 1) % slides.length);
+    setIsAutoplay(false);
+  };
+
+  const prevSlide = () => {
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    setIsAutoplay(false);
+  };
+
+  // Auto-rotation effect
+  useEffect(() => {
+    if (!isAutoplay) return;
+
+    const timer = setInterval(() => {
+      setTransitionClass('opacity-0');
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setTransitionClass('opacity-100');
+      }, 300);
+    }, 6000); // Change slide every 6 seconds
+
+    return () => clearInterval(timer);
+  }, [isAutoplay]);
+
+  // Resume autoplay after 10 seconds of inactivity
+  useEffect(() => {
+    if (isAutoplay) return;
+
+    const timer = setTimeout(() => {
+      setIsAutoplay(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, [isAutoplay]);
+
+  const slide = slides[currentSlide];
+
+  return (
+    <div className="relative w-full bg-slate-900 overflow-hidden">
+      {/* Dynamic Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
+          <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
+      </div>
+
+      <div className="px-4 md:px-10 flex flex-1 justify-center py-5 relative z-10">
+        <div className="flex flex-col max-w-[1200px] flex-1">
+          <div className="@container">
+            <div className="flex flex-col gap-6 py-10 lg:flex-row items-center">
+              <div className="flex flex-col gap-6 lg:justify-center flex-1">
+                <div className="flex flex-col gap-4 text-left">
+                  <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl drop-shadow-lg">
+                    Cost Optimization & Value Engineering
+                  </h1>
+                  <h2 className="text-slate-300 text-lg font-normal leading-relaxed drop-shadow-md">
+                    VAVE improves product value by delivering the required function at the lowest total cost, without compromising quality or performance.
+                  </h2>
+                </div>
+
+              </div>
+
+              <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
+
+                {/* DARK OVERLAY (IMPORTANT) */}
+                <div className="absolute inset-0 bg-black/50 z-10"></div>
+
+                {/* IMAGES */}
+                {slides.map((slide, index) => (
+                  <img
+                    key={index}
+                    src={slide.image}
+                    alt="banner"
+                    className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${index === current ? "opacity-100" : "opacity-0"
+                      }`}
+                  />
+                ))}
+
+                {/* TEXT CONTENT */}
+                <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
+
+                  <h3 className="text-white text-xl md:text-2xl font-bold mb-2 drop-shadow-lg">
+                    {slides[current].title}
+                  </h3>
+
+                </div>
+
+                {/* DOT NAVIGATION */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrent(index)}
+                      className={`w-2 h-2 rounded-full ${current === index ? "bg-white" : "bg-white/40"
+                        }`}
+                    />
+                  ))}
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const Vave: React.FC = () => {
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden bg-background-light dark:bg-background-dark">
-      
+
       {/* Breadcrumbs */}
       <div className="w-full bg-white dark:bg-[#1a2632]">
         <div className="px-4 md:px-10 flex justify-center py-2">
@@ -17,106 +171,53 @@ const Vave: React.FC = () => {
               <span className="material-symbols-outlined text-[#617589] text-sm">chevron_right</span>
               <span className="text-[#617589] text-sm font-medium leading-normal">Services</span>
               <span className="material-symbols-outlined text-[#617589] text-sm">chevron_right</span>
-              <span className="text-[#111418] dark:text-white text-sm font-bold leading-normal">VAVE Services</span>
+              <span className="text-[#111418] dark:text-white text-sm font-bold leading-normal">Cost Optimization & Value Engineering</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Hero Section */}
-      <div className="relative w-full bg-slate-900 pb-10 overflow-hidden">
-        {/* Dynamic Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
-            <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
-        </div>
+      <BannerCarousel />
 
-        <div className="px-4 md:px-10 flex flex-1 justify-center py-5 relative z-10">
-          <div className="flex flex-col max-w-[1200px] flex-1">
-            <div className="@container">
-              <div className="flex flex-col gap-6 py-10 lg:flex-row items-center">
-                <div className="flex flex-col gap-6 lg:justify-center flex-1">
-                  <div className="flex flex-col gap-4 text-left">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 w-fit backdrop-blur-sm">
-                      <span className="material-symbols-outlined text-primary text-sm">engineering</span>
-                      <span className="text-primary text-xs font-bold uppercase tracking-wide">Engineering Excellence</span>
-                    </div>
-                    <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl drop-shadow-lg">
-                      Strategic Value Analysis & Engineering
-                    </h1>
-                    <h2 className="text-slate-300 text-lg font-normal leading-relaxed drop-shadow-md">
-                      Driving product efficiency and cost optimization through rigorous teardowns, data-driven insights, and innovative engineering solutions.
-                    </h2>
-                  </div>
-                  <div className="flex gap-4 flex-wrap">
-                    <button onClick={() => navigate('/contact')} className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 bg-primary hover:bg-blue-700 transition-all text-white text-base font-bold leading-normal tracking-[0.015em] shadow-xl shadow-primary/20">
-                      <span className="truncate">Start Your VAVE Project</span>
-                    </button>
-                    <button onClick={() => navigate('/case-studies')} className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 border border-white/20 backdrop-blur-md hover:bg-white/10 transition-all text-white text-base font-bold leading-normal tracking-[0.015em]">
-                      <span className="truncate">View Case Studies</span>
-                    </button>
-                  </div>
-                </div>
-                <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
-                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-all duration-500 z-10"></div>
-                  <div className="w-full h-full bg-center bg-no-repeat bg-cover transform group-hover:scale-105 transition-transform duration-700" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBHfLF4QtLrZb4MGHgiNEjgG2HQtxJ9AmXLA2Hjqc6GpgYaoyiQq6mY3u7x3y7UM0q_gvjQNeFakibtWsiXEyZuskrkx27vjd38OZsgI5H0uzHCcm2PmpvKZ3L1Ai2QwcnG1a_1Bg4dsha2VSk3XY18bNQtXXWZceKRtVAzv-HwvS7m-wsw6iNxYiuY1fRNEJA3xPMbfsx6pBQ1qEKk2QiQH4UHAuK6pi5gDhgQ5N0RWgrwt5E16PQx8nHAmdzRT6fxkqK9SRtgeg8")'}}>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="w-full px-4 md:px-10 py-12 flex justify-center bg-background-light dark:bg-background-dark">
-        <div className="max-w-[1200px] w-full flex flex-col gap-16">
+        <div className="max-w-[1200px] w-full flex flex-col gap-4">
           <div className="text-center max-w-[800px] mx-auto mb-4">
-            <h2 className="text-[#111418] dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em] mb-4">Core VAVE Capabilities</h2>
+            <h2 className="text-[#111418] dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em] mb-4">VAVE Offerings</h2>
             <p className="text-[#617589] dark:text-gray-400 text-lg">
-              We combine technical expertise with commercial intelligence to deliver measurable value across the entire product lifecycle.
+              We deliver structured Value Analysis & Value Engineering (VAVE) services that help organizations achieve measurable cost optimization without compromising performance or quality.
             </p>
           </div>
           <div className="flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 bg-white dark:bg-[#1a2632] p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="w-full lg:w-1/2 rounded-xl overflow-hidden h-[300px] lg:h-auto relative">
-              <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-md z-10 text-xs font-bold uppercase tracking-wider text-[#111418] dark:text-white flex items-center gap-1 shadow-sm">
+              <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-md z-10 text-xs font-bold uppercase tracking-wider text-[#111418] dark:text-white flex items-center gap-1 shadow-sm">
                 <span className="material-symbols-outlined text-sm">manage_search</span> Analysis
               </div>
-              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDq0_uT9vGy-IXL54VnqPDo2xh81_tz8HXFIbuZhBBYM1efRV3gAeeLHxtrwD8S1I93Hz6YtlJLY_VsP4oPmXCs7YXctPNe3QZ8BuG-ld_R56froHdtPzX4DhfKoWm1jeO4hz1EQNDgtzMKNNa1JizcqoVTIgQHA9tFkN4ceFWR7cr_meEfMK_kSO4DdrkLkBzTeIQhP7HXiYjsjUECnI5owuoIbPdTDIVTQxvuZE9K0iXVPJL34xe66b9i_qU64knBc_Zdj0s_a5Y")'}}>
+              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url("./images/benchmarking&teardown.png")' }}>
               </div>
             </div>
             <div className="flex flex-1 flex-col justify-center gap-6">
               <div>
                 <h3 className="text-2xl font-bold text-[#111418] dark:text-white mb-2">Benchmarking & Teardown</h3>
                 <p className="text-[#617589] dark:text-gray-300 text-base leading-relaxed">
-                  Our comprehensive teardown analysis goes beyond simple observation. We systematically dismantle competitor products to understand their design philosophy, material choices, and manufacturing processes.
+                  We use structured benchmarking and physical teardown to uncover hidden value opportunities and challenge existing design and cost assumptions.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                    <span className="material-symbols-outlined text-xl">compare_arrows</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-[#111418] dark:text-white">Feature Gap Analysis</h4>
-                    <p className="text-xs text-[#617589] dark:text-gray-400 mt-1">Identify market differentiators and parities.</p>
-                  </div>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3  transition-colors">Value we deliver :</h2>
+
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                    <span className="material-symbols-outlined text-xl">science</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-[#111418] dark:text-white">Material Identification</h4>
-                    <p className="text-xs text-[#617589] dark:text-gray-400 mt-1">Lab-grade material composition testing.</p>
-                  </div>
-                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Detailed teardown and functional comparison of competitor products</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Identification of design, material, and process differences</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Cost driver and architecture benchmarking</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Best-practice insights from industry and cross-sector products</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Fact-based inputs for VAVE ideation and decision-making</li>
+
+                </ul>
               </div>
-              <button className="flex items-center gap-2 text-primary font-bold text-sm hover:underline mt-2 group">
-                Explore Methodology 
-                <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
-              </button>
             </div>
           </div>
           <div className="flex flex-col lg:flex-row-reverse items-stretch gap-8 lg:gap-12 bg-white dark:bg-[#1a2632] p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
@@ -124,42 +225,35 @@ const Vave: React.FC = () => {
               <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-md z-10 text-xs font-bold uppercase tracking-wider text-[#111418] dark:text-white flex items-center gap-1 shadow-sm">
                 <span className="material-symbols-outlined text-sm">precision_manufacturing</span> Engineering
               </div>
-              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBM9iNjRU5yGEzP3YK-hyVNSIpnq8FlOWqe0JQK0p_lULJlVEcP4Qio0rW4SLN7JpFAvUkBuE9ekz1UnKoZXqn6wKNyvBT49QJXtrbH6IbMSXtc3SN9qBkrAckwn3wRFae-3ySBQD-3GGfNOyuYwOz8v3BclbDni2KGxSyTNygoUaCCIVgsOFkyqmOEZ8d9zvwH-WZZz4YXYZ5J37t40YJLoJlLmhaIcmfdycvW48gt9W4sQ1LsKM-Y0OoJAvh0M0zhr0B_JjQcdEQ")'}}>
+              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url("./images/ValueEngineering.png")' }}>
               </div>
             </div>
             <div className="flex flex-1 flex-col justify-center gap-6">
               <div>
-                <h3 className="text-2xl font-bold text-[#111418] dark:text-white mb-2">Value Analysis & Engineering (VA/VE)</h3>
+                <h3 className="text-2xl font-bold text-[#111418] dark:text-white mb-2">Function-Driven Design & Value Engineering</h3>
                 <p className="text-[#617589] dark:text-gray-300 text-base leading-relaxed">
-                  We redesign for value. Our engineering team optimizes your product's function-to-cost ratio, reducing weight and complexity without compromising performance or quality.
-                </p>
+                  We analyze product and process functions to eliminate over-design, simplify solutions, and deliver the required performance at optimal cost.                </p>
               </div>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-green-500">check_circle</span>
-                  <span className="text-sm font-medium text-[#111418] dark:text-gray-200">Weight reduction & topology optimization</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-green-500">check_circle</span>
-                  <span className="text-sm font-medium text-[#111418] dark:text-gray-200">Manufacturing process simplification (DFMA)</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-green-500">check_circle</span>
-                  <span className="text-sm font-medium text-[#111418] dark:text-gray-200">Alternative material validation</span>
-                </li>
-              </ul>
-              <button className="flex items-center gap-2 text-primary font-bold text-sm hover:underline mt-2 group">
-                View Success Stories
-                <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
-              </button>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3  transition-colors">Value we deliver :</h2>
+
+                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Clear understanding of product and process functions</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Elimination of over-design and non-value-added features</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Simplified, performance-neutral design solutions</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Improved manufacturability and robustness</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className="flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 bg-white dark:bg-[#1a2632] p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="w-full lg:w-1/2 rounded-xl overflow-hidden h-[300px] lg:h-auto relative">
-              <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-md z-10 text-xs font-bold uppercase tracking-wider text-[#111418] dark:text-white flex items-center gap-1 shadow-sm">
+              <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-md z-10 text-xs font-bold uppercase tracking-wider text-[#111418] dark:text-white flex items-center gap-1 shadow-sm">
                 <span className="material-symbols-outlined text-sm">trending_down</span> Savings
               </div>
-              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEDHQMIBEWlizS_yHhgE93EGv0rn3M4H6ofqhof2FKB3YWe9tXyEPLtE4Sq1IL8THz6r5b5U3pZRaGATZ-ITKPoVxOdDA_89pOdbp3n_eQl-UGycC2pO5neuFd96qRNDqUKAkww3f6sC9eNqK4N7lC0zzAV_VDllSaBiEBEEFyRi8lQ2n3E5uEl6B3Cu2rNqXMwrNIwlWDFGmbM3MUlVQls-V0R9riwVR4iOdm2tAZtvReCLwOj6yFPE0ibaUiNGE7Ak3kK5RgUDw")'}}>
+              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url("./images/Strategic_Cost_Insights.png")' }}>
               </div>
             </div>
             <div className="flex flex-1 flex-col justify-center gap-6">
@@ -169,97 +263,163 @@ const Vave: React.FC = () => {
                   Data-driven cost modeling empowers your sourcing teams. We provide "should-cost" models and supplier negotiation support based on real-world market data and manufacturing overheads.
                 </p>
               </div>
-              <div className="flex gap-4">
-                <div className="flex-1 p-4 bg-background-light dark:bg-[#101922] rounded-lg border border-gray-200 dark:border-gray-700">
-                  <p className="text-3xl font-bold text-primary mb-1">15-25%</p>
-                  <p className="text-xs font-medium text-[#617589] dark:text-gray-400 uppercase tracking-wide">Avg. Cost Reduction</p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3  transition-colors">Value we deliver :</h2>
+
                 </div>
-                <div className="flex-1 p-4 bg-background-light dark:bg-[#101922] rounded-lg border border-gray-200 dark:border-gray-700">
-                  <p className="text-3xl font-bold text-primary mb-1">100%</p>
-                  <p className="text-xs font-medium text-[#617589] dark:text-gray-400 uppercase tracking-wide">Data Transparency</p>
-                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Feasibility and risk validation of VAVE ideas</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Support for design changes and supplier alignment</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Controlled implementation without quality or performance impact</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Measurable and sustainable cost savings</li>
+                </ul>
               </div>
-              <button className="flex items-center gap-2 text-primary font-bold text-sm hover:underline mt-2 group">
-                Request a Cost Audit
-                <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
-              </button>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="w-full bg-white dark:bg-[#1a2632] py-20 border-t border-gray-100 dark:border-gray-800">
-        <div className="px-4 md:px-10 flex flex-col items-center">
-          <div className="max-w-[1200px] w-full">
-            <div className="text-center mb-16">
-              <span className="text-primary font-bold tracking-wider text-sm uppercase mb-2 block">Our Process</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#111418] dark:text-white">The VAVE Methodology</h2>
-              <p className="text-[#617589] dark:text-gray-400 mt-4 max-w-2xl mx-auto">
-                A systematic approach designed to uncover hidden value and eliminate waste at every stage of the product lifecycle.
-              </p>
+          <div className="flex flex-col lg:flex-row-reverse items-stretch gap-8 lg:gap-12 bg-white dark:bg-[#1a2632] p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+            <div className="w-full lg:w-1/2 rounded-xl overflow-hidden h-[300px] lg:h-auto relative">
+              <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-md z-10 text-xs font-bold uppercase tracking-wider text-[#111418] dark:text-white flex items-center gap-1 shadow-sm">
+                <span className="material-symbols-outlined text-sm">fact_check</span> Validation
+              </div>
+              <div className="w-full h-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url("./images/VAVEImplementation_ValueRealization.webp")' }}>
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-background-light dark:hover:bg-[#202d3a] transition-colors group">
-                <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-3xl">analytics</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#111418] dark:text-white mb-3">1. Analyze</h3>
-                <p className="text-sm text-[#617589] dark:text-gray-400 leading-relaxed">
-                  Data collection, functional analysis, and cost targeting to establish a baseline.
-                </p>
+            <div className="flex flex-1 flex-col justify-center gap-6">
+              <div>
+                <h3 className="text-2xl font-bold text-[#111418] dark:text-white mb-2">VAVE Implementation & Value Realization</h3>
+                <p className="text-[#617589] dark:text-gray-300 text-base leading-relaxed">
+                  We validate, implement, and track VAVE ideas to ensure sustainable, measurable cost savings with controlled technical and business risk.                </p>
               </div>
-              <div className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-background-light dark:hover:bg-[#202d3a] transition-colors group">
-                <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-3xl">lightbulb</span>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3  transition-colors">Value we deliver :</h2>
+
                 </div>
-                <h3 className="text-lg font-bold text-[#111418] dark:text-white mb-3">2. Brainstorm</h3>
-                <p className="text-sm text-[#617589] dark:text-gray-400 leading-relaxed">
-                  Creative ideation workshops to generate alternative solutions for each function.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-background-light dark:hover:bg-[#202d3a] transition-colors group">
-                <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-3xl">construction</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#111418] dark:text-white mb-3">3. Develop</h3>
-                <p className="text-sm text-[#617589] dark:text-gray-400 leading-relaxed">
-                  Technical validation, prototyping, and feasibility studies of selected ideas.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-background-light dark:hover:bg-[#202d3a] transition-colors group">
-                <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-3xl">rocket_launch</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#111418] dark:text-white mb-3">4. Implement</h3>
-                <p className="text-sm text-[#617589] dark:text-gray-400 leading-relaxed">
-                  Execution support, supplier onboarding, and final cost verification.
-                </p>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Feasibility and risk validation of VAVE ideas</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Support for design changes and supplier alignment</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Controlled implementation without quality or performance impact</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Measurable and sustainable cost savings</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="w-full bg-primary py-16">
+      <div className="w-full bg-white dark:bg-[#1a2632] py-5 border-t border-gray-100 dark:border-gray-800">
         <div className="px-4 md:px-10 flex justify-center">
-          <div className="max-w-[1200px] w-full flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-            <div className="flex flex-col gap-2 max-w-2xl">
-              <h2 className="text-white text-3xl font-bold tracking-tight">Ready to optimize your product costs?</h2>
-              <p className="text-blue-100 text-lg">
-                Partner with Hexuno Technologies to uncover hidden value in your supply chain.
+
+          <div className="max-w-[1200px] w-full grid grid-cols-1 lg:grid-cols-[0.4fr_1.6fr] gap-12 items-center">
+
+            {/* LEFT SIDE - TEXT */}
+            <div className="flex flex-col  text-center lg:text-left">
+
+              <span className="text-primary font-bold tracking-wider text-sm uppercase">
+                Our Process
+              </span>
+
+              <h2 className="text-3xl md:text-4xl font-bold text-[#111418] dark:text-white leading-tight">
+                The VAVE Methodology
+              </h2>
+
+              <p className="text-[#617589] dark:text-gray-400 mt-2 max-w-md">
+                Deliver the right function, at the right cost, with the right level of risk.
+              </p>
+
+            </div>
+
+            {/* RIGHT SIDE - CHART */}
+            <div className="w-full overflow-x-auto flex justify-center">
+              <StepFlowChart />
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* Why Choose Us Section */}
+      <div className="w-full bg-background-light dark:bg-background-dark py-16">
+        <div className="px-4 md:px-10 lg:px-40 flex justify-center">
+          <div className="max-w-[960px] w-full flex flex-col gap-10">
+            <div className="flex flex-col gap-4 text-center items-center">
+              <h2 className="text-[#111418] dark:text-white text-3xl font-bold leading-tight md:text-4xl max-w-[720px]">
+                Why Choose Us for VAVE
+              </h2>
+              <p className="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal max-w-[720px]">
               </p>
             </div>
-            <div className="flex gap-4">
-              <button onClick={() => navigate('/contact')} className="bg-white text-primary hover:bg-gray-100 transition-colors font-bold py-3 px-8 rounded-lg shadow-lg text-sm uppercase tracking-wider">
-                Contact Us
-              </button>
-              <button onClick={() => navigate('/about')} className="border border-white text-white hover:bg-white/10 transition-colors font-bold py-3 px-8 rounded-lg text-sm uppercase tracking-wider">
-                Learn More
-              </button>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-[#1a222c] p-6 hover:shadow-lg transition-shadow">
+                <div className="text-blue-600">
+                  <span className="material-symbols-outlined text-[32px]">engineering</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[#111418] dark:text-white text-lg font-bold">Engineering-Led, Not Procurement-Driven</h3>
+                  <p className="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                    Our VAVE approach starts with function and engineering fundamentals, ensuring cost optimization without compromising performance, quality, or reliability.</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-[#1a222c] p-6 hover:shadow-lg transition-shadow">
+                <div className="text-blue-600">
+                  <span className="material-symbols-outlined text-[32px]">query_stats</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[#111418] dark:text-white text-lg font-bold">Fact-Based Cost Transparency</h3>
+                  <p className="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                    We use <b>bottom-up should-costing and teardown insights</b> to eliminate guesswork and enable data-driven value decisions</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-[#1a222c] p-6 hover:shadow-lg transition-shadow">
+                <div className="text-blue-600">
+                  <span className="material-symbols-outlined text-[32px]">build</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[#111418] dark:text-white text-lg font-bold">Practical, Implementable Solutions</h3>
+                  <p className="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                    We focus on <b>what can actually be manufactured, validated, and implemented</b>—not theoretical ideas.</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-[#1a222c] p-6 hover:shadow-lg transition-shadow">
+                <div className="text-blue-600">
+                  <span className="material-symbols-outlined text-[32px]">track_changes</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[#111418] dark:text-white text-lg font-bold">End-to-End Value Ownership</h3>
+                  <p className="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                    From opportunity identification to implementation and savings tracking, we stay accountable for realized value, not just concepts.</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-[#1a222c] p-6 hover:shadow-lg transition-shadow">
+                <div className="text-blue-600">
+                  <span className="material-symbols-outlined text-[32px]">manufacturing</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[#111418] dark:text-white text-lg font-bold">Proven Across Manufacturing Domains</h3>
+                  <p className="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                    Our experience spans <b>sheet metal, plastics, casting, machining, and electromechanical assemblies,</b> enabling cross-industry value insights.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div className="bg-gradient-to-r from-blue-50 to-white py-20 px-6 md:px-24 text-center rounded-2xl shadow-sm">
+        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">
+          Our VAVE Promise
+        </h2>
+        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          Real value engineering, delivered responsibly and measurably.
+        </p>
+      </div>
+
+
+
     </div>
   );
 };

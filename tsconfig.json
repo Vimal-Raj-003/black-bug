@@ -23,6 +23,9 @@
         "./*"
       ]
     },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "react",
     "allowImportingTsExtensions": true,
     "noEmit": true
   }

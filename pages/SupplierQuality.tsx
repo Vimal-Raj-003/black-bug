@@ -3,7 +3,161 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import SupplierQualityCarousel from "./SupplierQualityCarousel";
 import "./css/supplierquality.css";
-import BannerCarousel from "./BannerCarousel"
+import { useState, useEffect } from "react";
+
+
+const BannerCarousel: React.FC = () => {
+
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+  const [transitionClass, setTransitionClass] = useState('opacity-100');
+  const navigate = useNavigate();
+
+  const [current, setCurrent] = useState(0);
+
+  const slides = [
+    {
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBujNWflp7yY7tii8_cp_F_0t-pzaO6HJsB6vJsYDKaSMKck1A2cDFLutcSDoLzTz8fAPJjhyAycD-qWO5qhjIRDodZg-keoYLpYBxTOx7QDdI82qMKzf0PecTNTGrdGK_c0uPn-UlX1XnMzG5UF5tV9oDomL8aRX_DsBdmYTZ1OSz64Vw_8hxh3gnVlkrX0Qms01WXbnG2sFzdpbiv5lOQbpK1akea0BgeaEsxCJOu4tQm_zhLopedgaqOQc-9ahbPNDvQFwgOxpU",
+      title: "Quality isn’t inspected in — it’s built in."
+    },
+    {
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBujNWflp7yY7tii8_cp_F_0t-pzaO6HJsB6vJsYDKaSMKck1A2cDFLutcSDoLzTz8fAPJjhyAycD-qWO5qhjIRDodZg-keoYLpYBxTOx7QDdI82qMKzf0PecTNTGrdGK_c0uPn-UlX1XnMzG5UF5tV9oDomL8aRX_DsBdmYTZ1OSz64Vw_8hxh3gnVlkrX0Qms01WXbnG2sFzdpbiv5lOQbpK1akea0BgeaEsxCJOu4tQm_zhLopedgaqOQc-9ahbPNDvQFwgOxpU",
+      title: "Strong suppliers build strong brands."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc",
+      title: "Quality is the cheapest investment, and the costliest mistake to ignore."
+    },
+    {
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBujNWflp7yY7tii8_cp_F_0t-pzaO6HJsB6vJsYDKaSMKck1A2cDFLutcSDoLzTz8fAPJjhyAycD-qWO5qhjIRDodZg-keoYLpYBxTOx7QDdI82qMKzf0PecTNTGrdGK_c0uPn-UlX1XnMzG5UF5tV9oDomL8aRX_DsBdmYTZ1OSz64Vw_8hxh3gnVlkrX0Qms01WXbnG2sFzdpbiv5lOQbpK1akea0BgeaEsxCJOu4tQm_zhLopedgaqOQc-9ahbPNDvQFwgOxpU",
+      title: "Consistent quality creates consistent customers."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+      title: "We don’t just manage quality — we protect your reputation."
+    }
+  ];
+
+  const goToSlide = (index: number) => {
+    setTransitionClass('opacity-0');
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setTransitionClass('opacity-100');
+    }, 300);
+  };
+
+  const nextSlide = () => {
+    goToSlide((currentSlide + 1) % slides.length);
+    setIsAutoplay(false);
+  };
+
+  const prevSlide = () => {
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    setIsAutoplay(false);
+  };
+
+  // Auto-rotation effect
+  useEffect(() => {
+    if (!isAutoplay) return;
+
+    const timer = setInterval(() => {
+      setTransitionClass('opacity-0');
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setTransitionClass('opacity-100');
+      }, 300);
+    }, 6000); // Change slide every 6 seconds
+
+    return () => clearInterval(timer);
+  }, [isAutoplay]);
+
+  // Resume autoplay after 10 seconds of inactivity
+  useEffect(() => {
+    if (isAutoplay) return;
+
+    const timer = setTimeout(() => {
+      setIsAutoplay(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, [isAutoplay]);
+
+  const slide = slides[currentSlide];
+
+  return (
+    <div className="relative w-full bg-slate-900 overflow-hidden">
+      {/* Dynamic Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
+          <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
+      </div>
+
+      <div className="px-4 md:px-10 flex flex-1 justify-center py-5 relative z-10">
+        <div className="flex flex-col max-w-[1200px] flex-1">
+          <div className="@container">
+            <div className="flex flex-col gap-6 py-10 lg:flex-row items-center">
+              <div className="flex flex-col gap-6 lg:justify-center flex-1">
+                <div className="flex flex-col gap-4 text-left">
+                  <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl drop-shadow-lg">
+                    Supplier Quality
+                  </h1>
+                  <h2 className="text-slate-300 text-lg font-normal leading-relaxed drop-shadow-md">
+                    Supplier Quality is our commitment to ensure every supplier delivers consistent quality, reliable performance, and zero disruption to your production.
+                  </h2>
+                </div>
+
+              </div>
+
+              <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
+
+                {/* DARK OVERLAY (IMPORTANT) */}
+                <div className="absolute inset-0 bg-black/50 z-10"></div>
+
+                {/* IMAGES */}
+                {slides.map((slide, index) => (
+                  <img
+                    key={index}
+                    src={slide.image}
+                    alt="banner"
+                    className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${index === current ? "opacity-100" : "opacity-0"
+                      }`}
+                  />
+                ))}
+
+                {/* TEXT CONTENT */}
+                <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
+
+                  <h3 className="text-white text-xl md:text-2xl font-bold mb-2 drop-shadow-lg">
+                    {slides[current].title}
+                  </h3>
+
+                </div>
+
+                {/* DOT NAVIGATION */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrent(index)}
+                      className={`w-2 h-2 rounded-full ${current === index ? "bg-white" : "bg-white/40"
+                        }`}
+                    />
+                  ))}
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const SupplierQuality: React.FC = () => {
   const navigate = useNavigate();
@@ -11,39 +165,7 @@ const SupplierQuality: React.FC = () => {
   return (
     <div className="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden antialiased">
       {/* Hero Section */}
-      <div className="relative w-full bg-surface-light dark:bg-surface-dark border-b border-[#f0f2f4] dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 md:px-10 py-12 md:py-20">
-          <div className="flex flex-col md:flex-row gap-10 items-center">
-            <div className="flex-1 flex flex-col gap-6 z-10">
-              
-              <h1 className="text-[#111418] dark:text-white text-4xl md:text-6xl font-black leading-[1.1] tracking-tight">
-                Supplier Quality
-              </h1>
-              <p className="text-[#617589] dark:text-gray-300 text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
-              Supplier Quality is our commitment to ensure every supplier delivers consistent quality, reliable performance, and zero disruption to your production.              </p>
-              <div className=" flow-dot flex flex-wrap gap-4 pt-4">
-                <button
-                  onClick={() => navigate('/contact')}
-                  className="flex items-center justify-center rounded-lg h-12 px-8 bg-primary hover:bg-blue-700 text-white text-base font-bold transition-all shadow-lg shadow-blue-500/20"
-                >
-                  Start a Diagnostic
-                </button>
-                <button
-                  onClick={() => {
-                    const el = document.getElementById('solutions');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="flex items-center justify-center rounded-lg h-12 px-8 bg-white dark:bg-surface-dark border border-[#dbe0e6] dark:border-gray-700 hover:border-primary text-[#111418] dark:text-white text-base font-bold transition-all"
-                >
-                  Explore Solutions
-                </button>
-              </div>
-            </div>
-
-            <BannerCarousel />
-          </div>
-        </div>
-      </div>
+      <BannerCarousel />
 
       {/* Stats Bar */}
       <div className="border-b border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-surface-dark" style={{ display: "none" }}>
@@ -73,74 +195,74 @@ const SupplierQuality: React.FC = () => {
       <div id="solutions" className="w-full py-16 md:py-24 bg-background-light dark:bg-background-dark">
         <div className="max-w-7xl mx-auto px-4 md:px-10 flex flex-col gap-16">
           <div className="max-w-7xl mx-auto flex flex-col gap-10">
-  
-  {/* Header */}
-  <div className="text-center max-w-3xl mx-auto">
-    <h2 className="text-primary font-bold tracking-wider uppercase text-sm">
-      Our Methodology
-    </h2>
-    <h3 className="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold mt-2">
-      Product Development & Supplier Quality Process
-    </h3>
-    <p className="text-[#617589] dark:text-gray-300 mt-4">
-      We follow a structured supplier quality methodology to ensure consistent quality, reduced defects, and stable supplier performance from onboarding to mass production.
-    </p>
-  </div>
 
-  {/* FLOW */}
-  <div className="relative flex flex-col md:flex-row items-center justify-between gap-10">
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-primary font-bold tracking-wider uppercase text-sm">
+                Our Methodology
+              </h2>
+              <h3 className="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold mt-2">
+                Product Development & Supplier Quality Process
+              </h3>
+              <p className="text-[#617589] dark:text-gray-300 mt-4">
+                We follow a structured supplier quality methodology to ensure consistent quality, reduced defects, and stable supplier performance from onboarding to mass production.
+              </p>
+            </div>
 
-    {/* Dotted Line */}
-<div className="hidden md:block absolute left-0 w-full border-t-2 border-dotted border-gray-400 z-0"
-     style={{ top: "24px" }}>
+            {/* FLOW */}
+            <div className="relative flex flex-col md:flex-row items-center justify-between gap-10">
 
-  <div className="flow-dot absolute left-0 top-0 w-3 h-3 bg-blue-500 rounded-full animate-flow-step z-10 -translate-y-1/2"></div>
+              {/* Dotted Line */}
+              <div className="hidden md:block absolute left-0 w-full border-t-2 border-dotted border-gray-400 z-0"
+                style={{ top: "24px" }}>
 
-</div>
-    {/* Step 1 */}
-    <div id="step1" className="flex flex-col items-center text-center relative z-10">
-      <div className="w-12 h-12 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">1</div>
-      <p className="mt-3 font-semibold text-purple-600">Understand Requirements</p>
-    </div>
+                <div className="flow-dot absolute left-0 top-0 w-3 h-3 bg-blue-500 rounded-full animate-flow-step z-10 -translate-y-1/2"></div>
 
-    {/* Step 2 */}
-    <div id="step2" className="flex flex-col items-center text-center relative z-10 md:mt-10">
-      <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">2</div>
-      <p className="mt-3 font-semibold text-blue-600">Supplier Evaluation</p>
-    </div>
+              </div>
+              {/* Step 1 */}
+              <div id="step1" className="flex flex-col items-center text-center relative z-10">
+                <div className="w-12 h-12 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">1</div>
+                <p className="mt-3 font-semibold text-purple-600">Understand Requirements</p>
+              </div>
 
-    {/* Step 3 */}
-    <div id="step3" className="flex flex-col items-center text-center relative z-10">
-      <div className="w-12 h-12 rounded-full bg-cyan-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">3</div>
-      <p className="mt-3 font-semibold text-cyan-600">Process Validation</p>
-    </div>
+              {/* Step 2 */}
+              <div id="step2" className="flex flex-col items-center text-center relative z-10 md:mt-10">
+                <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">2</div>
+                <p className="mt-3 font-semibold text-blue-600">Supplier Evaluation</p>
+              </div>
 
-    {/* Step 4 */}
-    <div id="step4" className="flex flex-col items-center text-center relative z-10 md:mt-10">
-      <div className="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">4</div>
-      <p className="mt-3 font-semibold text-green-600">APQP / PPAP & Launch Readiness</p>
-    </div>
+              {/* Step 3 */}
+              <div id="step3" className="flex flex-col items-center text-center relative z-10">
+                <div className="w-12 h-12 rounded-full bg-cyan-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">3</div>
+                <p className="mt-3 font-semibold text-cyan-600">Process Validation</p>
+              </div>
 
-    {/* Step 5 */}
-    <div id="step5" className="flex flex-col items-center text-center relative z-10">
-      <div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">5</div>
-      <p className="mt-3 font-semibold text-orange-600">Issue Control & Corrective Actions</p>
-    </div>
+              {/* Step 4 */}
+              <div id="step4" className="flex flex-col items-center text-center relative z-10 md:mt-10">
+                <div className="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">4</div>
+                <p className="mt-3 font-semibold text-green-600">APQP / PPAP & Launch Readiness</p>
+              </div>
 
-    {/* Step 6 */}
-    <div id="step6" className="flex flex-col items-center text-center relative z-10 md:mt-10">
-      <div className="w-12 h-12 rounded-full bg-yellow-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">6</div>
-      <p className="mt-3 font-semibold text-yellow-500">Performance Monitoring & Improvement</p>
-    </div>
+              {/* Step 5 */}
+              <div id="step5" className="flex flex-col items-center text-center relative z-10">
+                <div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">5</div>
+                <p className="mt-3 font-semibold text-orange-600">Issue Control & Corrective Actions</p>
+              </div>
 
-  </div>
+              {/* Step 6 */}
+              <div id="step6" className="flex flex-col items-center text-center relative z-10 md:mt-10">
+                <div className="w-12 h-12 rounded-full bg-yellow-500 text-white flex items-center justify-center font-bold text-lg shadow-lg">6</div>
+                <p className="mt-3 font-semibold text-yellow-500">Performance Monitoring & Improvement</p>
+              </div>
 
-  {/* Bottom Text */}
-  <p className="text-center text-[#617589] dark:text-gray-400 max-w-3xl mx-auto">
-    We work through a simple flow: understand requirements, evaluate suppliers, validate processes, support launch readiness, resolve quality issues, and continuously improve supplier performance.
-  </p>
+            </div>
 
-</div>
+            {/* Bottom Text */}
+            <p className="text-center text-[#617589] dark:text-gray-400 max-w-3xl mx-auto">
+              We work through a simple flow: understand requirements, evaluate suppliers, validate processes, support launch readiness, resolve quality issues, and continuously improve supplier performance.
+            </p>
+
+          </div>
 
 
 

@@ -367,7 +367,7 @@ const Home: React.FC = () => {
               {
                 title: 'Cost Optimization & Value Engineering',
                 icon: 'fa-chart-line',
-                path: '/cost-optimization',
+                path: '/vave',
                 items: [
                   'Design-to-Cost (DTC)',
                   'Value Engineering / VAVE',
@@ -510,7 +510,7 @@ const Home: React.FC = () => {
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 dark:text-white">{ind.t}</h4>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{ind.d}</p>
+
                 </div>
               ))}
           </div>
