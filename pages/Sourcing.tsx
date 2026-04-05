@@ -491,7 +491,7 @@ const Sourcing: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-blue-50 to-white py-20 px-6 md:px-24 text-center rounded-2xl shadow-sm">
+      <div className="bg-gradient-to-r from-blue-50 to-white py-5 px-6 md:px-24 text-center rounded-2xl shadow-sm">
         <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">
           Our Commitment
         </h2>
