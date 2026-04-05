@@ -1,6 +1,177 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import "./css/costing.css";
+
+const BannerCarousel: React.FC = () => {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+  const [transitionClass, setTransitionClass] = useState('opacity-100');
+  const navigate = useNavigate();
+
+  const [current, setCurrent] = useState(0);
+
+  const slides = [
+    {
+      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789",
+      title: "Know what a product should cost — before you negotiate what it will cost"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581091215367-59ab6b1f3c9c",
+      title: "First-principles costing built from material, process, and manufacturing reality."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
+      title: "Transparent, fact-based cost structures that replace assumptions with data."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581091215367-59ab6b1f3c9c",
+      title: "Engineering-driven cost models that reflect how parts are actually made"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
+      title: "Turn supplier quotes into structured, negotiation-ready cost intelligence"
+    }
+  ];
+
+  const goToSlide = (index: number) => {
+    setTransitionClass('opacity-0');
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setTransitionClass('opacity-100');
+    }, 300);
+  };
+
+  const nextSlide = () => {
+    goToSlide((currentSlide + 1) % slides.length);
+    setIsAutoplay(false);
+  };
+
+  const prevSlide = () => {
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    setIsAutoplay(false);
+  };
+
+  // Auto-rotation effect
+  useEffect(() => {
+    if (!isAutoplay) return;
+
+    const timer = setInterval(() => {
+      setTransitionClass('opacity-0');
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setTransitionClass('opacity-100');
+      }, 300);
+    }, 6000); // Change slide every 6 seconds
+
+    return () => clearInterval(timer);
+  }, [isAutoplay]);
+
+  // Resume autoplay after 10 seconds of inactivity
+  useEffect(() => {
+    if (isAutoplay) return;
+
+    const timer = setTimeout(() => {
+      setIsAutoplay(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, [isAutoplay]);
+
+  const slide = slides[currentSlide];
+
+  return (
+    <div className="relative w-full bg-slate-900 overflow-hidden">
+      {/* Dynamic Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
+          <source src="" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
+      </div>
+
+      <div className="px-4 md:px-10 flex flex-1 justify-center py-5 relative z-10">
+        <div className="flex flex-col max-w-[1200px] flex-1">
+          <div className="@container">
+            <div className="flex flex-col gap-6 py-10 lg:flex-row items-center">
+              <div className="flex flex-col gap-6 lg:justify-center flex-1">
+                <div className="flex flex-col gap-4 text-left">
+                  <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl drop-shadow-lg">
+                    Cost Modeling & Estimation
+                  </h1>
+                  <h2 className="text-slate-300 text-lg font-normal leading-relaxed drop-shadow-md">
+                    Should-Costing defines what a product should cost by breaking it down into material, process, and overhead—based on facts, not supplier quotes.
+                  </h2>
+                </div>
+
+<div className="flex  gap-4 mt-2 justify-center lg:justify-start">
+                <button 
+                  onClick={() => {
+                    const el = document.getElementById('methodology');
+                    el?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex h-12 items-center justify-center rounded-lg px-8 bg-primary text-white text-base font-bold transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 shadow-xl shadow-primary/20">
+                  <span className="truncate">Explore Services</span>
+                </button>
+                <button onClick={() => navigate('/contact')} className="flex h-12 items-center justify-center rounded-lg px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-base font-bold transition-all hover:bg-white/20">
+                  <span className="truncate">Contact Sales</span>
+                </button>
+              </div>
+              </div>
+               
+
+              
+
+              <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
+
+                {/* DARK OVERLAY (IMPORTANT) */}
+                <div className="absolute inset-0 bg-black/50 z-10"></div>
+
+                {/* IMAGES */}
+                {slides.map((slide, index) => (
+                  <img
+                    key={index}
+                    src={slide.image}
+                    alt="banner"
+                    className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${index === current ? "opacity-100" : "opacity-0"
+                      }`}
+                  />
+                ))}
+
+                {/* TEXT CONTENT */}
+                <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
+
+                  <h3 className="text-white text-xl md:text-2xl font-bold mb-2 drop-shadow-lg">
+                    {slides[current].title}
+                  </h3>
+
+                </div>
+
+                {/* DOT NAVIGATION */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrent(index)}
+                      className={`w-2 h-2 rounded-full ${current === index ? "bg-white" : "bg-white/40"
+                        }`}
+                    />
+                  ))}
+                </div>
+
+              </div>
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const Costing: React.FC = () => {
   const navigate = useNavigate();
@@ -28,284 +199,208 @@ const Costing: React.FC = () => {
       `}</style>
 
       {/* Hero Section */}
-      <section className="relative bg-slate-900 py-16 md:py-24 lg:py-32 overflow-hidden">
-        {/* Dynamic Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-50">
-            <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
-        </div>
 
-        <div className="layout-container relative z-10">
-          <div className="layout-content-container flex flex-col lg:flex-row max-w-[1200px] mx-auto w-full px-6 lg:px-20 xl:px-40 items-center justify-between">
-            <div className="flex flex-col gap-8 text-center lg:text-left lg:w-3/5">
-              <div className="flex flex-col gap-4">
-                <span className="text-primary font-bold tracking-wider text-sm uppercase">Costing Services</span>
-                <h1 className="text-white text-4xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-[-0.033em] font-display drop-shadow-lg">
-                  Precision Costing for Engineering Excellence
-                </h1>
-                <h2 className="text-slate-200 text-lg lg:text-xl font-normal leading-relaxed drop-shadow-md">
-                  Drive profitability with data-backed cost modeling and efficiency analysis tailored to your manufacturing reality.
-                </h2>
-              </div>
-              <div className="flex flex-wrap gap-4 mt-2 justify-center lg:justify-start">
-                <button 
-                  onClick={() => {
-                    const el = document.getElementById('methodology');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="flex h-12 items-center justify-center rounded-lg px-8 bg-primary text-white text-base font-bold transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 shadow-xl shadow-primary/20">
-                  <span className="truncate">Explore Services</span>
-                </button>
-                <button onClick={() => navigate('/contact')} className="flex h-12 items-center justify-center rounded-lg px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-base font-bold transition-all hover:bg-white/20">
-                  <span className="truncate">Contact Sales</span>
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col gap-6 mt-12 lg:mt-0 lg:w-2/5 lg:pl-16">
-              <div className="flex items-center gap-6 justify-center lg:justify-start pt-4 lg:pt-0">
-                <div className="flex flex-col p-4 rounded-lg bg-white/5 backdrop-blur-md border border-white/10 shadow-md">
-                  <span className="text-3xl font-bold text-primary">15%</span>
-                  <span className="text-sm text-slate-400">Avg. Savings Identified</span>
-                </div>
-                <div className="w-px h-16 bg-white/10 hidden lg:block"></div>
-                <div className="flex flex-col p-4 rounded-lg bg-white/5 backdrop-blur-md border border-white/10 shadow-md">
-                  <span className="text-3xl font-bold text-primary">500+</span>
-                  <span className="text-sm text-slate-400">Models Generated</span>
-                </div>
-              </div>
-              <div className="hidden lg:block relative p-6 bg-slate-900/80 backdrop-blur-xl rounded-xl border border-white/10 shadow-xl max-w-sm mx-auto lg:mx-0 lg:ml-auto">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                    <span className="material-symbols-outlined">network_node</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-white">Predictive Cost Analytics</p>
-                    <p className="text-xs text-slate-400">Leveraging AI for proactive cost optimization.</p>
-                  </div>
-                </div>
-                <div className="h-16 mt-4 relative">
-                  <div className="absolute inset-0 bg-primary/20 via-primary/50 to-primary/20 rounded-full blur-sm opacity-70"></div>
-                  <div className="absolute inset-y-0 left-0 w-2/3 h-full bg-primary/70 rounded-full flex items-center justify-end pr-2 text-white text-xs font-bold shadow-inner">Cost Efficiency</div>
-                  <div className="absolute inset-y-0 right-0 w-1/3 h-full bg-primary/30 rounded-full flex items-center justify-start pl-2 text-primary text-xs font-bold shadow-inner">Risk Factor</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BannerCarousel/>
+      
 
       {/* Methodology Section */}
-      <section id="methodology" className="bg-slate-50 dark:bg-slate-900 py-16 border-y border-slate-200 dark:border-slate-800">
-        <div className="layout-container flex flex-col justify-center px-6 lg:px-20 xl:px-40">
-          <div className="layout-content-container flex flex-col max-w-[960px] mx-auto text-center">
-            <span className="text-primary font-bold tracking-wider text-xs uppercase mb-3">Our Methodology</span>
-            <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em] mb-6 font-display">
-              Comprehensive Cost Analysis from Every Angle
-            </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto">
-              We don't just estimate prices; we engineer costs. Our team dissects every element of your spend—from raw materials and labor to overhead and logistics—providing granular visibility into your cost structures.
-            </p>
-          </div>
-        </div>
-      </section>
+      <section className="bg-gray-50 py-8 px-6 lg:px-20">
+  <div className="max-w-7xl mx-auto">
+     <div className="text-center mb-12">
+      <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
+        Our Process
+      </h2>
+    </div>
+  
+    <div className="grid lg:grid-cols-2 gap-10">
 
-      {/* Services Grid Section */}
-      <section className="bg-white dark:bg-background-dark py-20">
+     
+      <div className="bg-white p-8 rounded-2xl shadow-md">
+        <h3 className="text-2xl font-semibold text-blue-600 mb-4">
+          Cost Modeling & Estimation
+        </h3>
+        <p className="text-gray-600 leading-relaxed">
+          Cost Modeling & Estimation creates a transparent, fact-based breakdown of product cost by analyzing materials, manufacturing processes, labor, overheads, and supply chain factors.
+        </p>
+        <p className="text-gray-600 mt-4">
+          It enables informed decisions in design, sourcing, and supplier negotiations.
+        </p>
+      </div>
+
+     
+      <div className="bg-white p-8 rounded-2xl shadow-md">
+        <h3 className="text-2xl font-semibold text-blue-600 mb-4">
+          Our Cost Modeling & Estimation Approach
+        </h3>
+        <p className="text-gray-600 leading-relaxed">
+          We follow a structured, bottom-up approach to build <b>transparent and defensible cost models</b> based on how a product should be manufactured—not on supplier quotations.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section className="bg-gray-100 py-6">
+  <div className="max-w-7xl mx-auto text-center">
+
+    <h2 className="text-3xl font-semibold text-gray-700 mb-10">
+      Optimizing Manufacturing Costs
+    </h2>
+
+    <svg viewBox="0 0 1200 320" className="w-full h-auto">
+
+      <text x="350" y="40" font-size="14" fill="#555" text-anchor="middle">
+        Determine the most appropriate route
+      </text>
+      <text x="600" y="40" font-size="14" fill="#555" text-anchor="middle">
+        Use realistic assumptions and data
+      </text>
+      <text x="850" y="40" font-size="14" fill="#555" text-anchor="middle">
+        Factor in regional manufacturing
+      </text>
+
+      <line x1="100" y1="80" x2="1100" y2="80"
+            stroke="#888" stroke-dasharray="5,5"/>
+
+      <polygon points="300,80 290,75 290,85" fill="#888"/>
+      <polygon points="550,80 540,75 540,85" fill="#888"/>
+      <polygon points="800,80 790,75 790,85" fill="#888"/>
+
+
+      <polygon points="120,120 200,100 280,120 280,200 200,220 120,200"
+               fill="#4F83E3"/>
+      <text x="200" y="155" fill="white" font-size="12" text-anchor="middle">
+        High Manufacturing
+      </text>
+      <text x="200" y="170" fill="white" font-size="12" text-anchor="middle">
+        Costs
+      </text>
+
+      <polygon points="320,120 400,100 480,120 480,200 400,220 320,200"
+               fill="#2F66D0"/>
+      <text x="400" y="150" fill="white" font-size="12" text-anchor="middle">
+        Define Manufacturing
+      </text>
+      <text x="400" y="170" fill="white" font-size="12" text-anchor="middle">
+        Route
+      </text>
+
+      <polygon points="520,120 600,100 680,120 680,200 600,220 520,200"
+               fill="#4F83E3"/>
+      <text x="600" y="160" fill="white" font-size="12" text-anchor="middle">
+        Model Costs
+      </text>
+
+      <polygon points="720,120 800,100 880,120 880,200 800,220 720,200"
+               fill="#9BB8E8"/>
+      <text x="800" y="150" fill="white" font-size="12" text-anchor="middle">
+        Consider Regional
+      </text>
+      <text x="800" y="170" fill="white" font-size="12" text-anchor="middle">
+        Conditions
+      </text>
+
+      <polygon points="920,120 1000,100 1080,120 1080,200 1000,220 920,200"
+               fill="#2F66D0"/>
+      <text x="1000" y="150" fill="white" font-size="12" text-anchor="middle">
+        Optimized Manufacturing
+      </text>
+      <text x="1000" y="170" fill="white" font-size="12" text-anchor="middle">
+        Costs
+      </text>
+
+      <line x1="100" y1="240" x2="1100" y2="240"
+            stroke="#888" stroke-dasharray="5,5"/>
+
+      <polygon points="300,240 290,235 290,245" fill="#888"/>
+      <polygon points="550,240 540,235 540,245" fill="#888"/>
+      <polygon points="800,240 790,235 790,245" fill="#888"/>
+
+      <text x="170" y="280" font-size="14" fill="#666" text-anchor="middle">
+        Unrealistic cost assumptions
+      </text>
+
+      <text x="970" y="280" font-size="14" fill="#666" text-anchor="middle">
+        Realistic cost assumptions are made
+      </text>
+
+    </svg>
+
+  </div>
+</section>
+
+      <section className="bg-white dark:bg-background-dark py-10">
         <div className="layout-container flex flex-col justify-center px-6 lg:px-20 xl:px-40">
-          <div className="layout-content-container max-w-[1200px] mx-auto w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Card 01 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">calculate</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">01</span>
+           <h2 className="text-3xl font-semibold text-gray-700 mb-10 ">
+            Our Cost Modeling & Estimation Offerings 
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Part-Level Should-Cost Models</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                We build detailed, bottom-up should-cost models at part level, covering material, manufacturing processes, labor, overheads, scrap, margins, and region-specific assumptions.              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3  transition-colors">Value we deliver :</h2>
+
                 </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Overhead & Indirect Cost Rates</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Precise calculation of shop floor burden and indirect overhead rates. We analyze facility expenses to determine accurate hourly rates for machines and labor, ensuring no hidden costs.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4">
-                  <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary w-3/4 rounded-full"></div>
-                  </div>
-                  <div className="flex justify-between mt-2 text-[10px] text-slate-400 uppercase font-bold tracking-wider">
-                    <span>Direct</span>
-                    <span>Indirect</span>
-                  </div>
-                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Clear visibility into true part-level cost structures</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Fact-based cost benchmarks independent of supplier quotes</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Strong foundation for sourcing, VAVE, and cost-reduction programs</li>
+                </ul>
               </div>
-              {/* Card 02 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">factory</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">02</span>
+            </div>
+
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Supplier Quote Validation & Gap Analysis</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                  We compare supplier quotations against should-cost models to identify cost gaps and explain variances across material, process, and overhead drivers.              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Customized Cost Models</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Tailoring models to specific facility actual costs. We move beyond generic industry averages to build models reflecting your specific geography, equipment vintage, and labor agreements.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4 flex gap-2">
-                  <span className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-[10px] font-bold text-slate-500 uppercase">Facility Specific</span>
-                  <span className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-[10px] font-bold text-slate-500 uppercase">Geo-Located</span>
-                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Identification of overpricing and hidden cost buffers</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Transparent, data-backed inputs for negotiations</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Improved commercial outcomes without quality or supply risk</li>
+                </ul>
               </div>
-              {/* Card 03 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">lightbulb</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">03</span>
+            </div>
+
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Parametric & Early-Design Costing</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                We provide rapid cost estimates in early design stages using key parameters such as weight, size, complexity, and production volume, enabling scenario-based cost evaluation.              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Could Cost Models</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Theoretical costing for components to determine potential savings. We explore "what-if" scenarios with alternative materials or relaxed tolerances to find the lowest viable cost.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4">
-                  <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
-                    <span className="material-symbols-outlined text-sm">trending_down</span> Potential Savings Identified
-                  </div>
-                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Early cost visibility before design freeze</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Faster decision-making during concept and RFQ phases</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Reduced risk of late-stage cost surprises</li>
+                </ul>
               </div>
-              {/* Card 04 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">gavel</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">04</span>
+            </div>
+
+            <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+              <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Design-to-Cost (DTC) Support</h4>
+              <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
+                  We assess the cost impact of design choices by analyzing geometry, tolerances, materials, and manufacturing feasibility to support cost-aware design decisions.              </p>
+              <div className="">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Should Cost Models</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Benchmark costing based on optimal manufacturing processes. We define what a part <em>should</em> cost in a best-in-class environment, empowering your negotiation strategy.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4">
-                  <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-full border-2 border-primary flex items-center justify-center text-[10px] font-bold text-primary">Target</div>
-                    <div className="h-px bg-slate-200 flex-1 dark:bg-slate-700"></div>
-                    <div className="text-xs text-slate-500 font-medium">Optimal Process</div>
-                  </div>
-                </div>
-              </div>
-              {/* Card 05 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">difference</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">05</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Gap Analysis</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Evaluation of current cost structure versus should cost. We identify the delta between what you pay and what you should pay, highlighting specific areas for renegotiation or process improvement.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4">
-                  <div className="flex gap-1 h-12 items-end">
-                    <div className="w-8 bg-slate-300 dark:bg-slate-600 rounded-t h-10 relative group-hover:bg-slate-400 transition-colors"></div>
-                    <div className="w-8 bg-primary rounded-t h-6 relative"></div>
-                    <div className="text-[10px] text-primary font-bold ml-2 self-center">The Gap</div>
-                  </div>
-                </div>
-              </div>
-              {/* Card 06 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">pie_chart</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">06</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Cost Structure Efficiency</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Deep dive into cost structure efficiency. We analyze the ratio of material, labor, and overhead to identify imbalances and waste within the total cost of ownership.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4 flex gap-2">
-                  <div className="h-4 w-4 rounded-full bg-primary"></div>
-                  <div className="h-4 w-4 rounded-full bg-primary/60"></div>
-                  <div className="h-4 w-4 rounded-full bg-primary/30"></div>
-                  <span className="text-xs text-slate-500 ml-2">Breakdown Analysis</span>
-                </div>
-              </div>
-              {/* Card 07 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">engineering</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">07</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Labor & Process Efficiency</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Time-motion studies and labor optimization. We assess the efficiency of manual operations and machine cycle times to reduce labor content per unit.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4">
-                  <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-                    <span>Cycle Time</span>
-                    <span className="text-primary font-bold">-12%</span>
-                  </div>
-                  <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full">
-                    <div className="h-full bg-green-500 w-4/5 rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-              {/* Card 08 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">query_stats</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">08</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Sensitivity Analysis</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    "What-if" scenario planning. We model how fluctuations in raw material prices, exchange rates, or volume changes impact your unit cost, preparing you for market volatility.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4 grid grid-cols-3 gap-1">
-                  <div className="h-6 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center text-[8px] text-slate-400">Low</div>
-                  <div className="h-6 bg-primary/20 rounded flex items-center justify-center text-[8px] text-primary font-bold">Mid</div>
-                  <div className="h-6 bg-slate-100 dark:bg-slate-700 rounded flex items-center justify-center text-[8px] text-slate-400">High</div>
-                </div>
-              </div>
-              {/* Card 09 */}
-              <div className="service-card group flex flex-col gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">construction</span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">09</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-slate-900 dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors font-display">Tooling Cost</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    Amortization and CapEx analysis. We validate tooling quotes against industry standards for complexity and tonnage, optimizing your upfront capital expenditure.
-                  </p>
-                </div>
-                <div className="mt-auto pt-4 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-sm text-slate-400">straighten</span>
-                  <span className="text-xs text-slate-500">Design • Build • Tryout</span>
-                </div>
+                <ul className="space-y-2 mb-6 text-sm text-[#617589] dark:text-gray-400">
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Optimized balance between performance and cost</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Improved manufacturability and supplier acceptance</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>Direct linkage between engineering decisions and cost impact</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -398,26 +493,6 @@ const Costing: React.FC = () => {
         </div>
       </section>
 
-      <section className="bg-primary py-16 md:py-24">
-        <div className="layout-container flex flex-col justify-center px-6 lg:px-40">
-          <div className="layout-content-container max-w-[800px] mx-auto text-center flex flex-col gap-8 items-center">
-            <h2 className="text-white text-3xl md:text-5xl font-black leading-tight tracking-[-0.015em] font-display">
-              Ready to optimize your spend?
-            </h2>
-            <p className="text-blue-100 text-lg md:text-xl font-medium max-w-xl">
-              Start your journey towards cost transparency and higher profitability today. Get a complimentary consultation on your top 5 spend items.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-              <button onClick={() => navigate('/contact')} className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-white text-primary text-base font-bold leading-normal tracking-[0.015em] hover:bg-slate-50 transition-colors shadow-lg">
-                Request Cost Analysis
-              </button>
-              <button onClick={() => navigate('/contact')} className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-blue-800 text-white text-base font-bold leading-normal tracking-[0.015em] border border-blue-600 hover:bg-blue-900 transition-colors">
-                Talk to an Engineer
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

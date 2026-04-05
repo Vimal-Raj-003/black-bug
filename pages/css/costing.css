@@ -1,0 +1,35 @@
+.hex {
+  width: 160px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  clip-path: polygon(
+    25% 0%, 75% 0%, 
+    100% 50%, 
+    75% 100%, 
+    25% 100%, 
+    0% 50%
+  );
+}
+
+.arrow {
+  width: 40px;
+  height: 2px;
+  background: gray;
+  position: relative;
+}
+
+.arrow::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: -4px;
+  border-left: 8px solid gray;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}

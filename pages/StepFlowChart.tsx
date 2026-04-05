@@ -10,7 +10,7 @@ const steps = [
       "Improve efficiency"
     ],
     color: "from-blue-800 to-blue-900",
-    height: "h-52"
+    height: "h-58"
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const steps = [
       "Manufacturing methods"
     ],
     color: "from-cyan-500 to-cyan-700",
-    height: "h-60"
+    height: "h-62"
   },
   {
     id: 3,
@@ -87,7 +87,7 @@ export default function LadderSteps() {
             className={`relative w-36 bg-gradient-to-b ${step.color} text-white p-2 rounded-t-xl shadow-md flex flex-col justify-end 
 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300`}
             style={{
-              height: `${200 + index * 40}px`
+              height: `${200 + index * 50}px`
             }}          >
 
             {/* Floating Number */}
