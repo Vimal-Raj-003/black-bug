@@ -162,7 +162,7 @@ const WhoWeAre: React.FC = () => {
     </section>
 
     {/* Purpose / Intersection */}
-    <section className="py-24 bg-brand-dark text-white" style={{ color: "white", background: "darkslategrey" }}>
+    <section className="py-16 bg-brand-dark text-white" style={{ color: "white", background: "darkslategrey" }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-7xl mx-auto mb-10">
           <h2 className="text-4xl font-bold mb-6">Our Purpose</h2>
@@ -199,7 +199,7 @@ const WhoWeAre: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-20 p-12 bg-brand-blue rounded-3xl text-center">
+        <div className="mt-10 p-10 bg-brand-blue rounded-3xl text-center">
           <p className="text-2xl font-medium max-w-4xl mx-auto leading-relaxed">
             Our work is rooted in real-world engineering, transparent cost structures, and responsible sourcing practices — helping clients build competitive, sustainable, and future-ready products.
           </p>
