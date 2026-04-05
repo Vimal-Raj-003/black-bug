@@ -346,7 +346,7 @@ const Vave: React.FC = () => {
       </div>
 
       {/* Why Choose Us Section */}
-      <div className="w-full bg-background-light dark:bg-background-dark py-16">
+      <div className="w-full bg-background-light dark:bg-background-dark py-10">
         <div className="px-4 md:px-10 lg:px-40 flex justify-center">
           <div className="max-w-[960px] w-full flex flex-col gap-10">
             <div className="flex flex-col gap-4 text-center items-center">
@@ -414,7 +414,7 @@ const Vave: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-blue-50 to-white py-20 px-6 md:px-24 text-center rounded-2xl shadow-sm">
+      <div className="bg-gradient-to-r from-blue-50 to-white py-10 px-6 md:px-24 text-center rounded-2xl shadow-sm">
         <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">
           Our VAVE Promise
         </h2>

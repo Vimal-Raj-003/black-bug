@@ -28,7 +28,7 @@ const loopData = [...qualityPoints, ...qualityPoints];
 
 export default function SupplierQualityCarousel() {
   return (
-    <div className="w-full bg-gradient-to-br from-[#003366] via-[#004080] to-[#001a33] py-20 relative overflow-hidden">
+    <div className="w-full bg-gradient-to-br from-[#003366] via-[#004080] to-[#001a33] py-10 relative overflow-hidden">
 
       {/* Background */}
       <div

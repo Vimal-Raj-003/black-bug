@@ -192,7 +192,7 @@ const SupplierQuality: React.FC = () => {
       </div>
 
       {/* Main Content Section */}
-      <div id="solutions" className="w-full py-16 md:py-24 bg-background-light dark:bg-background-dark">
+      <div id="solutions" className="w-full py-8 md:py-10 bg-background-light dark:bg-background-dark">
         <div className="max-w-7xl mx-auto px-4 md:px-10 flex flex-col gap-16">
           <div className="max-w-7xl mx-auto flex flex-col gap-10">
 

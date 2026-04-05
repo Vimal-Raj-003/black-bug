@@ -200,7 +200,7 @@ const Sourcing: React.FC = () => {
         </div>
       </div>
 
-      <div className="py-12 px-6 md:px-16 bg-white text-center">
+      <div className="py-8 px-6 md:px-16 bg-white text-center">
 
 
         <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-10">
@@ -212,49 +212,49 @@ const Sourcing: React.FC = () => {
 
           <div className="w-0 h-0 border-t-[70px] border-b-[70px] border-r-[60px] border-t-transparent border-b-transparent border-r-yellow-400"></div>
 
-          <div className="bg-yellow-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-yellow-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Requirement</span>
             <span className="text-sm">Understanding</span>
           </div>
 
 
-          <div className="bg-orange-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-orange-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Supply Market</span>
             <span className="text-sm">Mapping</span>
           </div>
 
 
-          <div className="bg-red-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-red-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Technical</span>
             <span className="text-sm">Evaluation</span>
           </div>
 
 
-          <div className="bg-pink-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-pink-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Cost</span>
             <span className="text-sm">Structuring</span>
           </div>
 
 
-          <div className="bg-purple-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-purple-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Commercial</span>
             <span className="text-sm">Sourcing</span>
           </div>
 
 
-          <div className="bg-indigo-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-indigo-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Risk</span>
             <span className="text-sm">Assessment</span>
           </div>
 
 
-          <div className="bg-blue-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-blue-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Supplier</span>
             <span className="text-sm">Selection</span>
           </div>
 
 
-          <div className="bg-cyan-400 text-white p-4 w-36 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-cyan-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Continuous</span>
             <span className="text-sm">Improvement</span>
           </div>
