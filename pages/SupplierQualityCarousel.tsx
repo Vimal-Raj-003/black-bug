@@ -42,7 +42,7 @@ export default function SupplierQualityCarousel() {
 
       <div className="w-full px-6 relative z-10">
 
-        <h2 className="text-white text-3xl md:text-5xl font-bold text-center mb-12">
+        <h2 className="text-white text-3xl md:text-3xl font-bold text-center mb-12">
           Why Choose Us for Supplier Quality
         </h2>
 
@@ -57,6 +57,7 @@ export default function SupplierQualityCarousel() {
               duration: 20,
               repeat: Infinity
             }}
+            whileHover={{ animationPlayState: "paused" }}
           >
             {loopData.map((item, i) => (
               <div

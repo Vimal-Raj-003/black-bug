@@ -415,7 +415,7 @@ const Vave: React.FC = () => {
       </div>
 
       <div className="bg-gradient-to-r from-blue-50 to-white py-10 px-6 md:px-24 text-center rounded-2xl shadow-sm">
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">
+        <h2 className="text-3xl md:text-3xl font-semibold text-gray-900 mb-6">
           Our VAVE Promise
         </h2>
         <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
