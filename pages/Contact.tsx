@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const Contact: React.FC = () => {
 
+    const [error, setError] = useState("");
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -24,12 +26,12 @@ const Contact: React.FC = () => {
         e.preventDefault();
 
         if (!formData.name || !formData.phone) {
-            alert("Please fill Name and Phone Number");
+            setError("Please fill Name and Phone Number");
             return;
         }
 
         if (!validatePhone(formData.phone)) {
-            alert("Enter valid 10-digit phone number");
+            setError("Enter valid 10-digit phone number");
             return;
         }
 
@@ -48,16 +50,40 @@ ${formData.message}
 
         const encodedMessage = encodeURIComponent(message);
 
-        //const phoneNumber = "917200090243";
-        const phoneNumber = "919943776338";
+        const phoneNumber = "917200090243";
 
         const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-        alert("Redirecting to WhatsApp...");
+        
         window.open(url, "_blank");
     };
 
     return (
+<div>
+    {error && (
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-6 w-[90%] max-w-md text-center animate-fadeIn">
+          
+          <div className="flex justify-center mb-4">
+            <div className="bg-red-100 text-red-600 p-3 rounded-full">
+              <span className="material-symbols-outlined text-2xl">error</span>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold mb-2">Validation Error</h3>
+
+          <p className="mb-6">{error}</p>
+
+          <button
+            onClick={() => setError("")}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg"
+          >
+            OK
+          </button>
+
+        </div>
+      </div>
+    )}
+        
         <div className="flex flex-col min-h-screen">
 
             {/* CONTACT FORM */}
@@ -163,6 +189,7 @@ ${formData.message}
                 </div>
             </section>
 
+        </div>
         </div>
     );
 };
