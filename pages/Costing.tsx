@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import "./css/costing.css";
 import { motion } from "motion/react";
 
+
 const BannerCarousel: React.FC = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -87,9 +88,7 @@ const BannerCarousel: React.FC = () => {
     <div className="relative w-full bg-slate-900 overflow-hidden">
       {/* Dynamic Video Background */}
       <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
-          <source src="" type="video/mp4" />
-        </video>
+        
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
       </div>
 
@@ -208,52 +207,53 @@ const WhyweChooseCarousel: React.FC = () => {
 
   return (
     <div className="w-full bg-gradient-to-br from-[#003366] via-[#004080] to-[#001a33] py-10 relative overflow-hidden">
-
-      {/* Background */}
-      <div
-        className="absolute top-0 left-0 w-full h-full opacity-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
-          backgroundSize: "40px 40px"
-        }}
-      ></div>
-
-      <div className="w-full px-6 relative z-10">
-
-        <h2 className="text-white text-3xl md:text-5xl font-bold text-center mb-12">
-          Why Choose Us for Cost Modeling & Estimation
-        </h2>
-
-        {/* Continuous Scroll */}
-        <div className="overflow-hidden">
-
-          <motion.div
-            className="flex gap-6"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              ease: "linear",
-              duration: 20,
-              repeat: Infinity
+    
+          {/* Background */}
+          <div
+            className="absolute top-0 left-0 w-full h-full opacity-10"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+              backgroundSize: "40px 40px"
             }}
-          >
-            {loopData.map((item, i) => (
-              <div
-                key={i}
-                className="min-w-[280px] md:min-w-[350px] bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20"
+          ></div>
+    
+          <div className="w-full px-6 relative z-10">
+    
+            <h2 className="text-white text-3xl md:text-3xl font-bold text-center mb-12">
+              Why Choose Us for Cost Modeling & Estimation
+            </h2>
+    
+            {/* Continuous Scroll */}
+            <div className="overflow-hidden">
+    
+              <motion.div
+                className="flex gap-6"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  ease: "linear",
+                  duration: 20,
+                  repeat: Infinity
+                }}
+                whileHover={{ animationPlayState: "paused" }}
               >
-                <h3 className="text-white text-lg font-semibold mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-blue-100 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </motion.div>
-
+                {loopData.map((item, i) => (
+                  <div
+                    key={i}
+                    className="min-w-[280px] md:min-w-[350px] bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20"
+                  >
+                    <h3 className="text-white text-lg font-semibold mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-blue-100 text-sm">{item.desc}</p>
+                  </div>
+                ))}
+              </motion.div>
+    
+            </div>
+    
+          </div>
         </div>
-
-      </div>
-    </div>
   );
 };
 
@@ -418,7 +418,7 @@ const Costing: React.FC = () => {
       </section>
 
       <section className="bg-white dark:bg-background-dark py-10">
-        <div className="layout-container flex flex-col justify-center px-6 lg:px-20 xl:px-40">
+       <div className="max-w-7xl mx-auto flex flex-col justify-center px-6 lg:px-20">
           <h2 className="text-3xl font-semibold text-gray-700 mb-10 ">
             Our Cost Modeling & Estimation Offerings
           </h2>
@@ -495,7 +495,7 @@ const Costing: React.FC = () => {
 <WhyweChooseCarousel/>
 
       <div className="bg-gradient-to-r from-blue-50 to-white py-5 px-6 md:px-24 text-center rounded-2xl shadow-sm">
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">
+        <h2 className="text-3xl md:text-3xl font-semibold text-gray-900 mb-6">
           Our Commitment
         </h2>
         <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">

@@ -58,29 +58,6 @@ const Engineering: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats Bar */}
-      <div className="border-y border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-surface-dark">
-        <div className="max-w-7xl mx-auto px-4 md:px-10 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="flex flex-col gap-1">
-              <h3 className="text-3xl font-bold text-[#111418] dark:text-white">100%</h3>
-              <p className="text-sm text-[#617589] dark:text-gray-400 font-medium">DFM Compliance</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <h3 className="text-3xl font-bold text-[#111418] dark:text-white">50+</h3>
-              <p className="text-sm text-[#617589] dark:text-gray-400 font-medium">Expert Engineers</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <h3 className="text-3xl font-bold text-[#111418] dark:text-white">ISO</h3>
-              <p className="text-sm text-[#617589] dark:text-gray-400 font-medium">Standard Quality</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <h3 className="text-3xl font-bold text-[#111418] dark:text-white">24h</h3>
-              <p className="text-sm text-[#617589] dark:text-gray-400 font-medium">Quote Turnaround</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Main Services Section */}
       <div className="w-full py-16 md:py-24 bg-background-light dark:bg-background-dark">
