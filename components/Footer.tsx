@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/logo/logo.png';
 
 const Footer: React.FC = () => (
-  <footer className="bg-[#0f141a] text-white pt-20 pb-10 border-t border-gray-800 font-sans">
+  <footer className="bg-[#0f141a] text-white pt-10 pb-10 border-t border-gray-800 font-sans">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
         
@@ -70,7 +70,7 @@ const Footer: React.FC = () => (
         </div>
       </div>
 
-      <div className="border-t border-gray-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="border-t border-gray-800/50 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-sm text-gray-500">© 2026 Hexuno Technologies. All rights reserved.</p>
         <div className="flex gap-8 text-sm text-gray-500">
           <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>

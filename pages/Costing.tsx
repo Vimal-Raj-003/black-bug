@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import "./css/costing.css";
+import { motion } from "motion/react";
 
 const BannerCarousel: React.FC = () => {
 
@@ -106,23 +107,23 @@ const BannerCarousel: React.FC = () => {
                   </h2>
                 </div>
 
-<div className="flex  gap-4 mt-2 justify-center lg:justify-start">
-                <button 
-                  onClick={() => {
-                    const el = document.getElementById('methodology');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="flex h-12 items-center justify-center rounded-lg px-8 bg-primary text-white text-base font-bold transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 shadow-xl shadow-primary/20">
-                  <span className="truncate">Explore Services</span>
-                </button>
-                <button onClick={() => navigate('/contact')} className="flex h-12 items-center justify-center rounded-lg px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-base font-bold transition-all hover:bg-white/20">
-                  <span className="truncate">Contact Sales</span>
-                </button>
+                <div className="flex  gap-4 mt-2 justify-center lg:justify-start">
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('methodology');
+                      el?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex h-12 items-center justify-center rounded-lg px-8 bg-primary text-white text-base font-bold transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 shadow-xl shadow-primary/20">
+                    <span className="truncate">Explore Services</span>
+                  </button>
+                  <button onClick={() => navigate('/contact')} className="flex h-12 items-center justify-center rounded-lg px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-base font-bold transition-all hover:bg-white/20">
+                    <span className="truncate">Contact Sales</span>
+                  </button>
+                </div>
               </div>
-              </div>
-               
 
-              
+
+
 
               <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
 
@@ -164,9 +165,93 @@ const BannerCarousel: React.FC = () => {
               </div>
 
             </div>
-            
+
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+
+const WhyweChooseCarousel: React.FC = () => {
+
+  const qualityPoints = [
+    {
+      title: "Engineering-Driven Cost Logic",
+      desc: "Our models are built from how products are actually designed and manufactured, ensuring realistic and defensible cost outputs."
+    },
+    {
+      title: "Bottom-Up, Fact-Based Models",
+      desc: "We rely on material physics, process data, cycle times, and market inputs—not supplier quotes or assumptions."
+    },
+    {
+      title: "Transparent & Auditable Outputs",
+      desc: "Every cost element is clearly structured and traceable, enabling internal validation, supplier discussions, and leadership confidence."
+    },
+    {
+      title: "Practical Manufacturing Insight",
+      desc: "Our experience across sheet metal, plastics, casting, machining, and assemblies ensures the models reflect shop-floor realities."
+    },
+    {
+      title: "Strong Link to VAVE & Sourcing",
+      desc: "Our cost models directly support VAVE initiatives, target costing, and negotiation strategies, turning insight into action."
+    },
+    {
+      title: "Region-Aware Cost Intelligence",
+      desc: "We factor in regional manufacturing economics, labor rates, and supply chain conditions, enabling accurate global comparisons."
+    }
+  ];
+
+  // duplicate for infinite loop
+  const loopData = [...qualityPoints, ...qualityPoints];
+
+  return (
+    <div className="w-full bg-gradient-to-br from-[#003366] via-[#004080] to-[#001a33] py-10 relative overflow-hidden">
+
+      {/* Background */}
+      <div
+        className="absolute top-0 left-0 w-full h-full opacity-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+          backgroundSize: "40px 40px"
+        }}
+      ></div>
+
+      <div className="w-full px-6 relative z-10">
+
+        <h2 className="text-white text-3xl md:text-5xl font-bold text-center mb-12">
+          Why Choose Us for Cost Modeling & Estimation
+        </h2>
+
+        {/* Continuous Scroll */}
+        <div className="overflow-hidden">
+
+          <motion.div
+            className="flex gap-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              ease: "linear",
+              duration: 20,
+              repeat: Infinity
+            }}
+          >
+            {loopData.map((item, i) => (
+              <div
+                key={i}
+                className="min-w-[280px] md:min-w-[350px] bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20"
+              >
+                <h3 className="text-white text-lg font-semibold mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-blue-100 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </motion.div>
+
+        </div>
+
       </div>
     </div>
   );
@@ -200,142 +285,142 @@ const Costing: React.FC = () => {
 
       {/* Hero Section */}
 
-      <BannerCarousel/>
-      
+      <BannerCarousel />
+
 
       {/* Methodology Section */}
       <section className="bg-gray-50 py-8 px-6 lg:px-20">
-  <div className="max-w-7xl mx-auto">
-     <div className="text-center mb-12">
-      <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
-        Our Process
-      </h2>
-    </div>
-  
-    <div className="grid lg:grid-cols-2 gap-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
+              Our Process
+            </h2>
+          </div>
 
-     
-      <div className="bg-white p-8 rounded-2xl shadow-md">
-        <h3 className="text-2xl font-semibold text-blue-600 mb-4">
-          Cost Modeling & Estimation
-        </h3>
-        <p className="text-gray-600 leading-relaxed">
-          Cost Modeling & Estimation creates a transparent, fact-based breakdown of product cost by analyzing materials, manufacturing processes, labor, overheads, and supply chain factors.
-        </p>
-        <p className="text-gray-600 mt-4">
-          It enables informed decisions in design, sourcing, and supplier negotiations.
-        </p>
-      </div>
-
-     
-      <div className="bg-white p-8 rounded-2xl shadow-md">
-        <h3 className="text-2xl font-semibold text-blue-600 mb-4">
-          Our Cost Modeling & Estimation Approach
-        </h3>
-        <p className="text-gray-600 leading-relaxed">
-          We follow a structured, bottom-up approach to build <b>transparent and defensible cost models</b> based on how a product should be manufactured—not on supplier quotations.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
+          <div className="grid lg:grid-cols-2 gap-10">
 
 
-<section className="bg-gray-100 py-6">
-  <div className="max-w-7xl mx-auto text-center">
-
-    <h2 className="text-3xl font-semibold text-gray-700 mb-10">
-      Optimizing Manufacturing Costs
-    </h2>
-
-    <svg viewBox="0 0 1200 320" className="w-full h-auto">
-
-      <text x="350" y="40" font-size="14" fill="#555" text-anchor="middle">
-        Determine the most appropriate route
-      </text>
-      <text x="600" y="40" font-size="14" fill="#555" text-anchor="middle">
-        Use realistic assumptions and data
-      </text>
-      <text x="850" y="40" font-size="14" fill="#555" text-anchor="middle">
-        Factor in regional manufacturing
-      </text>
-
-      <line x1="100" y1="80" x2="1100" y2="80"
-            stroke="#888" stroke-dasharray="5,5"/>
-
-      <polygon points="300,80 290,75 290,85" fill="#888"/>
-      <polygon points="550,80 540,75 540,85" fill="#888"/>
-      <polygon points="800,80 790,75 790,85" fill="#888"/>
+            <div className="bg-white p-8 rounded-2xl shadow-md">
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">
+                Cost Modeling & Estimation
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Cost Modeling & Estimation creates a transparent, fact-based breakdown of product cost by analyzing materials, manufacturing processes, labor, overheads, and supply chain factors.
+              </p>
+              <p className="text-gray-600 mt-4">
+                It enables informed decisions in design, sourcing, and supplier negotiations.
+              </p>
+            </div>
 
 
-      <polygon points="120,120 200,100 280,120 280,200 200,220 120,200"
-               fill="#4F83E3"/>
-      <text x="200" y="155" fill="white" font-size="12" text-anchor="middle">
-        High Manufacturing
-      </text>
-      <text x="200" y="170" fill="white" font-size="12" text-anchor="middle">
-        Costs
-      </text>
+            <div className="bg-white p-8 rounded-2xl shadow-md">
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">
+                Our Cost Modeling & Estimation Approach
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                We follow a structured, bottom-up approach to build <b>transparent and defensible cost models</b> based on how a product should be manufactured—not on supplier quotations.
+              </p>
+            </div>
 
-      <polygon points="320,120 400,100 480,120 480,200 400,220 320,200"
-               fill="#2F66D0"/>
-      <text x="400" y="150" fill="white" font-size="12" text-anchor="middle">
-        Define Manufacturing
-      </text>
-      <text x="400" y="170" fill="white" font-size="12" text-anchor="middle">
-        Route
-      </text>
+          </div>
 
-      <polygon points="520,120 600,100 680,120 680,200 600,220 520,200"
-               fill="#4F83E3"/>
-      <text x="600" y="160" fill="white" font-size="12" text-anchor="middle">
-        Model Costs
-      </text>
+        </div>
+      </section>
 
-      <polygon points="720,120 800,100 880,120 880,200 800,220 720,200"
-               fill="#9BB8E8"/>
-      <text x="800" y="150" fill="white" font-size="12" text-anchor="middle">
-        Consider Regional
-      </text>
-      <text x="800" y="170" fill="white" font-size="12" text-anchor="middle">
-        Conditions
-      </text>
 
-      <polygon points="920,120 1000,100 1080,120 1080,200 1000,220 920,200"
-               fill="#2F66D0"/>
-      <text x="1000" y="150" fill="white" font-size="12" text-anchor="middle">
-        Optimized Manufacturing
-      </text>
-      <text x="1000" y="170" fill="white" font-size="12" text-anchor="middle">
-        Costs
-      </text>
+      <section className="bg-gray-100 py-6">
+        <div className="max-w-7xl mx-auto text-center">
 
-      <line x1="100" y1="240" x2="1100" y2="240"
-            stroke="#888" stroke-dasharray="5,5"/>
+          <h2 className="text-3xl font-semibold text-gray-700 mb-10">
+            Optimizing Manufacturing Costs
+          </h2>
 
-      <polygon points="300,240 290,235 290,245" fill="#888"/>
-      <polygon points="550,240 540,235 540,245" fill="#888"/>
-      <polygon points="800,240 790,235 790,245" fill="#888"/>
+          <svg viewBox="0 0 1200 320" className="w-full h-auto">
 
-      <text x="170" y="280" font-size="14" fill="#666" text-anchor="middle">
-        Unrealistic cost assumptions
-      </text>
+            <text x="350" y="40" font-size="14" fill="#555" text-anchor="middle">
+              Determine the most appropriate route
+            </text>
+            <text x="600" y="40" font-size="14" fill="#555" text-anchor="middle">
+              Use realistic assumptions and data
+            </text>
+            <text x="850" y="40" font-size="14" fill="#555" text-anchor="middle">
+              Factor in regional manufacturing
+            </text>
 
-      <text x="970" y="280" font-size="14" fill="#666" text-anchor="middle">
-        Realistic cost assumptions are made
-      </text>
+            <line x1="100" y1="80" x2="1100" y2="80"
+              stroke="#888" stroke-dasharray="5,5" />
 
-    </svg>
+            <polygon points="300,80 290,75 290,85" fill="#888" />
+            <polygon points="550,80 540,75 540,85" fill="#888" />
+            <polygon points="800,80 790,75 790,85" fill="#888" />
 
-  </div>
-</section>
+
+            <polygon points="120,120 200,100 280,120 280,200 200,220 120,200"
+              fill="#4F83E3" />
+            <text x="200" y="155" fill="white" font-size="12" text-anchor="middle">
+              High Manufacturing
+            </text>
+            <text x="200" y="170" fill="white" font-size="12" text-anchor="middle">
+              Costs
+            </text>
+
+            <polygon points="320,120 400,100 480,120 480,200 400,220 320,200"
+              fill="#2F66D0" />
+            <text x="400" y="150" fill="white" font-size="12" text-anchor="middle">
+              Define Manufacturing
+            </text>
+            <text x="400" y="170" fill="white" font-size="12" text-anchor="middle">
+              Route
+            </text>
+
+            <polygon points="520,120 600,100 680,120 680,200 600,220 520,200"
+              fill="#4F83E3" />
+            <text x="600" y="160" fill="white" font-size="12" text-anchor="middle">
+              Model Costs
+            </text>
+
+            <polygon points="720,120 800,100 880,120 880,200 800,220 720,200"
+              fill="#9BB8E8" />
+            <text x="800" y="150" fill="white" font-size="12" text-anchor="middle">
+              Consider Regional
+            </text>
+            <text x="800" y="170" fill="white" font-size="12" text-anchor="middle">
+              Conditions
+            </text>
+
+            <polygon points="920,120 1000,100 1080,120 1080,200 1000,220 920,200"
+              fill="#2F66D0" />
+            <text x="1000" y="150" fill="white" font-size="12" text-anchor="middle">
+              Optimized Manufacturing
+            </text>
+            <text x="1000" y="170" fill="white" font-size="12" text-anchor="middle">
+              Costs
+            </text>
+
+            <line x1="100" y1="240" x2="1100" y2="240"
+              stroke="#888" stroke-dasharray="5,5" />
+
+            <polygon points="300,240 290,235 290,245" fill="#888" />
+            <polygon points="550,240 540,235 540,245" fill="#888" />
+            <polygon points="800,240 790,235 790,245" fill="#888" />
+
+            <text x="170" y="280" font-size="14" fill="#666" text-anchor="middle">
+              Unrealistic cost assumptions
+            </text>
+
+            <text x="970" y="280" font-size="14" fill="#666" text-anchor="middle">
+              Realistic cost assumptions are made
+            </text>
+
+          </svg>
+
+        </div>
+      </section>
 
       <section className="bg-white dark:bg-background-dark py-10">
         <div className="layout-container flex flex-col justify-center px-6 lg:px-20 xl:px-40">
-           <h2 className="text-3xl font-semibold text-gray-700 mb-10 ">
-            Our Cost Modeling & Estimation Offerings 
+          <h2 className="text-3xl font-semibold text-gray-700 mb-10 ">
+            Our Cost Modeling & Estimation Offerings
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -359,7 +444,7 @@ const Costing: React.FC = () => {
             <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
               <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Supplier Quote Validation & Gap Analysis</h4>
               <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
-                  We compare supplier quotations against should-cost models to identify cost gaps and explain variances across material, process, and overhead drivers.              </p>
+                We compare supplier quotations against should-cost models to identify cost gaps and explain variances across material, process, and overhead drivers.              </p>
               <div className="">
                 <div className="flex flex-wrap gap-2 mb-6">
                   <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
@@ -391,7 +476,7 @@ const Costing: React.FC = () => {
             <div className="group flex flex-col justify-between bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-[#dbe0e6] dark:border-gray-700 shadow-soft hover:shadow-xl hover:border-primary/50 transition-all duration-300">
               <h4 className="text-2xl font-bold text-[#111418] dark:text-white mb-3 group-hover:text-primary transition-colors">Design-to-Cost (DTC) Support</h4>
               <p className="text-[#617589] dark:text-gray-300 mb-6 leading-relaxed">
-                  We assess the cost impact of design choices by analyzing geometry, tolerances, materials, and manufacturing feasibility to support cost-aware design decisions.              </p>
+                We assess the cost impact of design choices by analyzing geometry, tolerances, materials, and manufacturing feasibility to support cost-aware design decisions.              </p>
               <div className="">
                 <div className="flex flex-wrap gap-2 mb-6">
                   <h2 className="text-2l font-bold text-[#111418] dark:text-white mb-3 transition-colors">Value we deliver :</h2>
@@ -407,91 +492,16 @@ const Costing: React.FC = () => {
         </div>
       </section>
 
-      {/* Expertise & Breakdown Section */}
-      <section className="bg-slate-50 dark:bg-slate-900 py-20 overflow-hidden">
-        <div className="layout-container flex flex-col justify-center px-6 lg:px-20 xl:px-40">
-          <div className="layout-content-container max-w-[1200px] mx-auto w-full">
-            <div className="flex flex-col lg:flex-row gap-16 items-center">
-              <div className="w-full lg:w-1/2 relative">
-                <div className="relative w-full aspect-square md:aspect-video lg:aspect-square bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 border border-slate-200 dark:border-slate-700 flex flex-col">
-                  <div className="flex items-center justify-between mb-8">
-                    <h3 className="font-bold text-lg text-slate-900 dark:text-white font-display">Cost Breakdown Analysis</h3>
-                    <div className="flex gap-2">
-                      <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      <div className="h-2 w-2 rounded-full bg-slate-300"></div>
-                    </div>
-                  </div>
-                  <div className="flex-1 flex items-end gap-4 justify-between px-4 pb-4">
-                    <div className="w-full bg-slate-100 dark:bg-slate-700 rounded-t-lg relative group h-[40%] hover:h-[45%] transition-all duration-500">
-                      <div className="absolute bottom-0 w-full bg-slate-300 dark:bg-slate-600 rounded-t-lg h-full"></div>
-                      <span className="absolute -top-6 w-full text-center text-xs text-slate-500 font-bold">Current</span>
-                    </div>
-                    <div className="w-full bg-slate-100 dark:bg-slate-700 rounded-t-lg relative group h-[85%] hover:h-[90%] transition-all duration-500">
-                      <div className="absolute bottom-0 w-full bg-primary rounded-t-lg h-[70%] shadow-lg shadow-primary/20"></div> 
-                      <div className="absolute bottom-[70%] w-full bg-primary/30 h-[30%]"></div>
-                      <span className="absolute -top-6 w-full text-center text-xs text-slate-500 font-bold">Optimized</span>
-                    </div>
-                  </div>
-                  <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700">
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Our <span className="text-primary font-bold">Should Cost</span> models identify an average of 15-20% savings opportunities in complex assemblies.</p>
-                  </div>
-                </div>
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
-              </div>
-              <div className="w-full lg:w-1/2 flex flex-col gap-8">
-                <div>
-                  <span className="text-primary font-bold tracking-wider text-xs uppercase mb-2 block">Why Choose Hexuno Technologies</span>
-                  <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em] font-display">
-                    Analytical Expertise Meets Manufacturing Reality
-                  </h2>
-                </div>
-                <div className="flex flex-col gap-6">
-                  <div className="flex gap-4">
-                    <div className="flex-none mt-1">
-                      <div className="bg-white dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-primary">
-                        <span className="material-symbols-outlined">psychology</span>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 font-display">Engineering-First Approach</h4>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                        We don't just look at spreadsheets. Our team comprises engineers who understand DFM (Design for Manufacturing), ensuring cost reductions don't compromise quality.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-none mt-1">
-                      <div className="bg-white dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-primary">
-                        <span className="material-symbols-outlined">database</span>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 font-display">Global Data Benchmarks</h4>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                        Leverage our proprietary database of global labor rates, machine hour rates, and material indices across 30+ countries.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-none mt-1">
-                      <div className="bg-white dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-primary">
-                        <span className="material-symbols-outlined">handshake</span>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 font-display">Negotiation Support</h4>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                        Armed with our detailed cost breakdowns, your procurement team can engage in fact-based negotiations, moving away from price haggling to value partnership.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+<WhyweChooseCarousel/>
+
+      <div className="bg-gradient-to-r from-blue-50 to-white py-5 px-6 md:px-24 text-center rounded-2xl shadow-sm">
+        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">
+          Our Commitment
+        </h2>
+        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          Cost clarity that enables smarter design, stronger negotiations, and sustainable value creation.
+        </p>
+      </div>
 
     </div>
   );
