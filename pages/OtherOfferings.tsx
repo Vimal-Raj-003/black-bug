@@ -10,9 +10,6 @@ const OtherOfferings: React.FC = () => {
       <div className="relative flex flex-col items-center justify-center min-h-[600px] w-full bg-slate-900 p-4 sm:p-10 overflow-hidden">
         {/* Dynamic Video Background */}
         <div className="absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-50">
-            <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
-          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/60 to-slate-950/90"></div>
         </div>
 

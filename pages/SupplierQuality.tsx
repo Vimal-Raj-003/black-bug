@@ -6,6 +6,8 @@ import "./css/supplierquality.css";
 import { useState, useEffect } from "react";
 
 
+
+
 const BannerCarousel: React.FC = () => {
 
 
@@ -15,6 +17,9 @@ const BannerCarousel: React.FC = () => {
   const navigate = useNavigate();
 
   const [current, setCurrent] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
     {
@@ -85,20 +90,65 @@ const BannerCarousel: React.FC = () => {
 
   const slide = slides[currentSlide];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 3000); // 3 sec
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // swipe left → next
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }
+
+    if (touchStart - touchEnd < -50) {
+      // swipe right → prev
+      setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    }
+  };
+
+  const handleClick = () => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+  };
+
+
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+
+
   return (
     <div className="relative w-full bg-slate-900 overflow-hidden">
       {/* Dynamic Video Background */}
       <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
-          <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
-        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
       </div>
 
       <div className="px-4 md:px-10 flex flex-1 justify-center py-5 relative z-10">
         <div className="flex flex-col max-w-[1200px] flex-1">
           <div className="@container">
-            <div className="flex flex-col gap-6 py-10 lg:flex-row items-center">
+            <div className="flex flex-col gap-6 py-1 lg:flex-row items-center">
               <div className="flex flex-col gap-6 lg:justify-center flex-1">
                 <div className="flex flex-col gap-4 text-left">
                   <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl drop-shadow-lg">
@@ -111,8 +161,13 @@ const BannerCarousel: React.FC = () => {
 
               </div>
 
-              <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
-
+              <div
+                className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10"
+                onClick={handleClick}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 {/* DARK OVERLAY (IMPORTANT) */}
                 <div className="absolute inset-0 bg-black/50 z-10"></div>
 

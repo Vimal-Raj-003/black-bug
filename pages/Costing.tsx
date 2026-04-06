@@ -1,9 +1,32 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from "react";
 import "./css/costing.css";
 import { motion } from "motion/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import { useState, useEffect } from "react";
+import "swiper/css";
+import "swiper/css/pagination";
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreen();
+
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  return isMobile;
+};
+
 
 
 const BannerCarousel: React.FC = () => {
@@ -14,6 +37,9 @@ const BannerCarousel: React.FC = () => {
   const navigate = useNavigate();
 
   const [current, setCurrent] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
     {
@@ -39,63 +65,110 @@ const BannerCarousel: React.FC = () => {
   ];
 
   const goToSlide = (index: number) => {
-    setTransitionClass('opacity-0');
-    setTimeout(() => {
-      setCurrentSlide(index);
-      setTransitionClass('opacity-100');
-    }, 300);
-  };
-
-  const nextSlide = () => {
-    goToSlide((currentSlide + 1) % slides.length);
-    setIsAutoplay(false);
-  };
-
-  const prevSlide = () => {
-    goToSlide((currentSlide - 1 + slides.length) % slides.length);
-    setIsAutoplay(false);
-  };
-
-  // Auto-rotation effect
-  useEffect(() => {
-    if (!isAutoplay) return;
-
-    const timer = setInterval(() => {
-      setTransitionClass('opacity-0');
-      setTimeout(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-        setTransitionClass('opacity-100');
-      }, 300);
-    }, 6000); // Change slide every 6 seconds
-
-    return () => clearInterval(timer);
-  }, [isAutoplay]);
-
-  // Resume autoplay after 10 seconds of inactivity
-  useEffect(() => {
-    if (isAutoplay) return;
-
-    const timer = setTimeout(() => {
-      setIsAutoplay(true);
-    }, 10000);
-
-    return () => clearTimeout(timer);
-  }, [isAutoplay]);
-
-  const slide = slides[currentSlide];
+     setTransitionClass('opacity-0');
+     setTimeout(() => {
+       setCurrentSlide(index);
+       setTransitionClass('opacity-100');
+     }, 300);
+   };
+ 
+   const nextSlide = () => {
+     goToSlide((currentSlide + 1) % slides.length);
+     setIsAutoplay(false);
+   };
+ 
+   const prevSlide = () => {
+     goToSlide((currentSlide - 1 + slides.length) % slides.length);
+     setIsAutoplay(false);
+   };
+ 
+   // Auto-rotation effect
+   useEffect(() => {
+     if (!isAutoplay) return;
+ 
+     const timer = setInterval(() => {
+       setTransitionClass('opacity-0');
+       setTimeout(() => {
+         setCurrentSlide((prev) => (prev + 1) % slides.length);
+         setTransitionClass('opacity-100');
+       }, 300);
+     }, 6000); // Change slide every 6 seconds
+ 
+     return () => clearInterval(timer);
+   }, [isAutoplay]);
+ 
+   // Resume autoplay after 10 seconds of inactivity
+   useEffect(() => {
+     if (isAutoplay) return;
+ 
+     const timer = setTimeout(() => {
+       setIsAutoplay(true);
+     }, 10000);
+ 
+     return () => clearTimeout(timer);
+   }, [isAutoplay]);
+ 
+   const slide = slides[currentSlide];
+ 
+   useEffect(() => {
+     const interval = setInterval(() => {
+       setCurrent((prev) => (prev + 1) % slides.length);
+     }, 3000); // 3 sec
+ 
+     return () => clearInterval(interval);
+   }, [slides.length]);
+ 
+ 
+ 
+   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+     setTouchStart(e.targetTouches[0].clientX);
+   };
+ 
+   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+     setTouchEnd(e.targetTouches[0].clientX);
+   };
+ 
+   const handleTouchEnd = () => {
+     if (touchStart - touchEnd > 50) {
+       // swipe left → next
+       setCurrent((prev) => (prev + 1) % slides.length);
+     }
+ 
+     if (touchStart - touchEnd < -50) {
+       // swipe right → prev
+       setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+     }
+   };
+ 
+   const handleClick = () => {
+     setCurrent((prev) => (prev + 1) % slides.length);
+   };
+ 
+ 
+ 
+   useEffect(() => {
+     if (isPaused) return;
+ 
+     const interval = setInterval(() => {
+       setCurrent((prev) => (prev + 1) % slides.length);
+     }, 3000);
+ 
+     return () => clearInterval(interval);
+   }, [isPaused]);
+ 
 
   return (
     <div className="relative w-full bg-slate-900 overflow-hidden">
       {/* Dynamic Video Background */}
       <div className="absolute inset-0 z-0">
-        
+
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
       </div>
 
       <div className="px-4 md:px-10 flex flex-1 justify-center py-5 relative z-10">
         <div className="flex flex-col max-w-[1200px] flex-1">
           <div className="@container">
-            <div className="flex flex-col gap-6 py-10 lg:flex-row items-center">
+            <div className="flex flex-col gap-6 py-1 lg:flex-row items-center">
               <div className="flex flex-col gap-6 lg:justify-center flex-1">
                 <div className="flex flex-col gap-4 text-left">
                   <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl drop-shadow-lg">
@@ -124,8 +197,13 @@ const BannerCarousel: React.FC = () => {
 
 
 
-              <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
-
+             <div
+                className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10"
+                onClick={handleClick}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 {/* DARK OVERLAY (IMPORTANT) */}
                 <div className="absolute inset-0 bg-black/50 z-10"></div>
 
@@ -204,56 +282,84 @@ const WhyweChooseCarousel: React.FC = () => {
 
   // duplicate for infinite loop
   const loopData = [...qualityPoints, ...qualityPoints];
+  const isMobile = useIsMobile();
 
   return (
     <div className="w-full bg-gradient-to-br from-[#003366] via-[#004080] to-[#001a33] py-10 relative overflow-hidden">
-    
-          {/* Background */}
-          <div
-            className="absolute top-0 left-0 w-full h-full opacity-10"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
-              backgroundSize: "40px 40px"
-            }}
-          ></div>
-    
-          <div className="w-full px-6 relative z-10">
-    
-            <h2 className="text-white text-3xl md:text-3xl font-bold text-center mb-12">
-              Why Choose Us for Cost Modeling & Estimation
-            </h2>
-    
-            {/* Continuous Scroll */}
-            <div className="overflow-hidden">
-    
-              <motion.div
-                className="flex gap-6"
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{
-                  ease: "linear",
-                  duration: 20,
-                  repeat: Infinity
-                }}
-                whileHover={{ animationPlayState: "paused" }}
-              >
-                {loopData.map((item, i) => (
-                  <div
-                    key={i}
-                    className="min-w-[280px] md:min-w-[350px] bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20"
-                  >
+
+      {/* Background */}
+      <div
+        className="absolute top-0 left-0 w-full h-full opacity-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+          backgroundSize: "40px 40px"
+        }}
+      ></div>
+
+      <div className="w-full px-6 relative z-10">
+
+        <h2 className="text-white text-3xl md:text-3xl font-bold text-center mb-12">
+          Why Choose Us for Cost Modeling & Estimation
+        </h2>
+
+        {/* Continuous Scroll */}
+        <div className="overflow-hidden">
+
+          {isMobile ? (
+
+            // MOBILE VIEW 
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={20}
+              slidesPerView={1}
+              autoplay={{ delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }}
+              pagination={{ clickable: true }}
+            >
+              {loopData.map((item, i) => (
+                <SwiperSlide key={i}>
+                  <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
                     <h3 className="text-white text-lg font-semibold mb-3">
                       {item.title}
                     </h3>
                     <p className="text-blue-100 text-sm">{item.desc}</p>
                   </div>
-                ))}
-              </motion.div>
-    
-            </div>
-    
-          </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+          ) : (
+            // DESKTOP VIEW 
+
+            <motion.div
+              className="flex gap-6"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                ease: "linear",
+                duration: 20,
+                repeat: Infinity
+              }}
+              whileHover={{ animationPlayState: "paused" }}
+            >
+              {[...loopData, ...loopData].map((item, i) => (
+                <div
+                  key={i}
+                  className="min-w-[280px] md:min-w-[350px] bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20"
+                >
+                  <h3 className="text-white text-lg font-semibold mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-blue-100 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </motion.div>
+
+          )}
+
         </div>
+
+      </div>
+    </div>
   );
 };
 
@@ -418,7 +524,7 @@ const Costing: React.FC = () => {
       </section>
 
       <section className="bg-white dark:bg-background-dark py-10">
-       <div className="max-w-7xl mx-auto flex flex-col justify-center px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto flex flex-col justify-center px-6 lg:px-20">
           <h2 className="text-3xl font-semibold text-gray-700 mb-10 ">
             Our Cost Modeling & Estimation Offerings
           </h2>
@@ -492,7 +598,7 @@ const Costing: React.FC = () => {
         </div>
       </section>
 
-<WhyweChooseCarousel/>
+      <WhyweChooseCarousel />
 
       <div className="bg-gradient-to-r from-blue-50 to-white py-5 px-6 md:px-24 text-center rounded-2xl shadow-sm">
         <h2 className="text-3xl md:text-3xl font-semibold text-gray-900 mb-6">

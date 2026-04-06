@@ -13,9 +13,6 @@ const CaseStudies: React.FC = () => {
           <section className="relative text-center py-16 md:py-32 bg-slate-900 rounded-b-[40px] overflow-hidden">
             {/* Dynamic Video Background */}
             <div className="absolute inset-0 z-0">
-              <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
-                <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
-              </video>
               <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/40 to-slate-950"></div>
             </div>
 

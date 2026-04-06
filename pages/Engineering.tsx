@@ -10,9 +10,6 @@ const Engineering: React.FC = () => {
       <div className="relative w-full bg-slate-900 overflow-hidden">
         {/* Dynamic Video Background */}
         <div className="absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
-            <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
-          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
         </div>
 

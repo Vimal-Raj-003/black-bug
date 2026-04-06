@@ -12,6 +12,9 @@ const BannerCarousel: React.FC = () => {
   const navigate = useNavigate();
 
   const [current, setCurrent] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
     {
@@ -36,66 +39,110 @@ const BannerCarousel: React.FC = () => {
     }
   ];
 
-  const goToSlide = (index: number) => {
-    setTransitionClass('opacity-0');
-    setTimeout(() => {
-      setCurrentSlide(index);
-      setTransitionClass('opacity-100');
-    }, 300);
-  };
-
-  const nextSlide = () => {
-    goToSlide((currentSlide + 1) % slides.length);
-    setIsAutoplay(false);
-  };
-
-  const prevSlide = () => {
-    goToSlide((currentSlide - 1 + slides.length) % slides.length);
-    setIsAutoplay(false);
-  };
-
-  // Auto-rotation effect
-  useEffect(() => {
-    if (!isAutoplay) return;
-
-    const timer = setInterval(() => {
+   const goToSlide = (index: number) => {
       setTransitionClass('opacity-0');
       setTimeout(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setCurrentSlide(index);
         setTransitionClass('opacity-100');
       }, 300);
-    }, 6000); // Change slide every 6 seconds
-
-    return () => clearInterval(timer);
-  }, [isAutoplay]);
-
-  // Resume autoplay after 10 seconds of inactivity
-  useEffect(() => {
-    if (isAutoplay) return;
-
-    const timer = setTimeout(() => {
-      setIsAutoplay(true);
-    }, 10000);
-
-    return () => clearTimeout(timer);
-  }, [isAutoplay]);
-
-  const slide = slides[currentSlide];
+    };
+  
+    const nextSlide = () => {
+      goToSlide((currentSlide + 1) % slides.length);
+      setIsAutoplay(false);
+    };
+  
+    const prevSlide = () => {
+      goToSlide((currentSlide - 1 + slides.length) % slides.length);
+      setIsAutoplay(false);
+    };
+  
+    // Auto-rotation effect
+    useEffect(() => {
+      if (!isAutoplay) return;
+  
+      const timer = setInterval(() => {
+        setTransitionClass('opacity-0');
+        setTimeout(() => {
+          setCurrentSlide((prev) => (prev + 1) % slides.length);
+          setTransitionClass('opacity-100');
+        }, 300);
+      }, 6000); // Change slide every 6 seconds
+  
+      return () => clearInterval(timer);
+    }, [isAutoplay]);
+  
+    // Resume autoplay after 10 seconds of inactivity
+    useEffect(() => {
+      if (isAutoplay) return;
+  
+      const timer = setTimeout(() => {
+        setIsAutoplay(true);
+      }, 10000);
+  
+      return () => clearTimeout(timer);
+    }, [isAutoplay]);
+  
+    const slide = slides[currentSlide];
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % slides.length);
+      }, 3000); // 3 sec
+  
+      return () => clearInterval(interval);
+    }, [slides.length]);
+  
+  
+  
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+      setTouchStart(e.targetTouches[0].clientX);
+    };
+  
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+      setTouchEnd(e.targetTouches[0].clientX);
+    };
+  
+    const handleTouchEnd = () => {
+      if (touchStart - touchEnd > 50) {
+        // swipe left → next
+        setCurrent((prev) => (prev + 1) % slides.length);
+      }
+  
+      if (touchStart - touchEnd < -50) {
+        // swipe right → prev
+        setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+      }
+    };
+  
+    const handleClick = () => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    };
+  
+  
+  
+    useEffect(() => {
+      if (isPaused) return;
+  
+      const interval = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % slides.length);
+      }, 3000);
+  
+      return () => clearInterval(interval);
+    }, [isPaused]);
+  
 
   return (
     <div className="relative w-full bg-slate-900 overflow-hidden">
       {/* Dynamic Video Background */}
       <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-40">
-          <source src="https://cdn.pixabay.com/video/2023/10/20/185834-876616428_large.mp4" type="video/mp4" />
-        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
       </div>
 
       <div className="px-4 md:px-10 flex flex-1 justify-center py-5 relative z-10">
         <div className="flex flex-col max-w-[1200px] flex-1">
           <div className="@container">
-            <div className="flex flex-col gap-6 py-10 lg:flex-row items-center">
+            <div className="flex flex-col gap-6 py-1 lg:flex-row items-center">
               <div className="flex flex-col gap-6 lg:justify-center flex-1">
                 <div className="flex flex-col gap-4 text-left">
                   <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl drop-shadow-lg">
@@ -107,14 +154,13 @@ const BannerCarousel: React.FC = () => {
 
               </div>
 
-              {/*<div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
-                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-all duration-500 z-10"></div>
-                  <div className="w-full h-full bg-center bg-no-repeat bg-cover transform group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBHfLF4QtLrZb4MGHgiNEjgG2HQtxJ9AmXLA2Hjqc6GpgYaoyiQq6mY3u7x3y7UM0q_gvjQNeFakibtWsiXEyZuskrkx27vjd38OZsgI5H0uzHCcm2PmpvKZ3L1Ai2QwcnG1a_1Bg4dsha2VSk3XY18bNQtXXWZceKRtVAzv-HwvS7m-wsw6iNxYiuY1fRNEJA3xPMbfsx6pBQ1qEKk2QiQH4UHAuK6pi5gDhgQ5N0RWgrwt5E16PQx8nHAmdzRT6fxkqK9SRtgeg8")' }}>
-                  </div>
-                </div>*/}
-
-              <div className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10">
-
+             <div
+                className="w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-2xl relative group mt-8 lg:mt-0 border border-white/10"
+                onClick={handleClick}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 {/* DARK OVERLAY (IMPORTANT) */}
                 <div className="absolute inset-0 bg-black/50 z-10"></div>
 
@@ -193,7 +239,7 @@ const Sourcing: React.FC = () => {
           <div className="max-w-[960px] w-full flex flex-col gap-10">
             <div className="text-center mb-4">
               <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">Our Methodology</span>
-              <h2 className="text-[#111418] dark:text-white text-3xl font-bold mt-2">We don’t just find suppliers — we help you build a <b>cost-effective, reliable, and scalable supply base.</b> Our sourcing approach is structured, data-driven, and focused on long-term value.</h2>
+              <h2 className="text-[#111418] dark:text-white text-3xl font-bold mt-2">We don’t just find suppliers, we help you build a <b>cost-effective, reliable, and scalable supply base.</b> Our sourcing approach is structured, data-driven, and focused on long-term value.</h2>
             </div>
 
           </div>
@@ -208,58 +254,59 @@ const Sourcing: React.FC = () => {
         </h2>
 
 
-        <div className="flex items-center justify-center flex-wrap gap-2">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
 
-          <div className="w-0 h-0 border-t-[70px] border-b-[70px] border-r-[60px] border-t-transparent border-b-transparent border-r-yellow-400"></div>
+          <div className="hidden md:block w-0 h-0 border-t-[70px] border-b-[70px] border-r-[60px] border-t-transparent border-b-transparent border-r-yellow-400"></div>
 
-          <div className="bg-yellow-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-yellow-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Requirement</span>
             <span className="text-sm">Understanding</span>
           </div>
 
+<div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-          <div className="bg-orange-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-orange-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Supply Market</span>
             <span className="text-sm">Mapping</span>
           </div>
 
-
-          <div className="bg-red-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+<div className="w-1 h-6 bg-gray-300 md:hidden"></div>
+          <div className="bg-red-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Technical</span>
             <span className="text-sm">Evaluation</span>
           </div>
+<div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-
-          <div className="bg-pink-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-pink-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Cost</span>
             <span className="text-sm">Structuring</span>
           </div>
+<div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-
-          <div className="bg-purple-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-purple-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Commercial</span>
             <span className="text-sm">Sourcing</span>
           </div>
+<div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-
-          <div className="bg-indigo-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-indigo-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Risk</span>
             <span className="text-sm">Assessment</span>
           </div>
+<div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-
-          <div className="bg-blue-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-blue-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Supplier</span>
             <span className="text-sm">Selection</span>
           </div>
 
-
-          <div className="bg-cyan-400 text-white p-4 w-30 h-28 flex flex-col justify-center items-center rounded-lg">
+<div className="w-1 h-6 bg-gray-300 md:hidden"></div>
+          <div className="bg-cyan-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Continuous</span>
             <span className="text-sm">Improvement</span>
           </div>
 
-          <div className="w-0 h-0 border-t-[70px] border-b-[70px] border-l-[60px] border-t-transparent border-b-transparent border-l-cyan-400"></div>
+          <div className="hidden md:block w-0 h-0 border-t-[70px] border-b-[70px] border-l-[60px] border-t-transparent border-b-transparent border-l-cyan-400"></div>
 
         </div>
 
