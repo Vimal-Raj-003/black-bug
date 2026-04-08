@@ -97,8 +97,8 @@ hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300`}
 
             {/* Content */}
             <div>
-              <h3 className="font-bold mb-2">{step.title}</h3>
-              <ul className="text-sm space-y-1">
+              <h3 className="font-bold mb-2 text-xs sm:text-sm md:text-sm">{step.title}</h3>
+              <ul className="text-[10px] sm:text-xs md:text-xs space-y-1">
                 {step.points.map((point, i) => (
                   <li key={i}>• {point}</li>
                 ))}

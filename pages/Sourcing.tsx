@@ -258,50 +258,50 @@ const Sourcing: React.FC = () => {
 
           <div className="hidden md:block w-0 h-0 border-t-[70px] border-b-[70px] border-r-[60px] border-t-transparent border-b-transparent border-r-yellow-400"></div>
 
-          <div className="bg-yellow-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-yellow-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Requirement</span>
             <span className="text-sm">Understanding</span>
           </div>
 
 <div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-          <div className="bg-orange-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-orange-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Supply Market</span>
             <span className="text-sm">Mapping</span>
           </div>
 
 <div className="w-1 h-6 bg-gray-300 md:hidden"></div>
-          <div className="bg-red-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-red-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Technical</span>
             <span className="text-sm">Evaluation</span>
           </div>
 <div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-          <div className="bg-pink-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-pink-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Cost</span>
             <span className="text-sm">Structuring</span>
           </div>
 <div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-          <div className="bg-purple-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-purple-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Commercial</span>
             <span className="text-sm">Sourcing</span>
           </div>
 <div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-          <div className="bg-indigo-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-indigo-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Risk</span>
             <span className="text-sm">Assessment</span>
           </div>
 <div className="w-1 h-6 bg-gray-300 md:hidden"></div>
 
-          <div className="bg-blue-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-blue-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Supplier</span>
             <span className="text-sm">Selection</span>
           </div>
 
 <div className="w-1 h-6 bg-gray-300 md:hidden"></div>
-          <div className="bg-cyan-400 text-white p-4 w-32 h-20 md:h-28 flex flex-col justify-center items-center rounded-lg">
+          <div className="bg-cyan-400 text-white w-32 h-10 md:h-28 flex flex-col justify-center items-center rounded-lg">
             <span className="text-sm font-semibold">Continuous</span>
             <span className="text-sm">Improvement</span>
           </div>
@@ -412,7 +412,7 @@ const Sourcing: React.FC = () => {
             <div className="max-w-[1000px] w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10 group">
                 <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-blue-600/0 transition-all duration-500 z-10"></div>
-                <img className="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700" src="/images/Cost Benchmarking & Should-Cost Analysis.webp" alt="Close up of an engineer inspecting a technical component with a checklist" />
+                <img className="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700" src="/images/CostBenchmarkingShouldCostAnalysis.webp" alt="Close up of an engineer inspecting a technical component with a checklist" />
               </div>
               <div className="flex flex-col gap-6">
                 <div className="inline-flex items-center gap-2 text-blue-600 font-bold uppercase tracking-wider text-xs">
@@ -462,7 +462,7 @@ const Sourcing: React.FC = () => {
               </div>
               <div className="order-1 lg:order-2 relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10 group">
                 <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-blue-600/0 transition-all duration-500 z-10"></div>
-                <img className="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700" src="/images/Commercial Negotiation Support.jpg" alt="Business professionals shaking hands over a sleek conference table" />
+                <img className="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700" src="/images/CommercialNegotiationSupport.jpg" alt="Business professionals shaking hands over a sleek conference table" />
               </div>
             </div>
           </div>
