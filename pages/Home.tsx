@@ -262,38 +262,52 @@ const Home: React.FC = () => {
   return (
     <div className="font-body transition-colors duration-300">
       {/* Hero Section with Cinematic Automotive Manufacturing Video */}
-      <div className="relative min-h-[75vh] flex flex-col justify-center overflow-hidden">
-        <div ref={parallaxRef} className="absolute inset-0 z-0 will-change-transform">
-          <div className="absolute inset-0 z-0">
-            <video
-              src={homevideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              disablePictureInPicture
-              disableRemotePlayback
-              controlsList="nodownload nofullscreen noremoteplayback"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      <div className="relative h-[28vh] md:h-[75vh] flex flex-col justify-center overflow-hidden">
 
-          {/* Neutral dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40 pointer-events-none"></div>
+  <div className="absolute inset-0 z-0">
 
-          {/* Grid stays same */}
-          <div className="absolute inset-0 
-            bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),
-            linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] 
-            bg-[size:60px_60px] 
-            opacity-[0.06] 
-            pointer-events-none">
-          </div>
-        </div>
+    {/* 🔥 Background video (ONLY for mobile) */}
+    <video
+      src={homevideo}
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="absolute inset-0 w-full h-full object-cover blur-md scale-105 opacity-60 md:hidden"
+    />
 
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020617] to-transparent pointer-events-none"></div>
-      </div>
+    {/* 🔥 Main video */}
+    <video
+      src={homevideo}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      disablePictureInPicture
+      disableRemotePlayback
+      controlsList="nodownload nofullscreen noremoteplayback"
+      className="relative w-full h-full object-cover md:object-cover"
+    />
+
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40 pointer-events-none"></div>
+
+    {/* Grid */}
+    <div className="absolute inset-0 
+      bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),
+      linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] 
+      bg-[size:60px_60px] 
+      opacity-[0.06] 
+      pointer-events-none">
+    </div>
+
+  </div>
+
+  {/* Bottom gradient */}
+  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020617] to-transparent pointer-events-none"></div>
+
+</div>
 
       <section className="bg-primary py-12 md:py-16 relative z-20 shadow-2xl" style={{ display: "none" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
@@ -306,7 +320,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 bg-surface-light dark:bg-background-dark relative" id="services">
+      <section className="py-4 md:py-24 bg-surface-light dark:bg-background-dark relative" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-primary font-bold tracking-wide uppercase text-xl mb-2">Our Solutions</h2>
@@ -483,7 +497,7 @@ const Home: React.FC = () => {
                 { t: 'Healthcare & Life Sciences', i: 'fa-heart-pulse', c: 'red' },
                 { t: 'Engineering Software & AI Systems', i: 'fa-code', c: 'blue' }
               ].map((ind, idx) => (
-                <div key={idx} className={`bg-white dark:bg-surface-dark p-8 rounded-2xl shadow-sm border-t-4 border-${ind.c}-500`}>
+                <div key={idx} className={`bg-white dark:bg-surface-dark p-1 rounded-2xl shadow-sm border-t-4 border-${ind.c}-500`}>
                   <div className="flex items-center mb-4">
                     <div className={`w-12 h-12 bg-${ind.c}-100 dark:bg-${ind.c}-900/30 rounded-full flex items-center justify-center text-${ind.c}-500 mr-4`}>
                       <i className={`fas ${ind.i} text-xl`}></i>
