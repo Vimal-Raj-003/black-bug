@@ -323,7 +323,7 @@ const Home: React.FC = () => {
       <section className="py-4 md:py-24 bg-surface-light dark:bg-background-dark relative" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-primary font-bold tracking-wide uppercase text-xl mb-2">Our Solutions</h2>
+            <h2 className="text-primary font-bold tracking-wide uppercase text-xl mb-2 md:mb-40">Our Solutions</h2>
             <h3 className="text-4xl font-display font-bold text-gray-900 dark:text-white mb-4">Comprehensive Engineering Services</h3>
             <p className="text-gray-600 dark:text-gray-400">End-to-end capabilities tailored to optimize your manufacturing and supply chain processes.</p>
           </div>
