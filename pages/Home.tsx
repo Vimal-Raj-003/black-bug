@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import homevideo from '../videos/Engineering_meets_Innovation.mp4';
 
 // Types
 type Category = 'Costing' | 'Quality' | 'Data & AI' | 'Modeling';
@@ -129,8 +130,8 @@ const ToolsSection: React.FC = () => {
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-between text-center md:text-left">
+          <div className="flex flex-col gap-2 items-center md:items-start">
             <h2 className="text-primary font-bold tracking-[0.2em] uppercase text-xs">Our Technological Edge</h2>
             <h3 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight">Tools We Master</h3>
           </div>
@@ -261,57 +262,36 @@ const Home: React.FC = () => {
   return (
     <div className="font-body transition-colors duration-300">
       {/* Hero Section with Cinematic Automotive Manufacturing Video */}
-      <div className="relative min-h-[75vh] flex flex-col justify-center overflow-hidden bg-[#020617]">
+      <div className="relative min-h-[75vh] flex flex-col justify-center overflow-hidden">
         <div ref={parallaxRef} className="absolute inset-0 z-0 will-change-transform">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070"
-            className="w-full h-full object-cover opacity-20 grayscale brightness-75 mix-blend-screen"
-          >
-            {/* Automotive manufacturing specifically showing parts and robotics */}
-            <source src="https://cdn.pixabay.com/video/2019/04/23/23011-332308696_large.mp4" type="video/mp4" />
-
-            {/* Fallback for unsupported browsers */}
-            <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070"
-              alt="Automotive Manufacturing Background"
-              className="w-full h-full object-cover opacity-40"
+          <div className="absolute inset-0 z-0">
+            <video
+              src={homevideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              disableRemotePlayback
+              controlsList="nodownload nofullscreen noremoteplayback"
+              className="w-full h-full object-cover"
             />
-          </video>
-          {/* Multi-layered cinematic overlays for transparency effect */}
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950 pointer-events-none"></div>
-          {/* Subtle tech grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:50px_50px] opacity-[0.1] pointer-events-none"></div>
-        </div>
+          </div>
 
-        <div className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center transition-all duration-1000 ease-out transform ${loaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          {/* Neutral dark overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40 pointer-events-none"></div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1] mb-8">
-            Hexuno - Engineering meets Innovation <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]"> Sustainable Solutions</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed font-light max-w-2xl mx-auto border-t border-white/10 pt-8">
-
-
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-5 justify-center w-full">
-            <button
-              onClick={() => handleScrollToSection('services')}
-              className="group relative inline-flex justify-center items-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_0_25px_rgba(37,99,235,0.4)]"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700"></div>
-              <span className="relative">Explore Offerings</span>
-              <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </button>
-
+          {/* Grid stays same */}
+          <div className="absolute inset-0 
+            bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),
+            linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] 
+            bg-[size:60px_60px] 
+            opacity-[0.06] 
+            pointer-events-none">
           </div>
         </div>
+
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020617] to-transparent pointer-events-none"></div>
       </div>
 
@@ -329,7 +309,7 @@ const Home: React.FC = () => {
       <section className="py-24 bg-surface-light dark:bg-background-dark relative" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-primary font-bold tracking-wide uppercase text-sm mb-2">Our Solutions</h2>
+            <h2 className="text-primary font-bold tracking-wide uppercase text-xl mb-2">Our Solutions</h2>
             <h3 className="text-4xl font-display font-bold text-gray-900 dark:text-white mb-4">Comprehensive Engineering Services</h3>
             <p className="text-gray-600 dark:text-gray-400">End-to-end capabilities tailored to optimize your manufacturing and supply chain processes.</p>
           </div>
