@@ -5,6 +5,7 @@ declare module "*.jpg";
 declare module "*.jpeg";
 declare module "*.webp";
 declare module "*.svg";
+declare module "*.mp4";
 
 declare module "swiper/css";
 declare module "swiper/css/pagination";
