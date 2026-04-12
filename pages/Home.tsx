@@ -262,50 +262,30 @@ const Home: React.FC = () => {
   return (
     <div className="font-body transition-colors duration-300">
       {/* Hero Section with Cinematic Automotive Manufacturing Video */}
-      <div className="relative h-[28vh] md:h-[75vh] flex flex-col justify-center overflow-hidden">
 
-  <div className="absolute inset-0 z-0">
+<div className="relative w-full h-[28vh] md:h-[90vh] overflow-hidden flex items-center justify-center bg-black">
 
-    {/* 🔥 Background video (ONLY for mobile) */}
-    <video
-      src={homevideo}
-      autoPlay
-      muted
-      loop
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover blur-md scale-105 opacity-60 md:hidden"
-    />
+  {/* Strong background fill */}
+  <video
+    src={homevideo}
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 w-full h-full object-fill blur-2xl scale-[1.4] opacity-70 md:hidden"
+  />
 
-    {/* 🔥 Main video */}
-    <video
-      src={homevideo}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      disablePictureInPicture
-      disableRemotePlayback
-      controlsList="nodownload nofullscreen noremoteplayback"
-      className="relative w-full h-full object-cover md:object-cover"
-    />
+  {/* Main video (no crop) */}
+  <video
+    src={homevideo}
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 w-full h-full object-fill"
+  />
 
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40 pointer-events-none"></div>
 
-    {/* Grid */}
-    <div className="absolute inset-0 
-      bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),
-      linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] 
-      bg-[size:60px_60px] 
-      opacity-[0.06] 
-      pointer-events-none">
-    </div>
-
-  </div>
-
-  {/* Bottom gradient */}
-  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020617] to-transparent pointer-events-none"></div>
 
 </div>
 
@@ -320,10 +300,10 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-4 md:py-24 bg-surface-light dark:bg-background-dark relative" id="services">
+      <section className="py-4 md:py-16 bg-surface-light dark:bg-background-dark relative" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-primary font-bold tracking-wide uppercase text-xl mb-2 md:mb-40">Our Solutions</h2>
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <h2 className="text-primary font-bold tracking-wide uppercase text-xl mb-2 md:mb-4">Our Solutions</h2>
             <h3 className="text-4xl font-display font-bold text-gray-900 dark:text-white mb-4">Comprehensive Engineering Services</h3>
             <p className="text-gray-600 dark:text-gray-400">End-to-end capabilities tailored to optimize your manufacturing and supply chain processes.</p>
           </div>

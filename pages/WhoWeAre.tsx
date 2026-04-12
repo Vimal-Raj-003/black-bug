@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import "./css/whoweare.css";
+import who_we_are_banner from "../images/who_we_are_banner.png";
+import who_we_are_banner2 from "../images/Who_we_are_2.png";
 
 
 const WhoWeAre: React.FC = () => {
@@ -24,17 +26,18 @@ const WhoWeAre: React.FC = () => {
   return (
     <div className="">
     {/* Hero Section */}
-    <section className="relative h-[75vh] flex items-center overflow-hidden bg-brand-blue text-white">
-      <div className="absolute">
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-blue to-transparent z-10" />
+<section className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-brand-blue text-white">
+      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-blue to-transparent z-10" />
+
         <img 
-          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070" 
-          alt="Engineering background" 
-          className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
+        src={who_we_are_banner2}
+        alt="Engineering background" 
+        className="w-full h-full object-contain"
+        referrerPolicy="no-referrer"
         />
       </div>
-      <div className="relative z-20 max-w-7xl mx-auto px-6 has-white-color">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -45,7 +48,7 @@ const WhoWeAre: React.FC = () => {
             About Us
           </span>
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-            Engineering-Led Decision Intelligence for Modern Industry
+             {/* Engineering-Led Decision Intelligence for Modern Industry */}
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed " style={{ display :"none"}}>
             HEXUNO Technologies is an engineering-led consulting and solutions firm where innovation, cost intelligence, and sustainability converge.
@@ -62,55 +65,72 @@ const WhoWeAre: React.FC = () => {
     </section>
 
     {/* Intro Section */}
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-brand-blue">
-              Confident, Fact-Based Decisions
-            </h2>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-            HEXUNO Technologies is an engineering-led consulting and solutions firm where innovation, cost intelligence, and sustainability converge.
-             </p>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              We support manufacturing OEMs, Tier-1 suppliers, and technology-driven organizations in making confident, fact-based decisions across design, sourcing, quality, and growth.
-            </p>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              In today’s industrial landscape, many critical decisions — around cost, manufacturing feasibility, and sourcing — are still driven by assumptions, fragmented data, or late-stage supplier quotes.
-            </p>
-            <div className="p-6 bg-brand-gray border-l-4 border-brand-blue rounded-r-xl">
-              <p className="text-xl font-medium italic text-brand-blue">
-                "At HEXUNO, we exist to change that."
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000" className="rounded-2xl h-64 w-full object-cover" referrerPolicy="no-referrer" />
-              <div className="bg-brand-blue p-8 rounded-2xl text-white">
-                <h3 className="text-4xl font-bold mb-2">15+</h3>
-                <p className="text-sm opacity-80 uppercase tracking-wider">Years Experience</p>
-              </div>
-            </div>
-            <div className="space-y-4 pt-8">
-              <div className="bg-gray-100 p-8 rounded-2xl" style ={{ display : "none"}}>
-                <h3 className="text-4xl font-bold mb-2 text-brand-blue">50+</h3>
-                <p className="text-sm text-gray-500 uppercase tracking-wider">Global Clients</p>
-              </div>
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1000" className="rounded-2xl h-64 w-full object-cover" referrerPolicy="no-referrer" />
-            </div>
-          </div>
+
+
+    <section className="py-10 bg-white">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-brand-blue">
+          Confident, Fact-Based Decisions
+        </h2>
+
+        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+          HEXUNO Technologies is an engineering-led consulting and solutions firm where innovation, cost intelligence, and sustainability converge.
+        </p>
+
+        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+          We support manufacturing OEMs, Tier-1 suppliers, and technology-driven organizations in making confident, fact-based decisions across design, sourcing, quality, and growth.
+        </p>
+
+        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+          In today’s industrial landscape, many critical decisions — around cost, manufacturing feasibility, and sourcing — are still driven by assumptions, fragmented data, or late-stage supplier quotes.
+        </p>
+
+        <div className="p-6 bg-brand-gray border-l-4 border-blue-900 rounded-r-xl">
+          <p className="text-xl font-medium italic text-brand-blue">
+            "At HEXUNO, we exist to change that."
+          </p>
         </div>
       </div>
-    </section>
+
+      <div className="grid grid-cols-2 gap-4">
+
+        <img 
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000"
+          className="rounded-2xl h-64 w-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+
+        <img 
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1000"
+          className="rounded-2xl h-64 w-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+
+  
+        <div className="col-span-2 bg-brand-blue p-8 rounded-2xl text-black text-center">
+          <h3 className="text-4xl font-bold mb-2">15+</h3>
+          <p className="text-sm opacity-80 uppercase tracking-wider">
+            Years Experience
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
     {/* Vision & Mission */}
-    <section className="py-12 bg-brand-gray">
+    <section className="py-10 bg-brand-gray">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div 
             whileHover={{ y: -10 }}
-            className="bg-white p-12 rounded-3xl shadow-sm border border-gray-100"
+            className="bg-white p-4 rounded-3xl shadow-sm border border-gray-100"
           >
             <div className="w-16 h-16 bg-blue-50 text-brand-blue rounded-2xl flex items-center justify-center mb-8">
               <Target size={32} />
@@ -122,7 +142,7 @@ const WhoWeAre: React.FC = () => {
           </motion.div>
           <motion.div 
             whileHover={{ y: -10 }}
-            className="bg-white p-12 rounded-3xl shadow-sm border border-gray-100"
+            className="bg-white p-4 rounded-3xl shadow-sm border border-gray-100"
           >
             <div className="w-16 h-16 bg-blue-50 text-brand-blue rounded-2xl flex items-center justify-center mb-8">
               <Lightbulb size={32} />
@@ -137,7 +157,7 @@ const WhoWeAre: React.FC = () => {
     </section>
 
     {/* Philosophy */}
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-10 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative">
           <div className="absolute -right-24 -top-24 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl" />
@@ -151,7 +171,7 @@ const WhoWeAre: React.FC = () => {
                 <div>
                   <h4 className="text-2xl font-semibold mb-4">We don’t believe technology should replace engineers.</h4>
                   <p className="text-lg text-gray-600">
-                    We believe engineers should make better decisions — with the right systems supporting them.
+                    We believe engineers should make better decisions, with the right systems supporting them.
                   </p>
                 </div>
               </div>
@@ -162,7 +182,7 @@ const WhoWeAre: React.FC = () => {
     </section>
 
     {/* Purpose / Intersection */}
-    <section className="py-16 bg-brand-dark text-white" style={{ color: "white", background: "darkslategrey" }}>
+    <section className="py-10 bg-brand-dark text-white" style={{ color: "white", background: "darkslategrey" }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-7xl mx-auto mb-10">
           <h2 className="text-4xl font-bold mb-6">Our Purpose</h2>
