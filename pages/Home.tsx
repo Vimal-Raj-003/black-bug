@@ -267,7 +267,7 @@ const Home: React.FC = () => {
 
   {/* Strong background fill */}
   <video
-    src={homevideo}
+    src="/videos/Engineering_meets_Innovation.mp4"
     autoPlay
     muted
     loop
@@ -277,7 +277,7 @@ const Home: React.FC = () => {
 
   {/* Main video (no crop) */}
   <video
-    src={homevideo}
+    src="/videos/Engineering_meets_Innovation.mp4"
     autoPlay
     muted
     loop
