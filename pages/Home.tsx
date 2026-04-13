@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import homevideo from '../videos/Engineering_meets_Innovation.mp4';
 
 // Types
 type Category = 'Costing' | 'Quality' | 'Data & AI' | 'Modeling';
